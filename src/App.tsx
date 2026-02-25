@@ -341,6 +341,14 @@ const Viewer3D = () => {
 
         setHasModel(true);
         setLoading(false);
+
+        // Forzar renderizado inmediato y actualización de layout
+        setTimeout(() => {
+          if (rendererRef.current && sceneRef.current && cameraRef.current) {
+            rendererRef.current.render(sceneRef.current, cameraRef.current);
+          }
+          window.dispatchEvent(new Event('resize'));
+        }, 100);
       }, (progress) => {
         const percent = (progress.loaded / progress.total) * 100;
         if (progress.total > 0) console.log(`Cargando: ${Math.round(percent)}%`);
@@ -474,6 +482,14 @@ const Viewer3D = () => {
 
         setHasModel(true);
         setLoading(false);
+
+        // Forzar renderizado inmediato
+        setTimeout(() => {
+          if (rendererRef.current && sceneRef.current && cameraRef.current) {
+            rendererRef.current.render(sceneRef.current, cameraRef.current);
+          }
+          window.dispatchEvent(new Event('resize'));
+        }, 100);
       }, (err) => {
         console.error("Error al procesar el archivo manual:", err);
         setLoading(false);
@@ -736,8 +752,16 @@ const Viewer3D = () => {
               <MousePointer2 className="w-16 h-16 mb-4 opacity-20" />
               <p className="text-xl font-medium text-slate-300">El visor está vacío</p>
               <p className="text-sm max-w-xs mt-2">
-                No se detectó el archivo <code className="bg-slate-800 px-1 rounded text-blue-400">public/modelo.glb</code> en tu servidor.
+                No se detectó el archivo <code className="bg-slate-800 px-1 rounded text-blue-400">modelo.glb</code>.
               </p>
+              <div className="bg-slate-800/50 p-4 rounded-xl mt-4 text-xs text-left space-y-2 border border-slate-700">
+                <p className="font-bold text-blue-400">Instrucciones para GitHub:</p>
+                <ol className="list-decimal ml-4 space-y-1 text-slate-400">
+                  <li>Crea una carpeta llamada <code className="text-white">public</code> en la raíz de tu proyecto.</li>
+                  <li>Mueve tu archivo <code className="text-white">modelo.glb</code> dentro de esa carpeta.</li>
+                  <li>La ruta final debe ser: <code className="text-emerald-400">public/modelo.glb</code></li>
+                </ol>
+              </div>
               <div className="mt-6 flex flex-col gap-3 w-full max-w-xs">
                 <button 
                   onClick={() => loadModelFromURL('/modelo.glb')}
