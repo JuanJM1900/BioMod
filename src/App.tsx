@@ -281,46 +281,77 @@ const Viewer3D = () => {
   const mouse = useRef(new THREE.Vector2());
 
   const loadModelFromURL = async (url: string) => {
-    if (!sceneRef.current) return;
+    if (!sceneRef.current) {
+      console.error("Error: La escena 3D no está lista para cargar el modelo.");
+      return;
+    }
     
+    console.log(`Intentando cargar modelo automático desde: ${url}`);
     setLoading(true);
-    const loader = new GLTFLoader();
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
-    loader.setDRACOLoader(dracoLoader);
-
-    loader.load(url, (gltf) => {
-      if (modelRef.current) sceneRef.current?.remove(modelRef.current);
+    
+    try {
+      // Verificamos primero si el archivo existe y qué tipo de contenido es
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Servidor respondió con estado ${response.status}`);
+      }
       
-      const model = gltf.scene;
-      modelRef.current = model;
-      sceneRef.current?.add(model);
-
-      // Diagnóstico de tamaño
-      const box = new THREE.Box3().setFromObject(model);
-      const size = box.getSize(new THREE.Vector3());
-      const center = box.getCenter(new THREE.Vector3());
-      console.log("Modelo cargado - Tamaño:", size, "Centro:", center);
-
-      const maxDim = Math.max(size.x, size.y, size.z);
-      const fov = cameraRef.current?.fov || 45;
-      let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov * Math.PI / 360));
-      cameraZ *= 2.5; // Margen de seguridad
-
-      if (controlsRef.current && cameraRef.current) {
-        controlsRef.current.target.copy(center);
-        cameraRef.current.position.set(center.x + cameraZ, center.y + cameraZ, center.z + cameraZ);
-        cameraRef.current.far = cameraZ * 10;
-        cameraRef.current.updateProjectionMatrix();
-        controlsRef.current.update();
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('text/html')) {
+        throw new Error("El servidor devolvió HTML en lugar de un archivo 3D. Esto suele significar que el archivo no existe en la carpeta 'public'.");
       }
 
-      setHasModel(true);
+      const loader = new GLTFLoader();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+      loader.setDRACOLoader(dracoLoader);
+
+      loader.load(url, (gltf) => {
+        console.log("¡Archivo detectado y cargado con éxito!");
+        if (modelRef.current) sceneRef.current?.remove(modelRef.current);
+        
+        const model = gltf.scene;
+        modelRef.current = model;
+        sceneRef.current?.add(model);
+
+        const box = new THREE.Box3().setFromObject(model);
+        const size = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+        console.log("Dimensiones del modelo:", size);
+        console.log("Centro del modelo:", center);
+
+        const maxDim = Math.max(size.x, size.y, size.z);
+        if (maxDim === 0) {
+          console.error("Error: El modelo tiene un tamaño de 0.");
+          setLoading(false);
+          return;
+        }
+
+        const fov = cameraRef.current?.fov || 45;
+        let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov * Math.PI / 360));
+        cameraZ *= 3;
+
+        if (controlsRef.current && cameraRef.current) {
+          controlsRef.current.target.copy(center);
+          cameraRef.current.position.set(center.x + cameraZ, center.y + cameraZ, center.z + cameraZ);
+          cameraRef.current.far = cameraZ * 20;
+          cameraRef.current.updateProjectionMatrix();
+          controlsRef.current.update();
+        }
+
+        setHasModel(true);
+        setLoading(false);
+      }, (progress) => {
+        const percent = (progress.loaded / progress.total) * 100;
+        if (progress.total > 0) console.log(`Cargando: ${Math.round(percent)}%`);
+      }, (err) => {
+        console.error("Error al procesar el GLB:", err);
+        setLoading(false);
+      });
+    } catch (error: any) {
+      console.warn("Aviso de carga:", error.message);
       setLoading(false);
-    }, undefined, (err) => {
-      console.warn("No se pudo cargar el modelo automático (posiblemente no existe aún):", url);
-      setLoading(false);
-    });
+    }
   };
 
   useEffect(() => {
@@ -431,12 +462,12 @@ const Viewer3D = () => {
         const maxDim = Math.max(size.x, size.y, size.z);
         const fov = cameraRef.current?.fov || 45;
         let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov * Math.PI / 360));
-        cameraZ *= 2.5;
+        cameraZ *= 3;
 
         if (controlsRef.current && cameraRef.current) {
           controlsRef.current.target.copy(center);
           cameraRef.current.position.set(center.x + cameraZ, center.y + cameraZ, center.z + cameraZ);
-          cameraRef.current.far = cameraZ * 10;
+          cameraRef.current.far = cameraZ * 20;
           cameraRef.current.updateProjectionMatrix();
           controlsRef.current.update();
         }
@@ -444,9 +475,9 @@ const Viewer3D = () => {
         setHasModel(true);
         setLoading(false);
       }, (err) => {
-        console.error(err);
+        console.error("Error al procesar el archivo manual:", err);
         setLoading(false);
-        alert("Error al cargar el modelo. Asegúrate de que sea un archivo .glb válido.");
+        alert("Error al procesar el modelo. Verifica que sea un .glb válido.");
       });
     };
   };
@@ -653,11 +684,18 @@ const Viewer3D = () => {
                 📂 Cargar archivo .glb
               </label>
               <button 
+                onClick={() => loadModelFromURL('/modelo.glb')}
+                className="w-full flex items-center justify-center gap-2 p-2 text-blue-600 hover:bg-blue-50 rounded-lg text-sm border border-blue-100"
+              >
+                <RotateCcw className="w-4 h-4" />
+                Recargar Predeterminado
+              </button>
+              <button 
                 onClick={resetVisibility}
                 className="w-full flex items-center justify-center gap-2 p-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm"
               >
                 <RotateCcw className="w-4 h-4" />
-                Restablecer Todo
+                Restablecer Visibilidad
               </button>
             </div>
           </div>
@@ -694,11 +732,27 @@ const Viewer3D = () => {
           )}
 
           {!hasModel && !loading && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-500 pointer-events-none">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-8 text-center">
               <MousePointer2 className="w-16 h-16 mb-4 opacity-20" />
-              <p className="text-xl font-medium">El visor está vacío</p>
-              <p className="text-sm">Usa el panel lateral para cargar un modelo anatómico (.glb)</p>
-              <p className="text-xs mt-2 opacity-40">Asegúrate de que el archivo 'modelo.glb' esté en la carpeta public de tu GitHub</p>
+              <p className="text-xl font-medium text-slate-300">El visor está vacío</p>
+              <p className="text-sm max-w-xs mt-2">
+                No se detectó el archivo <code className="bg-slate-800 px-1 rounded text-blue-400">public/modelo.glb</code> en tu servidor.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 w-full max-w-xs">
+                <button 
+                  onClick={() => loadModelFromURL('/modelo.glb')}
+                  className="bg-blue-600 text-white py-3 px-6 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg pointer-events-auto"
+                >
+                  Intentar Cargar de Nuevo
+                </button>
+                <label className="bg-slate-800 text-slate-300 py-3 px-6 rounded-xl font-bold hover:bg-slate-700 transition-all cursor-pointer pointer-events-auto border border-slate-700">
+                  <input type="file" className="hidden" accept=".glb" onChange={handleFileUpload} />
+                  Subir Manualmente
+                </label>
+              </div>
+              <p className="text-[10px] mt-8 opacity-40 uppercase tracking-widest">
+                Asegúrate de que el nombre sea exacto y esté en la carpeta public
+              </p>
             </div>
           )}
 
