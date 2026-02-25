@@ -279,39 +279,51 @@ const Viewer3D = () => {
   const raycaster = useRef(new THREE.Raycaster());
   const mouse = useRef(new THREE.Vector2());
 
-  const loadModelFromURL = (url: string) => {
+  const loadModelFromURL = async (url: string) => {
     if (!sceneRef.current) return;
-    setLoading(true);
-
-    const loader = new GLTFLoader();
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
-    loader.setDRACOLoader(dracoLoader);
-
-    loader.load(url, (gltf) => {
-      if (modelRef.current) sceneRef.current?.remove(modelRef.current);
+    
+    try {
+      // Verificamos primero si el archivo existe y no es una página HTML (error 404)
+      const response = await fetch(url, { method: 'HEAD' });
+      const contentType = response.headers.get('content-type');
       
-      const model = gltf.scene;
-      modelRef.current = model;
-      sceneRef.current?.add(model);
-
-      const box = new THREE.Box3().setFromObject(model);
-      const center = box.getCenter(new THREE.Vector3());
-      const size = box.getSize(new THREE.Vector3());
-      const maxDim = Math.max(size.x, size.y, size.z);
-      
-      if (controlsRef.current && cameraRef.current) {
-        controlsRef.current.target.copy(center);
-        cameraRef.current.position.set(center.x + maxDim, center.y + maxDim, center.z + maxDim);
-        controlsRef.current.update();
+      if (!response.ok || (contentType && contentType.includes('text/html'))) {
+        console.log("Modelo predeterminado no encontrado o URL inválida. Esperando carga del usuario.");
+        return;
       }
 
-      setLoading(false);
-    }, undefined, (err) => {
-      console.error(err);
-      setLoading(false);
-      // No alert here for the default model to avoid annoying users if file is missing
-    });
+      setLoading(true);
+      const loader = new GLTFLoader();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+      loader.setDRACOLoader(dracoLoader);
+
+      loader.load(url, (gltf) => {
+        if (modelRef.current) sceneRef.current?.remove(modelRef.current);
+        
+        const model = gltf.scene;
+        modelRef.current = model;
+        sceneRef.current?.add(model);
+
+        const box = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        const maxDim = Math.max(size.x, size.y, size.z);
+        
+        if (controlsRef.current && cameraRef.current) {
+          controlsRef.current.target.copy(center);
+          cameraRef.current.position.set(center.x + maxDim, center.y + maxDim, center.z + maxDim);
+          controlsRef.current.update();
+        }
+
+        setLoading(false);
+      }, undefined, (err) => {
+        console.error("Error al procesar el GLB:", err);
+        setLoading(false);
+      });
+    } catch (error) {
+      console.log("No se pudo cargar el modelo predeterminado:", error);
+    }
   };
 
   useEffect(() => {
