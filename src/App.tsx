@@ -263,6 +263,7 @@ const Viewer3D = () => {
   const [loading, setLoading] = useState(false);
   const [selectedPart, setSelectedPart] = useState<THREE.Object3D | null>(null);
   const originalEmissive = useRef<{ [uuid: string]: THREE.Color }>({});
+  const [hasModel, setHasModel] = useState(false);
   const [layers, setLayers] = useState({
     bones: true,
     muscles: true,
@@ -278,6 +279,49 @@ const Viewer3D = () => {
   const modelRef = useRef<THREE.Group | null>(null);
   const raycaster = useRef(new THREE.Raycaster());
   const mouse = useRef(new THREE.Vector2());
+
+  const loadModelFromURL = async (url: string) => {
+    if (!sceneRef.current) return;
+    
+    setLoading(true);
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load(url, (gltf) => {
+      if (modelRef.current) sceneRef.current?.remove(modelRef.current);
+      
+      const model = gltf.scene;
+      modelRef.current = model;
+      sceneRef.current?.add(model);
+
+      // Diagnóstico de tamaño
+      const box = new THREE.Box3().setFromObject(model);
+      const size = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+      console.log("Modelo cargado - Tamaño:", size, "Centro:", center);
+
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const fov = cameraRef.current?.fov || 45;
+      let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov * Math.PI / 360));
+      cameraZ *= 2.5; // Margen de seguridad
+
+      if (controlsRef.current && cameraRef.current) {
+        controlsRef.current.target.copy(center);
+        cameraRef.current.position.set(center.x + cameraZ, center.y + cameraZ, center.z + cameraZ);
+        cameraRef.current.far = cameraZ * 10;
+        cameraRef.current.updateProjectionMatrix();
+        controlsRef.current.update();
+      }
+
+      setHasModel(true);
+      setLoading(false);
+    }, undefined, (err) => {
+      console.warn("No se pudo cargar el modelo automático (posiblemente no existe aún):", url);
+      setLoading(false);
+    });
+  };
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -302,18 +346,23 @@ const Viewer3D = () => {
     controlsRef.current = controls;
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
     scene.add(ambientLight);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
-    dirLight.position.set(10, 10, 10);
-    scene.add(dirLight);
+    const lights = [
+      { pos: [10, 10, 10], int: 1.5 },
+      { pos: [-10, 10, 10], int: 1.0 },
+      { pos: [0, -10, 0], int: 0.8 },
+      { pos: [0, 10, -10], int: 1.0 }
+    ];
 
-    const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
-    dirLight2.position.set(-10, 5, -10);
-    scene.add(dirLight2);
+    lights.forEach(l => {
+      const light = new THREE.DirectionalLight(0xffffff, l.int);
+      light.position.set(l.pos[0], l.pos[1], l.pos[2]);
+      scene.add(light);
+    });
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
     scene.add(hemiLight);
 
     // Grid
@@ -336,6 +385,10 @@ const Viewer3D = () => {
       renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
     };
     window.addEventListener('resize', handleResize);
+
+    // --- CARGA DE MODELO PREDETERMINADO ---
+    // Cambia 'modelo.glb' por el nombre de tu archivo en la carpeta public
+    loadModelFromURL('/modelo.glb');
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -369,18 +422,26 @@ const Viewer3D = () => {
         modelRef.current = model;
         sceneRef.current?.add(model);
 
-        // Center camera
+        // Auto-ajuste inteligente de cámara
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
+        console.log("Carga manual - Tamaño:", size, "Centro:", center);
+
         const maxDim = Math.max(size.x, size.y, size.z);
-        
+        const fov = cameraRef.current?.fov || 45;
+        let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov * Math.PI / 360));
+        cameraZ *= 2.5;
+
         if (controlsRef.current && cameraRef.current) {
           controlsRef.current.target.copy(center);
-          cameraRef.current.position.set(center.x + maxDim, center.y + maxDim, center.z + maxDim);
+          cameraRef.current.position.set(center.x + cameraZ, center.y + cameraZ, center.z + cameraZ);
+          cameraRef.current.far = cameraZ * 10;
+          cameraRef.current.updateProjectionMatrix();
           controlsRef.current.update();
         }
 
+        setHasModel(true);
         setLoading(false);
       }, (err) => {
         console.error(err);
@@ -632,11 +693,12 @@ const Viewer3D = () => {
             </div>
           )}
 
-          {!modelRef.current && !loading && (
+          {!hasModel && !loading && (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-500 pointer-events-none">
               <MousePointer2 className="w-16 h-16 mb-4 opacity-20" />
               <p className="text-xl font-medium">El visor está vacío</p>
-              <p className="text-sm">Usa el panel lateral para cargar un modelo anatómico</p>
+              <p className="text-sm">Usa el panel lateral para cargar un modelo anatómico (.glb)</p>
+              <p className="text-xs mt-2 opacity-40">Asegúrate de que el archivo 'modelo.glb' esté en la carpeta public de tu GitHub</p>
             </div>
           )}
 
