@@ -263,6 +263,7 @@ const Viewer3D = () => {
   const [loading, setLoading] = useState(false);
   const [selectedPart, setSelectedPart] = useState<THREE.Object3D | null>(null);
   const originalEmissive = useRef<{ [uuid: string]: THREE.Color }>({});
+  const [hasModel, setHasModel] = useState(false);
   const [layers, setLayers] = useState({
     bones: true,
     muscles: true,
@@ -282,48 +283,36 @@ const Viewer3D = () => {
   const loadModelFromURL = async (url: string) => {
     if (!sceneRef.current) return;
     
-    try {
-      // Verificamos primero si el archivo existe y no es una página HTML (error 404)
-      const response = await fetch(url, { method: 'HEAD' });
-      const contentType = response.headers.get('content-type');
+    setLoading(true);
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load(url, (gltf) => {
+      if (modelRef.current) sceneRef.current?.remove(modelRef.current);
       
-      if (!response.ok || (contentType && contentType.includes('text/html'))) {
-        console.log("Modelo predeterminado no encontrado o URL inválida. Esperando carga del usuario.");
-        return;
+      const model = gltf.scene;
+      modelRef.current = model;
+      sceneRef.current?.add(model);
+
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      
+      if (controlsRef.current && cameraRef.current) {
+        controlsRef.current.target.copy(center);
+        cameraRef.current.position.set(center.x + maxDim * 1.5, center.y + maxDim * 1.5, center.z + maxDim * 1.5);
+        controlsRef.current.update();
       }
 
-      setLoading(true);
-      const loader = new GLTFLoader();
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
-      loader.setDRACOLoader(dracoLoader);
-
-      loader.load(url, (gltf) => {
-        if (modelRef.current) sceneRef.current?.remove(modelRef.current);
-        
-        const model = gltf.scene;
-        modelRef.current = model;
-        sceneRef.current?.add(model);
-
-        const box = new THREE.Box3().setFromObject(model);
-        const center = box.getCenter(new THREE.Vector3());
-        const size = box.getSize(new THREE.Vector3());
-        const maxDim = Math.max(size.x, size.y, size.z);
-        
-        if (controlsRef.current && cameraRef.current) {
-          controlsRef.current.target.copy(center);
-          cameraRef.current.position.set(center.x + maxDim, center.y + maxDim, center.z + maxDim);
-          controlsRef.current.update();
-        }
-
-        setLoading(false);
-      }, undefined, (err) => {
-        console.error("Error al procesar el GLB:", err);
-        setLoading(false);
-      });
-    } catch (error) {
-      console.log("No se pudo cargar el modelo predeterminado:", error);
-    }
+      setHasModel(true);
+      setLoading(false);
+    }, undefined, (err) => {
+      console.warn("No se pudo cargar el modelo automático (posiblemente no existe aún):", url);
+      setLoading(false);
+    });
   };
 
   useEffect(() => {
@@ -428,10 +417,11 @@ const Viewer3D = () => {
         
         if (controlsRef.current && cameraRef.current) {
           controlsRef.current.target.copy(center);
-          cameraRef.current.position.set(center.x + maxDim, center.y + maxDim, center.z + maxDim);
+          cameraRef.current.position.set(center.x + maxDim * 1.5, center.y + maxDim * 1.5, center.z + maxDim * 1.5);
           controlsRef.current.update();
         }
 
+        setHasModel(true);
         setLoading(false);
       }, (err) => {
         console.error(err);
@@ -683,11 +673,12 @@ const Viewer3D = () => {
             </div>
           )}
 
-          {!modelRef.current && !loading && (
+          {!hasModel && !loading && (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-500 pointer-events-none">
               <MousePointer2 className="w-16 h-16 mb-4 opacity-20" />
               <p className="text-xl font-medium">El visor está vacío</p>
-              <p className="text-sm">Usa el panel lateral para cargar un modelo anatómico</p>
+              <p className="text-sm">Usa el panel lateral para cargar un modelo anatómico (.glb)</p>
+              <p className="text-xs mt-2 opacity-40">Asegúrate de que el archivo 'modelo.glb' esté en la carpeta public de tu GitHub</p>
             </div>
           )}
 
