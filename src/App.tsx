@@ -118,7 +118,34 @@ const QUESTION_BANK: Question[] = [
   {q: "¿Qué nervio inerva los músculos de la eminencia tenar (excepto el aductor)?", a: "Nervio Mediano", opts: ["Nervio Radial", "Nervio Mediano", "Nervio Cubital", "Nervio Musculocutáneo"], category: "Neurología"},
   {q: "¿Qué nervio inerva la piel de la cara lateral del antebrazo?", a: "Nervio musculocutáneo (N. cutáneo antebraquial lateral)", opts: ["Nervio radial", "Nervio mediano", "Nervio musculocutáneo (N. cutáneo antebraquial lateral)", "Nervio cubital"], category: "Neurología"},
   {q: "¿De qué fascículo del plexo braquial se origina el nervio cubital?", a: "Fascículo medial", opts: ["Fascículo lateral", "Fascículo medial", "Fascículo posterior", "Tronco superior"], category: "Neurología"},
-  {q: "¿Qué nervio inerva al músculo deltoides?", a: "Nervio Axilar", opts: ["Nervio Supraescapular", "Nervio Axilar", "Nervio Radial", "Nervio Toracodorsal"], category: "Neurología"}
+  {q: "¿Qué nervio inerva al músculo deltoides?", a: "Nervio Axilar", opts: ["Nervio Supraescapular", "Nervio Axilar", "Nervio Radial", "Nervio Toracodorsal"], category: "Neurología"},
+  
+  // --- ARTROLOGÍA (10) ---
+  {q: "¿Qué tipo de articulación es la glenohumeral?", a: "Esferoidea (Enartrosis)", opts: ["Plana", "Gínglimo", "Esferoidea (Enartrosis)", "En silla de montar"], category: "Artrología"},
+  {q: "¿Qué estructura amplía la cavidad glenoidea para la cabeza del húmero?", a: "Rodete glenoideo (Labrum)", opts: ["Cápsula articular", "Rodete glenoideo (Labrum)", "Ligamento coracohumeral", "Bolsa subacromial"], category: "Artrología"},
+  {q: "¿Qué tipo de articulación es la esternoclavicular?", a: "En silla de montar (Encaje recíproco)", opts: ["Plana", "Esferoidea", "En silla de montar (Encaje recíproco)", "Trocoide"], category: "Artrología"},
+  {q: "¿Cuál de estas articulaciones del codo permite la pronosupinación?", a: "Radiocubital proximal", opts: ["Humerocubital", "Humerorradial", "Radiocubital proximal", "Radiocarpiana"], category: "Artrología"},
+  {q: "¿Qué ligamento del codo rodea la cabeza del radio?", a: "Ligamento anular del radio", opts: ["Ligamento colateral radial", "Ligamento colateral cubital", "Ligamento anular del radio", "Ligamento cuadrado"], category: "Artrología"},
+  {q: "¿Qué tipo de articulación es la radiocarpiana (muñeca)?", a: "Elipsoidea (Condílea)", opts: ["Troclear", "Esferoidea", "Elipsoidea (Condílea)", "Trocoide"], category: "Artrología"},
+  {q: "¿Qué huesos se articulan principalmente en la articulación de la muñeca?", a: "Radio con Escafoides y Semilunar", opts: ["Cúbito con Piramidal", "Radio con Grande y Ganchoso", "Radio con Escafoides y Semilunar", "Cúbito con Pisiforme"], category: "Artrología"},
+  {q: "¿Qué tipo de articulación es la carpometacarpiana del pulgar?", a: "En silla de montar", opts: ["Plana", "En silla de montar", "Condílea", "Troclear"], category: "Artrología"},
+  {q: "¿Qué tipo de articulación son las interfalángicas?", a: "Gínglimo (Troclear)", opts: ["Condílea", "Gínglimo (Troclear)", "Plana", "Trocoide"], category: "Artrología"},
+  {q: "¿Qué articulación une el esqueleto del miembro superior con el esqueleto axial?", a: "Esternoclavicular", opts: ["Acromioclavicular", "Glenohumeral", "Esternoclavicular", "Escapulotorácica"], category: "Artrología"},
+  {q: "¿Qué ligamento refuerza la parte superior de la articulación glenohumeral?", a: "Ligamento coracohumeral", opts: ["Ligamento glenohumeral inferior", "Ligamento coracohumeral", "Ligamento transverso del húmero", "Ligamento conoideo"], category: "Artrología"},
+  {q: "¿Qué tipo de articulación es la acromioclavicular?", a: "Sinovial plana (Artrodia)", opts: ["Esferoidea", "Sinovial plana (Artrodia)", "Trocoide", "Gínglimo"], category: "Artrología"},
+  {q: "¿Qué ligamento estabiliza la articulación acromioclavicular evitando el desplazamiento superior de la clavícula?", a: "Ligamento coracoclavicular", opts: ["Ligamento acromioclavicular", "Ligamento coracoclavicular", "Ligamento coracoacromial", "Ligamento transverso"], category: "Artrología"},
+  {q: "¿Cuál es el componente medial del ligamento coracoclavicular?", a: "Ligamento conoideo", opts: ["Ligamento trapezoideo", "Ligamento conoideo", "Ligamento acromial", "Ligamento costoclavicular"], category: "Artrología"},
+  {q: "¿Qué articulación del codo permite el movimiento de bisagra (flexo-extensión)?", a: "Humerocubital", opts: ["Humerorradial", "Radiocubital proximal", "Humerocubital", "Radiocarpiana"], category: "Artrología"},
+  {q: "¿Qué ligamento del codo se lesiona con frecuencia en lanzadores de béisbol (Tommy John)?", a: "Ligamento colateral cubital", opts: ["Ligamento colateral radial", "Ligamento colateral cubital", "Ligamento anular", "Ligamento cuadrado"], category: "Artrología"},
+  {q: "¿Qué estructura separa la articulación radiocarpiana del cúbito?", a: "Disco articular (Fibrocartílago triangular)", opts: ["Cápsula articular", "Ligamento colateral", "Disco articular (Fibrocartílago triangular)", "Menisco cubital"], category: "Artrología"},
+  {q: "¿Qué tipo de articulación son las mediocarpianas?", a: "Sinoviales planas", opts: ["Sinoviales planas", "Trocleares", "Condíleas", "Enartrosis"], category: "Artrología"},
+  {q: "¿Qué ligamento mantiene la cabeza del radio en contacto con la escotadura radial del cúbito?", a: "Ligamento anular", opts: ["Ligamento cuadrado", "Ligamento anular", "Ligamento colateral radial", "Cuerda oblicua"], category: "Artrología"},
+  {q: "¿Cuál es la patología caracterizada por la inflamación de la vaina sinovial de los tendones en el túnel carpiano?", a: "Síndrome del túnel carpiano", opts: ["Epicondilitis", "Síndrome del túnel carpiano", "Tendinitis de De Quervain", "Dedo en gatillo"], category: "Artrología"},
+  {q: "¿Qué articulación se ve afectada principalmente en la 'luxación de hombro' más común?", a: "Glenohumeral", opts: ["Acromioclavicular", "Esternoclavicular", "Glenohumeral", "Escapulotorácica"], category: "Artrología"},
+  {q: "¿Cómo se denomina la inflamación del epicóndilo lateral del húmero?", a: "Codo de tenista", opts: ["Codo de golfista", "Codo de tenista", "Bursitis olecraniana", "Artrosis de codo"], category: "Artrología"},
+  {q: "¿Qué ligamento es fundamental para la estabilidad de la articulación esternoclavicular?", a: "Ligamento costoclavicular", opts: ["Ligamento coracoclavicular", "Ligamento costoclavicular", "Ligamento acromioclavicular", "Ligamento glenohumeral"], category: "Artrología"},
+  {q: "¿Qué tipo de articulación es la radiocubital distal?", a: "Trocoide (Pivote)", opts: ["Gínglimo", "Trocoide (Pivote)", "Plana", "Esferoidea"], category: "Artrología"},
+  {q: "¿Qué estructura se interpone en la articulación esternoclavicular para mejorar la congruencia?", a: "Disco articular", opts: ["Rodete", "Disco articular", "Menisco", "Ligamento interclavicular"], category: "Artrología"}
 ];
 
 // --- Components ---
@@ -144,6 +171,7 @@ const Header = () => (
 const Nav = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (t: string) => void }) => {
   const tabs = [
     { id: 'osteology', label: 'Osteología' },
+    { id: 'arthrology', label: 'Artrología' },
     { id: 'myology', label: 'Miología' },
     { id: 'angiology', label: 'Vascularización' },
     { id: 'neurology', label: 'Neurología' },
@@ -853,7 +881,8 @@ const Quiz = () => {
 
   if (gameState === 'start') {
     const modes = [
-      { id: 'Osteología', label: 'Osteología', icon: <Bone className="w-6 h-6" />, desc: '10 preguntas sobre huesos y articulaciones.' },
+      { id: 'Osteología', label: 'Osteología', icon: <Bone className="w-6 h-6" />, desc: '10 preguntas sobre huesos y accidentes óseos.' },
+      { id: 'Artrología', label: 'Artrología', icon: <Activity className="w-6 h-6" />, desc: '10 preguntas sobre articulaciones y ligamentos.' },
       { id: 'Miología', label: 'Miología', icon: <Zap className="w-6 h-6" />, desc: '10 preguntas sobre músculos y acciones.' },
       { id: 'Angiología', label: 'Vascularización', icon: <Activity className="w-6 h-6" />, desc: '10 preguntas sobre arterias y venas.' },
       { id: 'Neurología', label: 'Neurología', icon: <Zap className="w-6 h-6" />, desc: '10 preguntas sobre nervios y plexos.' },
@@ -1061,11 +1090,12 @@ export default function App() {
 
         {/* Osteology */}
         <Section title="Osteología: Esqueleto del Miembro Superior" active={activeTab === 'osteology'}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-2xl border shadow-sm">
-                <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-4">Cintura Escapular</h3>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+          <div className="grid grid-cols-1 gap-8">
+            {/* Cintura Escapular */}
+            <div className="bg-white p-6 rounded-2xl border shadow-sm">
+              <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Cintura Escapular</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-3">
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray200.png"
                     alt="Cintura Escapular"
@@ -1087,31 +1117,42 @@ export default function App() {
                     caption="Escápula izquierda: Vista Lateral."
                   />
                 </div>
-                <div className="mt-4 space-y-4">
-                  <div>
-                    <h4 className="font-bold text-slate-800 text-sm uppercase tracking-wider mb-1">Clavícula</h4>
-                    <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
-                      <li>Forma de "S" itálica.</li>
-                      <li>Cara Superior: Lisa, subcutánea.</li>
-                      <li>Cara Inferior: Surco del subclavio y tuberosidad coracoclavicular.</li>
-                    </ul>
+                <div className="space-y-6">
+                  <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
+                      <Bone className="w-5 h-5" /> Clavícula
+                    </h4>
+                    <p className="text-sm text-slate-700 leading-relaxed mb-3">
+                      Hueso largo, par, situado transversalmente entre el manubrio del esternón y el acromion de la escápula. Presenta una doble curvatura en forma de "S" itálica.
+                    </p>
+                    <div className="grid grid-cols-1 gap-2">
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Superior:</span> Casi lisa, presenta inserciones para el trapecio y deltoides.</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Inferior:</span> Presenta el <span className="italic">surco del músculo subclavio</span>, la <span className="italic">impresión del ligamento costoclavicular</span> y la <span className="italic">tuberosidad coracoclavicular</span> (tubérculo conoideo y línea trapezoidea).</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Extremos:</span> Esternal (medial, voluminoso) y Acromial (lateral, aplanado).</div>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-800 text-sm uppercase tracking-wider mb-1">Escápula</h4>
-                    <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
-                      <li>Cara Anterior: Fosa subescapular.</li>
-                      <li>Cara Posterior: Espina, Acromion, Fosas Supra e Infraespinosa.</li>
-                      <li>Ángulo Lateral: Cavidad Glenoidea, Apófisis Coracoides.</li>
-                    </ul>
+                  <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
+                      <Bone className="w-5 h-5" /> Escápula (Omóplato)
+                    </h4>
+                    <p className="text-sm text-slate-700 leading-relaxed mb-3">
+                      Hueso plano, triangular, situado en la parte posterior y superior del tórax.
+                    </p>
+                    <div className="grid grid-cols-1 gap-2">
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Anterior (Costal):</span> Cóncava, forma la <span className="italic">fosa subescapular</span> donde se inserta el músculo homónimo.</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Posterior (Dorsal):</span> Dividida por la <span className="italic">espina de la escápula</span> en <span className="italic">fosa supraespinosa</span> e <span className="italic">infraespinosa</span>. La espina termina lateralmente en el <span className="italic">acromion</span>.</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Ángulo Lateral:</span> Presenta la <span className="italic">cavidad glenoidea</span> (para el húmero) y la <span className="italic">apófisis coracoides</span> (sitio de inserción muscular y ligamentaria).</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-2xl border shadow-sm">
-                <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-4">Húmero</h3>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+            {/* Húmero */}
+            <div className="bg-white p-6 rounded-2xl border shadow-sm">
+              <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Húmero</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-3">
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray207.png"
                     alt="Húmero Anterior"
@@ -1133,18 +1174,48 @@ export default function App() {
                     caption="Extremo inferior del húmero."
                   />
                 </div>
-                <ul className="mt-4 list-disc list-inside text-sm text-slate-600 space-y-1">
-                  <li><strong>Epífisis Proximal:</strong> Cabeza, Cuello anatómico, Troquíter y Troquín.</li>
-                  <li><strong>Diáfisis:</strong> Surco del nervio radial, V deltoidea.</li>
-                  <li><strong>Epífisis Distal:</strong> Cóndilo, Tróclea, Fosas radial y olecraneana.</li>
-                </ul>
+                <div className="space-y-4">
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Hueso largo que constituye el esqueleto del brazo. Se articula con la escápula superiormente y con el radio y cúbito inferiormente.
+                  </p>
+                  <div className="space-y-3">
+                    <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                      <h5 className="font-bold text-blue-800 text-sm mb-2">Epífisis Proximal (Superior)</h5>
+                      <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
+                        <li><span className="font-bold">Cabeza:</span> Superficie esférica lisa.</li>
+                        <li><span className="font-bold">Cuello Anatómico:</span> Surco que limita la cabeza.</li>
+                        <li><span className="font-bold">Tubérculo Mayor (Troquíter):</span> Lateral, para inserción de supraespinoso, infraespinoso y redondo menor.</li>
+                        <li><span className="font-bold">Tubérculo Menor (Troquín):</span> Anterior, para el subescapular.</li>
+                        <li><span className="font-bold">Surco Intertubercular:</span> Aloja el tendón de la cabeza larga del bíceps.</li>
+                        <li><span className="font-bold">Cuello Quirúrgico:</span> Zona de frecuentes fracturas, debajo de los tubérculos.</li>
+                      </ul>
+                    </div>
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                      <h5 className="font-bold text-slate-800 text-sm mb-2">Diáfisis (Cuerpo)</h5>
+                      <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
+                        <li><span className="font-bold">Tuberosidad Deltoidea (V deltoidea):</span> En la cara lateral.</li>
+                        <li><span className="font-bold">Surco del Nervio Radial:</span> En la cara posterior, por donde pasa el nervio radial y la arteria braquial profunda.</li>
+                      </ul>
+                    </div>
+                    <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                      <h5 className="font-bold text-blue-800 text-sm mb-2">Epífisis Distal (Inferior)</h5>
+                      <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
+                        <li><span className="font-bold">Cóndilo (Capitulum):</span> Lateral, se articula con el radio.</li>
+                        <li><span className="font-bold">Tróclea:</span> Medial, en forma de polea, se articula con el cúbito.</li>
+                        <li><span className="font-bold">Epicóndilos:</span> Medial (Epitróclea) y Lateral.</li>
+                        <li><span className="font-bold">Fosas:</span> Coronoides (anterior), Radial (anterior) y Olecraneana (posterior).</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-2xl border shadow-sm">
-                <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-4">Antebrazo: Radio y Cúbito</h3>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+            {/* Antebrazo */}
+            <div className="bg-white p-6 rounded-2xl border shadow-sm">
+              <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Antebrazo: Radio y Cúbito</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-3">
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray213.png"
                     alt="Radio y Cúbito Post."
@@ -1166,23 +1237,41 @@ export default function App() {
                     caption="Cúbito izquierdo: Vista Anterior."
                   />
                 </div>
-                <div className="mt-4 grid grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="font-bold text-slate-800 text-sm uppercase tracking-wider mb-1">Radio</h4>
-                    <p className="text-xs text-slate-600">Lateral. Gira sobre el cúbito. Cabeza (cúpula) y tuberosidad bicipital.</p>
+                <div className="space-y-6">
+                  <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
+                      <Bone className="w-5 h-5" /> Radio
+                    </h4>
+                    <p className="text-sm text-slate-700 mb-3">Hueso lateral del antebrazo. Su extremo distal es más voluminoso.</p>
+                    <ul className="text-xs text-slate-600 space-y-2">
+                      <li><span className="font-bold">Cabeza (Cúpula):</span> Se articula con el cóndilo humeral y la escotadura radial del cúbito.</li>
+                      <li><span className="font-bold">Tuberosidad del Radio:</span> Inserción del tendón del bíceps braquial.</li>
+                      <li><span className="font-bold">Apófisis Estiloides:</span> Saliente óseo en el extremo distal lateral.</li>
+                      <li><span className="font-bold">Escotadura Cubital:</span> En el extremo distal medial, para articular con el cúbito.</li>
+                    </ul>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-800 text-sm uppercase tracking-wider mb-1">Cúbito</h4>
-                    <p className="text-xs text-slate-600">Medial. Olécranon y Apófisis coronoides (escotadura troclear).</p>
+                  <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
+                      <Bone className="w-5 h-5" /> Cúbito (Ulna)
+                    </h4>
+                    <p className="text-sm text-slate-700 mb-3">Hueso medial del antebrazo. Su extremo proximal es más voluminoso.</p>
+                    <ul className="text-xs text-slate-600 space-y-2">
+                      <li><span className="font-bold">Olécranon:</span> Forma la prominencia del codo, se inserta el tríceps.</li>
+                      <li><span className="font-bold">Apófisis Coronoides:</span> Saliente anterior que limita la escotadura troclear.</li>
+                      <li><span className="font-bold">Escotadura Troclear:</span> En forma de "U", se articula con la tróclea humeral.</li>
+                      <li><span className="font-bold">Cabeza del Cúbito:</span> En el extremo distal (a diferencia del radio).</li>
+                      <li><span className="font-bold">Apófisis Estiloides:</span> Saliente medial en el extremo distal.</li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-2xl border shadow-sm">
-                <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-4">Mano</h3>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+            {/* Mano */}
+            <div className="bg-white p-6 rounded-2xl border shadow-sm">
+              <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Esqueleto de la Mano</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-3">
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray219.png"
                     alt="Huesos de la Mano Ant."
@@ -1204,10 +1293,187 @@ export default function App() {
                     caption="Metacarpianos del pulgar y dedos."
                   />
                 </div>
-                <div className="mt-4 space-y-2 text-xs text-slate-600">
-                  <p><strong>Carpo:</strong> Escafoides, Semilunar, Piramidal, Pisiforme, Trapecio, Trapezoide, Grande, Ganchoso.</p>
-                  <p><strong>Metacarpo:</strong> 5 huesos largos.</p>
-                  <p><strong>Falanges:</strong> 14 huesos (Proximal, Media, Distal).</p>
+                <div className="space-y-6">
+                  <div className="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                    <h4 className="font-bold text-blue-800 text-sm uppercase tracking-widest mb-4">Huesos del Carpo (8)</h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <p className="font-bold text-xs text-blue-700 mb-2">Fila Proximal (Lat a Med):</p>
+                        <ul className="text-[11px] text-slate-600 space-y-1">
+                          <li>1. Escafoides (más fracturado)</li>
+                          <li>2. Semilunar</li>
+                          <li>3. Piramidal</li>
+                          <li>4. Pisiforme (sesamoideo)</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="font-bold text-xs text-blue-700 mb-2">Fila Distal (Lat a Med):</p>
+                        <ul className="text-[11px] text-slate-600 space-y-1">
+                          <li>5. Trapecio (art. pulgar)</li>
+                          <li>6. Trapezoide</li>
+                          <li>7. Grande (Capitatum)</li>
+                          <li>8. Ganchoso (Hamatus)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                      <h5 className="font-bold text-slate-800 text-xs mb-2 uppercase">Metacarpo</h5>
+                      <p className="text-[11px] text-slate-600">Cinco huesos largos numerados del I (pulgar) al V (meñique). Presentan base, cuerpo y cabeza.</p>
+                    </div>
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                      <h5 className="font-bold text-slate-800 text-xs mb-2 uppercase">Falanges</h5>
+                      <p className="text-[11px] text-slate-600">Catorce huesos. El pulgar tiene 2 (proximal y distal), los demás dedos tienen 3 (proximal, media y distal).</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* Arthrology */}
+        <Section title="Artrología: Articulaciones del Miembro Superior" active={activeTab === 'arthrology'}>
+          <div className="grid grid-cols-1 gap-8">
+            <div className="bg-white p-6 rounded-2xl border shadow-sm">
+              <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Complejo Articular del Hombro</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-3">
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray326.png"
+                    alt="Articulación Hombro"
+                    caption="Cápsula de la articulación del hombro."
+                  />
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray327.png"
+                    alt="Ligamentos Hombro"
+                    caption="Vista anterior de los ligamentos del hombro."
+                  />
+                </div>
+                <div className="space-y-4">
+                  <div className="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
+                    <h4 className="font-bold text-emerald-800 text-lg mb-3">Articulación Glenohumeral</h4>
+                    <ul className="text-sm text-slate-700 space-y-2">
+                      <li><span className="font-bold text-emerald-700">Tipo:</span> Sinovial, Esferoidea (Enartrosis).</li>
+                      <li><span className="font-bold text-emerald-700">Superficies:</span> Cabeza del húmero y cavidad glenoidea de la escápula (ampliada por el <span className="italic">rodete glenoideo</span>).</li>
+                      <li><span className="font-bold text-emerald-700">Movimientos:</span> Flexión/Extensión, Abducción/Aducción, Rotación interna/externa y Circunducción.</li>
+                      <li><span className="font-bold text-emerald-700">Estabilidad:</span> Depende principalmente de los músculos del <span className="font-bold">manguito rotador</span>.</li>
+                    </ul>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="text-xs p-3 bg-slate-50 rounded-lg border">
+                      <span className="font-bold block mb-1">Acromioclavicular</span>
+                      Sinovial plana. Une el acromion con la clavícula.
+                    </div>
+                    <div className="text-xs p-3 bg-slate-50 rounded-lg border">
+                      <span className="font-bold block mb-1">Esternoclavicular</span>
+                      Sinovial en silla de montar. Única unión ósea con el esqueleto axial.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border shadow-sm">
+              <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Articulación del Codo</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-3">
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray329.png"
+                    alt="Articulación Codo Medial"
+                    caption="Ligamento colateral cubital."
+                  />
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray330.png"
+                    alt="Articulación Codo Lateral"
+                    caption="Ligamento colateral radial."
+                  />
+                </div>
+                <div className="space-y-4">
+                  <p className="text-sm text-slate-700">Complejo formado por tres articulaciones envueltas en una sola cápsula:</p>
+                  <div className="space-y-3">
+                    <div className="bg-slate-50 p-3 rounded-lg border">
+                      <span className="font-bold text-emerald-700 text-sm block">1. Humerocubital</span>
+                      <p className="text-xs text-slate-600">Tipo: Gínglimo (Troclear). Permite flexión y extensión.</p>
+                    </div>
+                    <div className="bg-slate-50 p-3 rounded-lg border">
+                      <span className="font-bold text-emerald-700 text-sm block">2. Humerorradial</span>
+                      <p className="text-xs text-slate-600">Tipo: Esferoidea (funciona como gínglimo). Entre cóndilo y cúpula radial.</p>
+                    </div>
+                    <div className="bg-slate-50 p-3 rounded-lg border">
+                      <span className="font-bold text-emerald-700 text-sm block">3. Radiocubital Proximal</span>
+                      <p className="text-xs text-slate-600">Tipo: Trocoide (Pivote). Permite la pronosupinación.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border shadow-sm">
+              <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Articulaciones del Antebrazo y Mano</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-3">
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray334.png"
+                    alt="Articulación Muñeca"
+                    caption="Ligamentos de la muñeca (Palmar)."
+                  />
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray335.png"
+                    alt="Articulación Muñeca Post"
+                    caption="Ligamentos de la muñeca (Dorsal)."
+                  />
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray336.png"
+                    alt="Articulaciones Mano"
+                    caption="Cortes de las articulaciones del carpo."
+                  />
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray337.png"
+                    alt="Ligamentos Dedos"
+                    caption="Articulaciones metacarpofalángicas e interfalángicas."
+                  />
+                </div>
+                <div className="space-y-4">
+                  <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                    <h4 className="font-bold text-emerald-800 text-sm mb-2">Articulación Radiocubital Distal</h4>
+                    <ul className="text-xs text-slate-700 space-y-1">
+                      <li><span className="font-bold">Tipo:</span> Sinovial Trocoide (Pivote).</li>
+                      <li><span className="font-bold">Superficies:</span> Cabeza del cúbito y escotadura cubital del radio.</li>
+                      <li><span className="font-bold">Medios de unión:</span> Cápsula articular y el <span className="italic">disco articular (ligamento triangular)</span>, que es el principal medio de unión.</li>
+                      <li><span className="font-bold">Movimientos:</span> Pronación y supinación del antebrazo.</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 className="font-bold text-slate-800 text-sm mb-2">Articulación Radiocarpiana (Muñeca)</h4>
+                    <p className="text-xs text-slate-700">
+                      <span className="font-bold">Tipo:</span> Sinovial Elipsoidea (Condílea). Une el radio y el disco articular con la fila proximal del carpo (escafoides, semilunar y piramidal). Permite flexión, extensión, abducción y aducción.
+                    </p>
+                  </div>
+
+                  <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                    <h4 className="font-bold text-emerald-800 text-sm mb-2">Articulaciones Carpometacarpianas</h4>
+                    <div className="space-y-2">
+                      <p className="text-xs text-slate-700">
+                        <span className="font-bold">Del Pulgar:</span> Sinovial en silla de montar (encaje recíproco). Entre el trapecio y el 1er metacarpiano. Esencial para la <span className="font-bold">oposición</span>.
+                      </p>
+                      <p className="text-xs text-slate-700">
+                        <span className="font-bold">De los dedos (II-V):</span> Sinoviales planas (artrodias). Permiten movimientos limitados de deslizamiento.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 className="font-bold text-slate-800 text-sm mb-2">Articulaciones Interfalángicas</h4>
+                    <ul className="text-xs text-slate-700 space-y-1">
+                      <li><span className="font-bold">Tipo:</span> Sinovial Gínglimo (Troclear).</li>
+                      <li><span className="font-bold">Superficies:</span> Cabeza de la falange proximal y base de la falange distal/media.</li>
+                      <li><span className="font-bold">Medios de unión:</span> Cápsula, ligamentos colaterales (medial y lateral) y ligamentos palmares.</li>
+                      <li><span className="font-bold">Movimientos:</span> Uniaxiales, exclusivamente flexión y extensión.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
