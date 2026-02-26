@@ -1126,9 +1126,9 @@ export default function App() {
                       Hueso largo, par, situado transversalmente entre el manubrio del esternón y el acromion de la escápula. Presenta una doble curvatura en forma de "S" itálica.
                     </p>
                     <div className="grid grid-cols-1 gap-2">
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Superior:</span> Casi lisa, presenta inserciones para el trapecio y deltoides.</div>
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Inferior:</span> Presenta el <span className="italic">surco del músculo subclavio</span>, la <span className="italic">impresión del ligamento costoclavicular</span> y la <span className="italic">tuberosidad coracoclavicular</span> (tubérculo conoideo y línea trapezoidea).</div>
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Extremos:</span> Esternal (medial, voluminoso) y Acromial (lateral, aplanado).</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Superior:</span> Casi lisa en su totalidad, presenta rugosidades para las inserciones de los músculos trapecio (posteriormente) y deltoides (anteriormente).</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Inferior:</span> Accidentada. Presenta el <span className="italic">surco del músculo subclavio</span> en su tercio medio. En el extremo acromial se observa la <span className="italic">tuberosidad coracoclavicular</span>, compuesta por el <span className="font-bold">tubérculo conoideo</span> y la <span className="font-bold">línea trapezoidea</span>. En el extremo esternal se encuentra la <span className="italic">impresión del ligamento costoclavicular</span>.</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Extremos:</span> El <span className="font-bold">Esternal</span> es voluminoso y presenta una superficie articular para el manubrio del esternón. El <span className="font-bold">Acromial</span> es aplanado y se articula con el acromion de la escápula.</div>
                     </div>
                   </div>
                   <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
@@ -1139,9 +1139,9 @@ export default function App() {
                       Hueso plano, triangular, situado en la parte posterior y superior del tórax.
                     </p>
                     <div className="grid grid-cols-1 gap-2">
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Anterior (Costal):</span> Cóncava, forma la <span className="italic">fosa subescapular</span> donde se inserta el músculo homónimo.</div>
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Posterior (Dorsal):</span> Dividida por la <span className="italic">espina de la escápula</span> en <span className="italic">fosa supraespinosa</span> e <span className="italic">infraespinosa</span>. La espina termina lateralmente en el <span className="italic">acromion</span>.</div>
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Ángulo Lateral:</span> Presenta la <span className="italic">cavidad glenoidea</span> (para el húmero) y la <span className="italic">apófisis coracoides</span> (sitio de inserción muscular y ligamentaria).</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Anterior (Costal):</span> Cóncava, forma la <span className="italic">fosa subescapular</span> donde se inserta el músculo homónimo. Presenta crestas oblicuas para las inserciones musculares.</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Posterior (Dorsal):</span> Convexa, dividida por la <span className="italic">espina de la escápula</span> en <span className="italic">fosa supraespinosa</span> (superior) e <span className="italic">infraespinosa</span> (inferior). La espina se proyecta lateralmente como el <span className="italic">acromion</span>, que presenta una carilla articular para la clavícula.</div>
+                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Ángulo Lateral:</span> Presenta la <span className="italic">cavidad glenoidea</span>, una superficie articular piriforme que recibe la cabeza del húmero. Por encima y debajo de ella se encuentran los <span className="font-bold">tubérculos supraglenoideo</span> e <span className="font-bold">infraglenoideo</span> (inserciones de las cabezas largas del bíceps y tríceps). La <span className="italic">apófisis coracoides</span> se proyecta anteriormente como un "dedo flexionado".</div>
                     </div>
                   </div>
                 </div>
@@ -1182,28 +1182,29 @@ export default function App() {
                     <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
                       <h5 className="font-bold text-blue-800 text-sm mb-2">Epífisis Proximal (Superior)</h5>
                       <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
-                        <li><span className="font-bold">Cabeza:</span> Superficie esférica lisa.</li>
-                        <li><span className="font-bold">Cuello Anatómico:</span> Surco que limita la cabeza.</li>
-                        <li><span className="font-bold">Tubérculo Mayor (Troquíter):</span> Lateral, para inserción de supraespinoso, infraespinoso y redondo menor.</li>
-                        <li><span className="font-bold">Tubérculo Menor (Troquín):</span> Anterior, para el subescapular.</li>
-                        <li><span className="font-bold">Surco Intertubercular:</span> Aloja el tendón de la cabeza larga del bíceps.</li>
-                        <li><span className="font-bold">Cuello Quirúrgico:</span> Zona de frecuentes fracturas, debajo de los tubérculos.</li>
+                        <li><span className="font-bold">Cabeza:</span> Superficie esférica lisa que representa un tercio de esfera.</li>
+                        <li><span className="font-bold">Cuello Anatómico:</span> Surco estrecho que separa la cabeza de los tubérculos.</li>
+                        <li><span className="font-bold">Tubérculo Mayor (Troquíter):</span> Situado lateralmente, presenta tres carillas para los músculos supraespinoso, infraespinoso y redondo menor.</li>
+                        <li><span className="font-bold">Tubérculo Menor (Troquín):</span> Situado anteriormente, presta inserción al músculo subescapular.</li>
+                        <li><span className="font-bold">Surco Intertubercular (Corredera Bicipital):</span> Canal profundo entre ambos tubérculos que aloja el tendón de la cabeza larga del bíceps. Presenta una <span className="font-bold">cresta del tubérculo mayor</span> (labio lateral) y una <span className="font-bold">cresta del tubérculo menor</span> (labio medial).</li>
+                        <li><span className="font-bold">Cuello Quirúrgico:</span> Parte estrecha distal a los tubérculos, sitio frecuente de fracturas donde el nervio axilar y la arteria circunfleja humeral posterior están en contacto.</li>
                       </ul>
                     </div>
                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
                       <h5 className="font-bold text-slate-800 text-sm mb-2">Diáfisis (Cuerpo)</h5>
                       <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
-                        <li><span className="font-bold">Tuberosidad Deltoidea (V deltoidea):</span> En la cara lateral.</li>
-                        <li><span className="font-bold">Surco del Nervio Radial:</span> En la cara posterior, por donde pasa el nervio radial y la arteria braquial profunda.</li>
+                        <li><span className="font-bold">Tuberosidad Deltoidea (V deltoidea):</span> Elevación rugosa en forma de "V" en la cara lateral, donde se inserta el músculo deltoides.</li>
+                        <li><span className="font-bold">Surco del Nervio Radial (Canal de Torsión):</span> Depresión oblicua en la cara posterior que desciende lateralmente. Por él transcurren el <span className="font-bold">nervio radial</span> y la <span className="font-bold">arteria braquial profunda</span>.</li>
                       </ul>
                     </div>
                     <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-                      <h5 className="font-bold text-blue-800 text-sm mb-2">Epífisis Distal (Inferior)</h5>
+                      <h5 className="font-bold text-blue-800 text-sm mb-2">Epífisis Distal (Cóndilo Humeral)</h5>
                       <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
-                        <li><span className="font-bold">Cóndilo (Capitulum):</span> Lateral, se articula con el radio.</li>
-                        <li><span className="font-bold">Tróclea:</span> Medial, en forma de polea, se articula con el cúbito.</li>
-                        <li><span className="font-bold">Epicóndilos:</span> Medial (Epitróclea) y Lateral.</li>
-                        <li><span className="font-bold">Fosas:</span> Coronoides (anterior), Radial (anterior) y Olecraneana (posterior).</li>
+                        <li><span className="font-bold">Capitulum (Cóndilo):</span> Superficie redondeada lateral que se articula con la cabeza del radio.</li>
+                        <li><span className="font-bold">Tróclea:</span> Superficie en forma de polea medial que se articula con la escotadura troclear del cúbito.</li>
+                        <li><span className="font-bold">Epicóndilo Medial (Epitróclea):</span> Prominencia mayor donde se originan los músculos flexores del antebrazo.</li>
+                        <li><span className="font-bold">Epicóndilo Lateral:</span> Prominencia menor donde se originan los músculos extensores.</li>
+                        <li><span className="font-bold">Fosas:</span> <span className="font-bold">Coronoides</span> (anterior, sobre la tróclea), <span className="font-bold">Radial</span> (anterior, sobre el capitulum) y <span className="font-bold">Olecraneana</span> (posterior, profunda, recibe al olécranon).</li>
                       </ul>
                     </div>
                   </div>
@@ -1244,10 +1245,11 @@ export default function App() {
                     </h4>
                     <p className="text-sm text-slate-700 mb-3">Hueso lateral del antebrazo. Su extremo distal es más voluminoso.</p>
                     <ul className="text-xs text-slate-600 space-y-2">
-                      <li><span className="font-bold">Cabeza (Cúpula):</span> Se articula con el cóndilo humeral y la escotadura radial del cúbito.</li>
-                      <li><span className="font-bold">Tuberosidad del Radio:</span> Inserción del tendón del bíceps braquial.</li>
-                      <li><span className="font-bold">Apófisis Estiloides:</span> Saliente óseo en el extremo distal lateral.</li>
-                      <li><span className="font-bold">Escotadura Cubital:</span> En el extremo distal medial, para articular con el cúbito.</li>
+                      <li><span className="font-bold">Cabeza:</span> Presenta la <span className="font-bold">fóvea articular</span> (cóncava para el capitulum) y la <span className="font-bold">circunferencia articular</span> (para la escotadura radial del cúbito).</li>
+                      <li><span className="font-bold">Cuello:</span> Porción estrecha entre la cabeza y la tuberosidad.</li>
+                      <li><span className="font-bold">Tuberosidad del Radio:</span> Prominencia ovoidea donde se inserta el bíceps braquial.</li>
+                      <li><span className="font-bold">Extremo Distal:</span> Presenta la <span className="font-bold">carilla articular carpiana</span> (para escafoides y semilunar) y la <span className="font-bold">escotadura cubital</span> (medial, para la cabeza del cúbito).</li>
+                      <li><span className="font-bold">Apófisis Estiloides:</span> Proyección lateral piramidal. En la cara posterior se encuentra el <span className="font-bold">tubérculo dorsal (de Lister)</span>.</li>
                     </ul>
                   </div>
                   <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
@@ -1256,11 +1258,12 @@ export default function App() {
                     </h4>
                     <p className="text-sm text-slate-700 mb-3">Hueso medial del antebrazo. Su extremo proximal es más voluminoso.</p>
                     <ul className="text-xs text-slate-600 space-y-2">
-                      <li><span className="font-bold">Olécranon:</span> Forma la prominencia del codo, se inserta el tríceps.</li>
-                      <li><span className="font-bold">Apófisis Coronoides:</span> Saliente anterior que limita la escotadura troclear.</li>
-                      <li><span className="font-bold">Escotadura Troclear:</span> En forma de "U", se articula con la tróclea humeral.</li>
-                      <li><span className="font-bold">Cabeza del Cúbito:</span> En el extremo distal (a diferencia del radio).</li>
-                      <li><span className="font-bold">Apófisis Estiloides:</span> Saliente medial en el extremo distal.</li>
+                      <li><span className="font-bold">Olécranon:</span> Proyección superior robusta que forma la punta del codo.</li>
+                      <li><span className="font-bold">Apófisis Coronoides:</span> Proyección anterior que, junto al olécranon, forma la <span className="font-bold">escotadura troclear</span> (para la tróclea humeral).</li>
+                      <li><span className="font-bold">Escotadura Radial:</span> Superficie articular lateral para la cabeza del radio.</li>
+                      <li><span className="font-bold">Cuerpo:</span> Presenta el <span className="font-bold">borde interóseo</span> (lateral) para la membrana interósea.</li>
+                      <li><span className="font-bold">Cabeza del Cúbito:</span> Extremo distal redondeado que presenta una circunferencia articular.</li>
+                      <li><span className="font-bold">Apófisis Estiloides:</span> Pequeña proyección medial y posterior, separada de la cabeza por un surco.</li>
                     </ul>
                   </div>
                 </div>
