@@ -158,7 +158,7 @@ const Header = () => (
       </div>
       <div>
         <h1 className="text-2xl font-bold tracking-tight uppercase">BioMod</h1>
-        <p className="text-xs text-blue-300 font-light">Guía Interactiva de Anatomía Humana</p>
+        <p className="text-sm text-blue-300 font-light">Guía Interactiva de Anatomía Humana</p>
       </div>
     </div>
     <div className="bg-slate-800/50 border-l-4 border-blue-500 p-3 rounded-r-lg text-right text-sm">
@@ -206,12 +206,12 @@ const ImageCard = ({ src, alt, caption }: { src: string, alt: string, caption: s
 
   return (
     <>
-      <div className="bg-white border rounded-xl p-3 shadow-sm hover:shadow-md transition-shadow">
-        <div className="aspect-video bg-slate-50 rounded-lg overflow-hidden flex items-center justify-center mb-3 group relative">
+      <div className="bg-white border rounded-xl p-2 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+        <div className="aspect-square bg-slate-50 rounded-lg overflow-hidden flex items-center justify-center mb-2 group relative shrink-0">
           <img 
             src={src} 
             alt={alt} 
-            className="max-w-full max-h-full object-contain transition-transform group-hover:scale-105 cursor-pointer"
+            className="max-w-full max-h-full object-contain transition-transform group-hover:scale-105 cursor-pointer p-2"
             loading="lazy"
             referrerPolicy="no-referrer"
             onClick={() => setIsZoomed(true)}
@@ -223,7 +223,7 @@ const ImageCard = ({ src, alt, caption }: { src: string, alt: string, caption: s
           <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black/10">
             <button 
               onClick={() => setIsZoomed(true)}
-              className="bg-white/90 backdrop-blur-sm text-[10px] font-bold px-3 py-1.5 rounded shadow-sm flex items-center gap-1 text-slate-700 hover:bg-white transition-colors"
+              className="bg-white/90 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1 text-slate-700 hover:bg-white transition-colors"
             >
               <Maximize2 className="w-3 h-3" /> Zoom
             </button>
@@ -231,13 +231,13 @@ const ImageCard = ({ src, alt, caption }: { src: string, alt: string, caption: s
               href={src} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-white/90 backdrop-blur-sm text-[10px] font-bold px-3 py-1.5 rounded shadow-sm flex items-center gap-1 text-slate-700 hover:bg-white transition-colors"
+              className="bg-white/90 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1 text-slate-700 hover:bg-white transition-colors"
             >
-              <ExternalLink className="w-3 h-3" /> Original
+              <ExternalLink className="w-3 h-3" /> Ver
             </a>
           </div>
         </div>
-        <p className="text-xs text-slate-500 italic text-center line-clamp-1">{caption}</p>
+        <p className="text-sm text-slate-500 italic text-center line-clamp-2 mt-auto px-1">{caption}</p>
       </div>
 
       {isZoomed && (
@@ -671,7 +671,7 @@ const Viewer3D = () => {
               <button 
                 onClick={() => toggleLayer('bones')}
                 className={cn(
-                  "w-full flex items-center justify-between p-2 rounded-lg text-sm transition-colors",
+                  "w-full flex items-center justify-between p-2 rounded-lg text-base transition-colors",
                   layers.bones ? "bg-blue-50 text-blue-700 border border-blue-200" : "bg-slate-50 text-slate-400 border border-transparent"
                 )}
               >
@@ -684,7 +684,7 @@ const Viewer3D = () => {
               <button 
                 onClick={() => toggleLayer('muscles')}
                 className={cn(
-                  "w-full flex items-center justify-between p-2 rounded-lg text-sm transition-colors",
+                  "w-full flex items-center justify-between p-2 rounded-lg text-base transition-colors",
                   layers.muscles ? "bg-red-50 text-red-700 border border-red-200" : "bg-slate-50 text-slate-400 border border-transparent"
                 )}
               >
@@ -697,7 +697,7 @@ const Viewer3D = () => {
               <button 
                 onClick={() => toggleLayer('nerves')}
                 className={cn(
-                  "w-full flex items-center justify-between p-2 rounded-lg text-sm transition-colors",
+                  "w-full flex items-center justify-between p-2 rounded-lg text-base transition-colors",
                   layers.nerves ? "bg-yellow-50 text-yellow-700 border border-yellow-200" : "bg-slate-50 text-slate-400 border border-transparent"
                 )}
               >
@@ -710,7 +710,7 @@ const Viewer3D = () => {
               <button 
                 onClick={() => toggleLayer('vessels')}
                 className={cn(
-                  "w-full flex items-center justify-between p-2 rounded-lg text-sm transition-colors",
+                  "w-full flex items-center justify-between p-2 rounded-lg text-base transition-colors",
                   layers.vessels ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : "bg-slate-50 text-slate-400 border border-transparent"
                 )}
               >
@@ -723,20 +723,20 @@ const Viewer3D = () => {
             </div>
 
             <div className="pt-4 border-t space-y-2">
-              <label className="block w-full text-center p-3 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors font-bold text-sm">
+              <label className="block w-full text-center p-3 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors font-bold text-base">
                 <input type="file" className="hidden" accept=".glb" onChange={handleFileUpload} />
                 📂 Cargar archivo .glb
               </label>
               <button 
                 onClick={() => loadModelFromURL('/modelo.glb')}
-                className="w-full flex items-center justify-center gap-2 p-2 text-blue-600 hover:bg-blue-50 rounded-lg text-sm border border-blue-100"
+                className="w-full flex items-center justify-center gap-2 p-2 text-blue-600 hover:bg-blue-50 rounded-lg text-base border border-blue-100"
               >
                 <RotateCcw className="w-4 h-4" />
                 Recargar Predeterminado
               </button>
               <button 
                 onClick={resetVisibility}
-                className="w-full flex items-center justify-center gap-2 p-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm"
+                className="w-full flex items-center justify-center gap-2 p-2 text-slate-600 hover:bg-slate-100 rounded-lg text-base"
               >
                 <RotateCcw className="w-4 h-4" />
                 Restablecer Visibilidad
@@ -746,11 +746,11 @@ const Viewer3D = () => {
 
           {selectedPart && (
             <div className="bg-white p-4 rounded-xl border border-blue-200 shadow-md animate-in fade-in zoom-in duration-200">
-              <h4 className="text-xs font-bold text-blue-600 uppercase mb-2">Elemento Seleccionado</h4>
-              <p className="font-semibold text-slate-800 mb-3">{selectedPart.name || "Sin nombre"}</p>
+              <h4 className="text-sm font-bold text-blue-600 uppercase mb-2">Elemento Seleccionado</h4>
+              <p className="font-semibold text-slate-800 mb-3 text-base">{selectedPart.name || "Sin nombre"}</p>
               <button 
                 onClick={hideSelected}
-                className="w-full flex items-center justify-center gap-2 p-2 bg-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg text-sm transition-colors"
+                className="w-full flex items-center justify-center gap-2 p-2 bg-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg text-base transition-colors"
               >
                 <EyeOff className="w-4 h-4" />
                 Ocultar esta parte
@@ -802,13 +802,13 @@ const Viewer3D = () => {
                   Subir Manualmente
                 </label>
               </div>
-              <p className="text-[10px] mt-8 opacity-40 uppercase tracking-widest">
+              <p className="text-sm mt-8 opacity-40 uppercase tracking-widest">
                 Asegúrate de que el nombre sea exacto y esté en la carpeta public
               </p>
             </div>
           )}
 
-          <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md text-white/80 p-3 rounded-lg text-xs space-y-1 pointer-events-none border border-white/10">
+          <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md text-white/80 p-3 rounded-lg text-sm space-y-1 pointer-events-none border border-white/10">
             <div className="flex items-center gap-2"><div className="w-2 h-2 bg-blue-500 rounded-full"></div> Clic Izq: Rotar</div>
             <div className="flex items-center gap-2"><div className="w-2 h-2 bg-emerald-500 rounded-full"></div> Clic Der: Mover</div>
             <div className="flex items-center gap-2"><div className="w-2 h-2 bg-yellow-500 rounded-full"></div> Rueda: Zoom</div>
@@ -935,7 +935,7 @@ const Quiz = () => {
     return (
       <div className="max-w-2xl mx-auto py-8 px-4">
         <div className="mb-6 space-y-2">
-          <div className="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
+          <div className="flex justify-between text-sm font-bold text-slate-400 uppercase tracking-widest">
             <span>{quizMode === 'mock' ? 'Simulacro de Parcial' : `Quiz de ${quizMode}`}</span>
             <span>Pregunta {qIndex + 1} de {currentQuestions.length}</span>
           </div>
@@ -949,7 +949,7 @@ const Quiz = () => {
 
         <div className="bg-white p-6 md:p-8 rounded-3xl shadow-xl border space-y-6">
           <div className="flex items-center gap-2">
-            <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">{q.category}</span>
+            <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">{q.category}</span>
           </div>
           <h3 className="text-xl md:text-2xl font-bold text-slate-800 leading-tight">{q.q}</h3>
           <div className="space-y-3">
@@ -1025,7 +1025,7 @@ const Quiz = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between px-2">
           <h4 className="font-bold text-slate-700">Revisión Detallada</h4>
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Desempeño</span>
+          <span className="text-sm font-bold text-slate-400 uppercase tracking-widest">Desempeño</span>
         </div>
         {userAnswers.map((ans, i) => (
           <div key={i} className={cn(
@@ -1046,12 +1046,12 @@ const Quiz = () => {
                     "p-3 rounded-xl text-sm",
                     ans.isCorrect ? "bg-emerald-50 text-emerald-700 border border-emerald-100" : "bg-red-50 text-red-700 border border-red-100"
                   )}>
-                    <span className="block text-[10px] uppercase font-black opacity-50 mb-1">Tu Selección</span>
+                    <span className="block text-xs uppercase font-black opacity-50 mb-1">Tu Selección</span>
                     {ans.selected}
                   </div>
                   {!ans.isCorrect && (
                     <div className="p-3 rounded-xl text-sm bg-slate-50 text-slate-700 border border-slate-100">
-                      <span className="block text-[10px] uppercase font-black opacity-50 mb-1">Respuesta Correcta</span>
+                      <span className="block text-xs uppercase font-black opacity-50 mb-1">Respuesta Correcta</span>
                       {ans.correct}
                     </div>
                   )}
@@ -1069,10 +1069,22 @@ const Quiz = () => {
 export default function App() {
   const [activeTab, setActiveTab] = useState('osteology');
 
+  const Link = ({ to, children }: { to: string, children: React.ReactNode }) => (
+    <button 
+      onClick={() => {
+        setActiveTab(to);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }}
+      className="text-blue-600 hover:text-blue-800 hover:underline font-semibold transition-colors inline-block"
+    >
+      {children}
+    </button>
+  );
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900">
       {/* Debug message */}
-      <div className="bg-yellow-100 text-yellow-800 text-[10px] text-center py-1">
+      <div className="bg-yellow-100 text-yellow-800 text-sm text-center py-1">
         BioMod v1.0.2 - Render Check
       </div>
       <Header />
@@ -1081,7 +1093,7 @@ export default function App() {
       <main className="flex-1 max-w-7xl mx-auto w-full p-4 md:p-8">
         
         {/* Test de Conexión */}
-        <div className="mb-4 p-2 bg-slate-100 rounded-lg flex items-center justify-center gap-4 text-[10px] text-slate-500">
+        <div className="mb-4 p-2 bg-slate-100 rounded-lg flex items-center justify-center gap-4 text-sm text-slate-500">
           <span>Test de Conexión:</span>
           <img src="https://www.google.com/favicon.ico" alt="Google" className="w-3 h-3" />
           <img src="https://picsum.photos/seed/test/20/20" alt="Picsum" className="w-3 h-3 rounded-full" />
@@ -1094,55 +1106,50 @@ export default function App() {
             {/* Cintura Escapular */}
             <div className="bg-white p-6 rounded-2xl border shadow-sm">
               <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Cintura Escapular</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="grid grid-cols-2 gap-3">
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray200.png"
-                    alt="Cintura Escapular"
-                    caption="Visión anterior de la clavícula y escápula."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray201.png"
-                    alt="Clavícula"
-                    caption="Clavícula izquierda: Superior e Inferior."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray203.png"
-                    alt="Escápula Posterior"
-                    caption="Escápula izquierda: Vista Dorsal."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray204.png"
-                    alt="Escápula Lateral"
-                    caption="Escápula izquierda: Vista Lateral."
-                  />
-                </div>
-                <div className="space-y-6">
-                  <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
-                      <Bone className="w-5 h-5" /> Clavícula
-                    </h4>
-                    <p className="text-sm text-slate-700 leading-relaxed mb-3">
-                      Hueso largo, par, situado transversalmente entre el manubrio del esternón y el acromion de la escápula. Presenta una doble curvatura en forma de "S" itálica.
-                    </p>
-                    <div className="grid grid-cols-1 gap-2">
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Superior:</span> Casi lisa en su totalidad, presenta rugosidades para las inserciones de los músculos trapecio (posteriormente) y deltoides (anteriormente).</div>
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Inferior:</span> Accidentada. Presenta el <span className="italic">surco del músculo subclavio</span> en su tercio medio. En el extremo acromial se observa la <span className="italic">tuberosidad coracoclavicular</span>, compuesta por el <span className="font-bold">tubérculo conoideo</span> y la <span className="font-bold">línea trapezoidea</span>. En el extremo esternal se encuentra la <span className="italic">impresión del ligamento costoclavicular</span>.</div>
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Extremos:</span> El <span className="font-bold">Esternal</span> es voluminoso y presenta una superficie articular para el manubrio del esternón. El <span className="font-bold">Acromial</span> es aplanado y se articula con el acromion de la escápula.</div>
-                    </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray200.png"
+                  alt="Cintura Escapular"
+                  caption="Visión anterior de la clavícula y escápula."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray201.png"
+                  alt="Clavícula Superior"
+                  caption="Clavícula izquierda: Vista Superior."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray203.png"
+                  alt="Escápula Posterior"
+                  caption="Escápula izquierda: Vista Dorsal."
+                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                  <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
+                    <Bone className="w-5 h-5" /> Clavícula
+                  </h4>
+                  <p className="text-base text-slate-700 leading-relaxed mb-3">
+                    Hueso largo, par, situado transversalmente entre el manubrio del esternón y el acromion de la escápula. Presenta una doble curvatura en forma de "S" itálica.
+                  </p>
+                  <div className="grid grid-cols-1 gap-2 text-sm">
+                    <div className="bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cuerpo:</span> Presenta dos caras (superior e inferior) y dos bordes (anterior y posterior). En la cara inferior se encuentra el surco para el músculo subclavio.</div>
+                    <div className="bg-white p-2 rounded border"><span className="font-bold text-blue-600">Extremidad Esternal:</span> Voluminosa, se articula con el manubrio del esternón.</div>
+                    <div className="bg-white p-2 rounded border"><span className="font-bold text-blue-600">Extremidad Acromial:</span> Aplanada, presenta una cara articular para el acromion.</div>
+                    <div className="bg-white p-2 rounded border"><span className="font-bold text-blue-600">Detalles:</span> Tuberosidad de los ligamentos coracoclaviculares (tubérculo conoideo y línea trapezoidea) en la cara inferior.</div>
                   </div>
-                  <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
-                      <Bone className="w-5 h-5" /> Escápula (Omóplato)
-                    </h4>
-                    <p className="text-sm text-slate-700 leading-relaxed mb-3">
-                      Hueso plano, triangular, situado en la parte posterior y superior del tórax.
-                    </p>
-                    <div className="grid grid-cols-1 gap-2">
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Anterior (Costal):</span> Cóncava, forma la <span className="italic">fosa subescapular</span> donde se inserta el músculo homónimo. Presenta crestas oblicuas para las inserciones musculares.</div>
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Posterior (Dorsal):</span> Convexa, dividida por la <span className="italic">espina de la escápula</span> en <span className="italic">fosa supraespinosa</span> (superior) e <span className="italic">infraespinosa</span> (inferior). La espina se proyecta lateralmente como el <span className="italic">acromion</span>, que presenta una carilla articular para la clavícula.</div>
-                      <div className="text-xs bg-white p-2 rounded border"><span className="font-bold text-blue-600">Ángulo Lateral:</span> Presenta la <span className="italic">cavidad glenoidea</span>, una superficie articular piriforme que recibe la cabeza del húmero. Por encima y debajo de ella se encuentran los <span className="font-bold">tubérculos supraglenoideo</span> e <span className="font-bold">infraglenoideo</span> (inserciones de las cabezas largas del bíceps y tríceps). La <span className="italic">apófisis coracoides</span> se proyecta anteriormente como un "dedo flexionado".</div>
-                    </div>
+                </div>
+                <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                  <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
+                    <Bone className="w-5 h-5" /> Escápula
+                  </h4>
+                  <p className="text-base text-slate-700 leading-relaxed mb-3">
+                    Hueso plano, triangular, apoyado sobre la parte posterosuperior del tórax.
+                  </p>
+                  <div className="grid grid-cols-1 gap-2 text-sm">
+                    <div className="bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Anterior:</span> Cóncava, forma la fosa subescapular.</div>
+                    <div className="bg-white p-2 rounded border"><span className="font-bold text-blue-600">Cara Posterior:</span> Dividida por la espina de la escápula en fosa supraespinosa e infraespinosa. La espina termina lateralmente en el acromion.</div>
+                    <div className="bg-white p-2 rounded border"><span className="font-bold text-blue-600">Ángulo Lateral:</span> Presenta la cavidad glenoidea (para el húmero) y la apófisis coracoides.</div>
+                    <div className="bg-white p-2 rounded border"><span className="font-bold text-blue-600">Bordes:</span> Superior (con la escotadura de la escápula), medial (vertebral) y lateral (axilar).</div>
                   </div>
                 </div>
               </div>
@@ -1151,61 +1158,42 @@ export default function App() {
             {/* Húmero */}
             <div className="bg-white p-6 rounded-2xl border shadow-sm">
               <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Húmero</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="grid grid-cols-2 gap-3">
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray207.png"
-                    alt="Húmero Anterior"
-                    caption="Húmero: Vista Anterior."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray208.png"
-                    alt="Húmero Posterior"
-                    caption="Húmero: Vista Posterior."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray210.png"
-                    alt="Epífisis Proximal"
-                    caption="Extremo superior del húmero."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray211.png"
-                    alt="Epífisis Distal"
-                    caption="Extremo inferior del húmero."
-                  />
-                </div>
-                <div className="space-y-4">
-                  <p className="text-sm text-slate-700 leading-relaxed">
-                    Hueso largo que constituye el esqueleto del brazo. Se articula con la escápula superiormente y con el radio y cúbito inferiormente.
-                  </p>
-                  <div className="space-y-3">
-                    <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-                      <h5 className="font-bold text-blue-800 text-sm mb-2">Epífisis Proximal (Superior)</h5>
-                      <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
-                        <li><span className="font-bold">Cabeza:</span> Superficie esférica lisa que representa un tercio de esfera.</li>
-                        <li><span className="font-bold">Cuello Anatómico:</span> Surco estrecho que separa la cabeza de los tubérculos.</li>
-                        <li><span className="font-bold">Tubérculo Mayor (Troquíter):</span> Situado lateralmente, presenta tres carillas para los músculos supraespinoso, infraespinoso y redondo menor.</li>
-                        <li><span className="font-bold">Tubérculo Menor (Troquín):</span> Situado anteriormente, presta inserción al músculo subescapular.</li>
-                        <li><span className="font-bold">Surco Intertubercular (Corredera Bicipital):</span> Canal profundo entre ambos tubérculos que aloja el tendón de la cabeza larga del bíceps. Presenta una <span className="font-bold">cresta del tubérculo mayor</span> (labio lateral) y una <span className="font-bold">cresta del tubérculo menor</span> (labio medial).</li>
-                        <li><span className="font-bold">Cuello Quirúrgico:</span> Parte estrecha distal a los tubérculos, sitio frecuente de fracturas donde el nervio axilar y la arteria circunfleja humeral posterior están en contacto.</li>
-                      </ul>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray207.png"
+                  alt="Húmero Anterior"
+                  caption="Húmero: Vista Anterior."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray210.png"
+                  alt="Epífisis Proximal"
+                  caption="Extremo superior del húmero."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray211.png"
+                  alt="Epífisis Distal"
+                  caption="Extremo inferior del húmero."
+                />
+              </div>
+              <div className="space-y-4">
+                <p className="text-base text-slate-700 leading-relaxed">
+                  Hueso largo que constituye el esqueleto del brazo. Presenta un cuerpo (diáfisis) y dos extremidades (epífisis).
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                    <h5 className="font-bold text-blue-800 text-base mb-2">Epífisis Proximal y Diáfisis</h5>
+                    <div className="text-sm text-slate-600 space-y-2">
+                      <p><span className="font-bold">Epífisis Proximal:</span> Cabeza del húmero, cuello anatómico, tubérculo mayor (troquíter), tubérculo menor (troquín) y surco intertubercular (corredera bicipital).</p>
+                      <p><span className="font-bold">Cuello Quirúrgico:</span> Zona de unión entre la epífisis y la diáfisis, sitio frecuente de fracturas.</p>
+                      <p><span className="font-bold">Diáfisis:</span> Presenta la tuberosidad deltoidea (V deltoidea) y el surco para el nervio radial (canal de torsión).</p>
                     </div>
-                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                      <h5 className="font-bold text-slate-800 text-sm mb-2">Diáfisis (Cuerpo)</h5>
-                      <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
-                        <li><span className="font-bold">Tuberosidad Deltoidea (V deltoidea):</span> Elevación rugosa en forma de "V" en la cara lateral, donde se inserta el músculo deltoides.</li>
-                        <li><span className="font-bold">Surco del Nervio Radial (Canal de Torsión):</span> Depresión oblicua en la cara posterior que desciende lateralmente. Por él transcurren el <span className="font-bold">nervio radial</span> y la <span className="font-bold">arteria braquial profunda</span>.</li>
-                      </ul>
-                    </div>
-                    <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-                      <h5 className="font-bold text-blue-800 text-sm mb-2">Epífisis Distal (Cóndilo Humeral)</h5>
-                      <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
-                        <li><span className="font-bold">Capitulum (Cóndilo):</span> Superficie redondeada lateral que se articula con la cabeza del radio.</li>
-                        <li><span className="font-bold">Tróclea:</span> Superficie en forma de polea medial que se articula con la escotadura troclear del cúbito.</li>
-                        <li><span className="font-bold">Epicóndilo Medial (Epitróclea):</span> Prominencia mayor donde se originan los músculos flexores del antebrazo.</li>
-                        <li><span className="font-bold">Epicóndilo Lateral:</span> Prominencia menor donde se originan los músculos extensores.</li>
-                        <li><span className="font-bold">Fosas:</span> <span className="font-bold">Coronoides</span> (anterior, sobre la tróclea), <span className="font-bold">Radial</span> (anterior, sobre el capitulum) y <span className="font-bold">Olecraneana</span> (posterior, profunda, recibe al olécranon).</li>
-                      </ul>
+                  </div>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h5 className="font-bold text-slate-800 text-base mb-2">Epífisis Distal</h5>
+                    <div className="text-sm text-slate-600 space-y-2">
+                      <p><span className="font-bold">Superficies Articulares:</span> Cóndilo humeral (capítulo) para el radio y tróclea humeral para el cúbito.</p>
+                      <p><span className="font-bold">Accidentes:</span> Epicóndilo lateral, epicóndilo medial (epitróclea), fosa radial, fosa coronoides y fosa olecraniana.</p>
+                      <p><span className="font-bold">Surco del Nervio Cubital:</span> Situado en la cara posterior del epicóndilo medial.</p>
                     </div>
                   </div>
                 </div>
@@ -1215,57 +1203,43 @@ export default function App() {
             {/* Antebrazo */}
             <div className="bg-white p-6 rounded-2xl border shadow-sm">
               <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Antebrazo: Radio y Cúbito</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="grid grid-cols-2 gap-3">
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray213.png"
-                    alt="Radio y Cúbito Post."
-                    caption="Huesos del antebrazo (Posterior)."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray214.png"
-                    alt="Radio y Cúbito Ant."
-                    caption="Huesos del antebrazo (Anterior)."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray215.png"
-                    alt="Radio"
-                    caption="Radio izquierdo: Vista Anterior."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray216.png"
-                    alt="Cúbito"
-                    caption="Cúbito izquierdo: Vista Anterior."
-                  />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray213.png"
+                  alt="Radio y Cúbito Post."
+                  caption="Huesos del antebrazo (Posterior)."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray215.png"
+                  alt="Radio"
+                  caption="Radio izquierdo: Vista Anterior."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray216.png"
+                  alt="Cúbito"
+                  caption="Cúbito izquierdo: Vista Anterior."
+                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                  <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
+                    <Bone className="w-5 h-5" /> Radio
+                  </h4>
+                    <div className="text-sm text-slate-600 space-y-2">
+                      <p><span className="font-bold">Epífisis Proximal:</span> Cabeza del radio (fosita articular), cuello y tuberosidad del radio (bicipital).</p>
+                      <p><span className="font-bold">Cuerpo:</span> Presenta el borde interóseo para la membrana interósea.</p>
+                      <p><span className="font-bold">Epífisis Distal:</span> Apófisis estiloides del radio, escotadura cubital y cara articular carpiana.</p>
+                    </div>
                 </div>
-                <div className="space-y-6">
-                  <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
-                      <Bone className="w-5 h-5" /> Radio
-                    </h4>
-                    <p className="text-sm text-slate-700 mb-3">Hueso lateral del antebrazo. Su extremo distal es más voluminoso.</p>
-                    <ul className="text-xs text-slate-600 space-y-2">
-                      <li><span className="font-bold">Cabeza:</span> Presenta la <span className="font-bold">fóvea articular</span> (cóncava para el capitulum) y la <span className="font-bold">circunferencia articular</span> (para la escotadura radial del cúbito).</li>
-                      <li><span className="font-bold">Cuello:</span> Porción estrecha entre la cabeza y la tuberosidad.</li>
-                      <li><span className="font-bold">Tuberosidad del Radio:</span> Prominencia ovoidea donde se inserta el bíceps braquial.</li>
-                      <li><span className="font-bold">Extremo Distal:</span> Presenta la <span className="font-bold">carilla articular carpiana</span> (para escafoides y semilunar) y la <span className="font-bold">escotadura cubital</span> (medial, para la cabeza del cúbito).</li>
-                      <li><span className="font-bold">Apófisis Estiloides:</span> Proyección lateral piramidal. En la cara posterior se encuentra el <span className="font-bold">tubérculo dorsal (de Lister)</span>.</li>
-                    </ul>
-                  </div>
-                  <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
-                      <Bone className="w-5 h-5" /> Cúbito (Ulna)
-                    </h4>
-                    <p className="text-sm text-slate-700 mb-3">Hueso medial del antebrazo. Su extremo proximal es más voluminoso.</p>
-                    <ul className="text-xs text-slate-600 space-y-2">
-                      <li><span className="font-bold">Olécranon:</span> Proyección superior robusta que forma la punta del codo.</li>
-                      <li><span className="font-bold">Apófisis Coronoides:</span> Proyección anterior que, junto al olécranon, forma la <span className="font-bold">escotadura troclear</span> (para la tróclea humeral).</li>
-                      <li><span className="font-bold">Escotadura Radial:</span> Superficie articular lateral para la cabeza del radio.</li>
-                      <li><span className="font-bold">Cuerpo:</span> Presenta el <span className="font-bold">borde interóseo</span> (lateral) para la membrana interósea.</li>
-                      <li><span className="font-bold">Cabeza del Cúbito:</span> Extremo distal redondeado que presenta una circunferencia articular.</li>
-                      <li><span className="font-bold">Apófisis Estiloides:</span> Pequeña proyección medial y posterior, separada de la cabeza por un surco.</li>
-                    </ul>
-                  </div>
+                <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                  <h4 className="font-bold text-blue-800 text-lg mb-3 flex items-center gap-2">
+                    <Bone className="w-5 h-5" /> Cúbito (Ulna)
+                  </h4>
+                    <div className="text-sm text-slate-600 space-y-2">
+                      <p><span className="font-bold">Epífisis Proximal:</span> Olécranon, apófisis coronoides, escotadura troclear y escotadura radial.</p>
+                      <p><span className="font-bold">Cuerpo:</span> Borde interóseo y cara anterior cóncava.</p>
+                      <p><span className="font-bold">Epífisis Distal:</span> Cabeza del cúbito y apófisis estiloides del cúbito.</p>
+                    </div>
                 </div>
               </div>
             </div>
@@ -1273,62 +1247,66 @@ export default function App() {
             {/* Mano */}
             <div className="bg-white p-6 rounded-2xl border shadow-sm">
               <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Esqueleto de la Mano</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="grid grid-cols-2 gap-3">
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray219.png"
-                    alt="Huesos de la Mano Ant."
-                    caption="Huesos de la mano (Palmar)."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray220.png"
-                    alt="Huesos de la Mano Post."
-                    caption="Huesos de la mano (Dorsal)."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray221.png"
-                    alt="Carpo"
-                    caption="Huesos del carpo izquierdo."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray222.png"
-                    alt="Metacarpo"
-                    caption="Metacarpianos del pulgar y dedos."
-                  />
-                </div>
-                <div className="space-y-6">
-                  <div className="bg-blue-50 p-5 rounded-xl border border-blue-100">
-                    <h4 className="font-bold text-blue-800 text-sm uppercase tracking-widest mb-4">Huesos del Carpo (8)</h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <p className="font-bold text-xs text-blue-700 mb-2">Fila Proximal (Lat a Med):</p>
-                        <ul className="text-[11px] text-slate-600 space-y-1">
-                          <li>1. Escafoides (más fracturado)</li>
-                          <li>2. Semilunar</li>
-                          <li>3. Piramidal</li>
-                          <li>4. Pisiforme (sesamoideo)</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="font-bold text-xs text-blue-700 mb-2">Fila Distal (Lat a Med):</p>
-                        <ul className="text-[11px] text-slate-600 space-y-1">
-                          <li>5. Trapecio (art. pulgar)</li>
-                          <li>6. Trapezoide</li>
-                          <li>7. Grande (Capitatum)</li>
-                          <li>8. Ganchoso (Hamatus)</li>
-                        </ul>
-                      </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray219.png"
+                  alt="Huesos de la Mano Ant."
+                  caption="Huesos de la mano (Palmar)."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray221.png"
+                  alt="Carpo"
+                  caption="Huesos del carpo izquierdo."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray222.png"
+                  alt="Metacarpo"
+                  caption="Metacarpianos del pulgar y dedos."
+                />
+              </div>
+              <div className="space-y-6">
+                <div className="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                  <h4 className="font-bold text-blue-800 text-base uppercase tracking-widest mb-4">Huesos del Carpo (8)</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-bold text-sm text-blue-700 mb-2">Fila Proximal:</p>
+                      <ul className="text-sm text-slate-600 space-y-1">
+                        <li><span className="font-bold">Escafoides:</span> Art. con <Link to="osteology">radio</Link>. Tubérculo para lig. colateral radial.</li>
+                        <li><span className="font-bold">Semilunar:</span> Art. con <Link to="osteology">radio</Link> y disco articular.</li>
+                        <li><span className="font-bold">Piramidal:</span> Cara anterior art. con pisiforme.</li>
+                        <li><span className="font-bold">Pisiforme:</span> Sesamoideo en tendón del flexor cubital del carpo.</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm text-blue-700 mb-2">Fila Distal:</p>
+                      <ul className="text-sm text-slate-600 space-y-1">
+                        <li><span className="font-bold">Trapecio:</span> Tubérculo y surco para flexor radial carpo.</li>
+                        <li><span className="font-bold">Trapezoide:</span> Hueso más pequeño de la fila distal.</li>
+                        <li><span className="font-bold">Grande:</span> El más voluminoso. Eje de rotación del carpo.</li>
+                        <li><span className="font-bold">Ganchoso:</span> Presenta el <span className="italic">gancho</span> (hamulus).</li>
+                      </ul>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                      <h5 className="font-bold text-slate-800 text-xs mb-2 uppercase">Metacarpo</h5>
-                      <p className="text-[11px] text-slate-600">Cinco huesos largos numerados del I (pulgar) al V (meñique). Presentan base, cuerpo y cabeza.</p>
-                    </div>
-                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                      <h5 className="font-bold text-slate-800 text-xs mb-2 uppercase">Falanges</h5>
-                      <p className="text-[11px] text-slate-600">Catorce huesos. El pulgar tiene 2 (proximal y distal), los demás dedos tienen 3 (proximal, media y distal).</p>
-                    </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h5 className="font-bold text-slate-800 text-sm mb-2 uppercase">Metacarpo</h5>
+                    <p className="text-sm text-slate-600 mb-2">Cinco huesos largos numerados del I (pulgar) al V (meñique). Forman el esqueleto de la palma.</p>
+                    <ul className="text-xs text-slate-500 space-y-1 list-disc pl-4">
+                      <li><span className="font-bold">Base:</span> Extremo proximal, articula con el carpo y metacarpianos vecinos.</li>
+                      <li><span className="font-bold">Cuerpo:</span> Prismático triangular, con caras lateral, medial y dorsal.</li>
+                      <li><span className="font-bold">Cabeza:</span> Extremo distal, articula con la falange proximal.</li>
+                      <li><span className="font-bold">Detalle:</span> El III metacarpiano presenta una <span className="italic">apófisis estiloides</span> en su base.</li>
+                    </ul>
+                  </div>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h5 className="font-bold text-slate-800 text-sm mb-2 uppercase">Falanges</h5>
+                    <p className="text-sm text-slate-600 mb-2">Catorce huesos largos que forman el esqueleto de los dedos.</p>
+                    <ul className="text-xs text-slate-500 space-y-1 list-disc pl-4">
+                      <li><span className="font-bold">Proximales y Medias:</span> Presentan base, cuerpo y cabeza (tróclea).</li>
+                      <li><span className="font-bold">Distales:</span> Presentan una base proximal y una <span className="italic">tuberosidad de la falange distal</span> (en forma de herradura) para el lecho ungueal.</li>
+                      <li><span className="font-bold">Distribución:</span> Pulgar (2), dedos II-V (3 cada uno).</li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -1341,38 +1319,37 @@ export default function App() {
           <div className="grid grid-cols-1 gap-8">
             <div className="bg-white p-6 rounded-2xl border shadow-sm">
               <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Complejo Articular del Hombro</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="grid grid-cols-2 gap-3">
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray326.png"
-                    alt="Articulación Hombro"
-                    caption="Cápsula de la articulación del hombro."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray327.png"
-                    alt="Ligamentos Hombro"
-                    caption="Vista anterior de los ligamentos del hombro."
-                  />
-                </div>
-                <div className="space-y-4">
-                  <div className="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
-                    <h4 className="font-bold text-emerald-800 text-lg mb-3">Articulación Glenohumeral</h4>
-                    <ul className="text-sm text-slate-700 space-y-2">
-                      <li><span className="font-bold text-emerald-700">Tipo:</span> Sinovial, Esferoidea (Enartrosis).</li>
-                      <li><span className="font-bold text-emerald-700">Superficies:</span> Cabeza del húmero y cavidad glenoidea de la escápula (ampliada por el <span className="italic">rodete glenoideo</span>).</li>
-                      <li><span className="font-bold text-emerald-700">Movimientos:</span> Flexión/Extensión, Abducción/Aducción, Rotación interna/externa y Circunducción.</li>
-                      <li><span className="font-bold text-emerald-700">Estabilidad:</span> Depende principalmente de los músculos del <span className="font-bold">manguito rotador</span>.</li>
-                    </ul>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray326.png"
+                  alt="Articulación Hombro"
+                  caption="Cápsula de la articulación del hombro."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray327.png"
+                  alt="Ligamentos Hombro"
+                  caption="Vista anterior de los ligamentos del hombro."
+                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
+                  <h4 className="font-bold text-emerald-800 text-lg mb-3">Articulación Glenohumeral</h4>
+                  <div className="space-y-3 text-sm text-slate-700">
+                    <p><span className="font-bold text-emerald-700">Superficies:</span> Cabeza del <Link to="osteology">húmero</Link> y cavidad glenoidea de la <Link to="osteology">escápula</Link>.</p>
+                    <p><span className="font-bold text-emerald-700">Ligamentos:</span> Glenohumerales (Sup, Medio, Inf), Coracohumeral, Coracoacromial y Transverso del húmero.</p>
+                    <p><span className="font-bold text-emerald-700">Irrigación:</span> Arterias circunflejas humerales anterior y posterior, y arteria supraescapular.</p>
+                    <p><span className="font-bold text-emerald-700">Inervación:</span> Nervios <Link to="neurology">supraescapular</Link>, <Link to="neurology">axilar</Link> y pectoral lateral.</p>
+                    <p><span className="font-bold text-emerald-700">Función:</span> Articulación más móvil del cuerpo. Permite flexión, extensión, abducción, aducción, rotación y circunducción.</p>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="text-xs p-3 bg-slate-50 rounded-lg border">
-                      <span className="font-bold block mb-1">Acromioclavicular</span>
-                      Sinovial plana. Une el acromion con la clavícula.
-                    </div>
-                    <div className="text-xs p-3 bg-slate-50 rounded-lg border">
-                      <span className="font-bold block mb-1">Esternoclavicular</span>
-                      Sinovial en silla de montar. Única unión ósea con el esqueleto axial.
-                    </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="text-sm p-3 bg-slate-50 rounded-lg border">
+                    <span className="font-bold block mb-1">Acromioclavicular</span>
+                    Sinovial plana. Une el acromion (<Link to="osteology">escápula</Link>) con la <Link to="osteology">clavícula</Link>.
+                  </div>
+                  <div className="text-sm p-3 bg-slate-50 rounded-lg border">
+                    <span className="font-bold block mb-1">Esternoclavicular</span>
+                    Sinovial en silla de montar. Une el esternón con la <Link to="osteology">clavícula</Link>.
                   </div>
                 </div>
               </div>
@@ -1380,34 +1357,25 @@ export default function App() {
 
             <div className="bg-white p-6 rounded-2xl border shadow-sm">
               <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Articulación del Codo</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="grid grid-cols-2 gap-3">
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray329.png"
-                    alt="Articulación Codo Medial"
-                    caption="Ligamento colateral cubital."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray330.png"
-                    alt="Articulación Codo Lateral"
-                    caption="Ligamento colateral radial."
-                  />
-                </div>
-                <div className="space-y-4">
-                  <p className="text-sm text-slate-700">Complejo formado por tres articulaciones envueltas en una sola cápsula:</p>
-                  <div className="space-y-3">
-                    <div className="bg-slate-50 p-3 rounded-lg border">
-                      <span className="font-bold text-emerald-700 text-sm block">1. Humerocubital</span>
-                      <p className="text-xs text-slate-600">Tipo: Gínglimo (Troclear). Permite flexión y extensión.</p>
-                    </div>
-                    <div className="bg-slate-50 p-3 rounded-lg border">
-                      <span className="font-bold text-emerald-700 text-sm block">2. Humerorradial</span>
-                      <p className="text-xs text-slate-600">Tipo: Esferoidea (funciona como gínglimo). Entre cóndilo y cúpula radial.</p>
-                    </div>
-                    <div className="bg-slate-50 p-3 rounded-lg border">
-                      <span className="font-bold text-emerald-700 text-sm block">3. Radiocubital Proximal</span>
-                      <p className="text-xs text-slate-600">Tipo: Trocoide (Pivote). Permite la pronosupinación.</p>
-                    </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray329.png"
+                  alt="Articulación Codo Medial"
+                  caption="Ligamento colateral cubital."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray330.png"
+                  alt="Articulación Codo Lateral"
+                  caption="Ligamento colateral radial."
+                />
+              </div>
+              <div className="space-y-4">
+                <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                  <div className="space-y-3 text-sm text-slate-700">
+                    <p><span className="font-bold text-emerald-700">Superficies:</span> <Link to="osteology">Húmero</Link>, <Link to="osteology">Radio</Link> y <Link to="osteology">Cúbito</Link>.</p>
+                    <p><span className="font-bold text-emerald-700">Ligamentos:</span> Colateral radial, Colateral cubital, Anular del radio y Cuadrado.</p>
+                    <p><span className="font-bold text-emerald-700">Inervación:</span> Nervios <Link to="neurology">musculocutáneo</Link>, <Link to="neurology">radial</Link>, <Link to="neurology">mediano</Link> y <Link to="neurology">cubital</Link>.</p>
+                    <p><span className="font-bold text-emerald-700">Función:</span> Permite flexión/extensión y pronosupinación.</p>
                   </div>
                 </div>
               </div>
@@ -1415,68 +1383,41 @@ export default function App() {
 
             <div className="bg-white p-6 rounded-2xl border shadow-sm">
               <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Articulaciones del Antebrazo y Mano</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="grid grid-cols-2 gap-3">
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray334.png"
-                    alt="Articulación Muñeca"
-                    caption="Ligamentos de la muñeca (Palmar)."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray335.png"
-                    alt="Articulación Muñeca Post"
-                    caption="Ligamentos de la muñeca (Dorsal)."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray336.png"
-                    alt="Articulaciones Mano"
-                    caption="Cortes de las articulaciones del carpo."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray337.png"
-                    alt="Ligamentos Dedos"
-                    caption="Articulaciones metacarpofalángicas e interfalángicas."
-                  />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray334.png"
+                  alt="Articulación Muñeca"
+                  caption="Ligamentos de la muñeca (Palmar)."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray336.png"
+                  alt="Articulaciones Mano"
+                  caption="Cortes de las articulaciones del carpo."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray337.png"
+                  alt="Ligamentos Dedos"
+                  caption="Articulaciones metacarpofalángicas e interfalángicas."
+                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                  <h4 className="font-bold text-emerald-800 text-base mb-2">Articulaciones de la Mano</h4>
+                  <div className="space-y-3 text-sm text-slate-700">
+                    <p><span className="font-bold">Radiocarpiana (Muñeca):</span> Sinovial elipsoidea. <Link to="osteology">Radio</Link> con <Link to="osteology">Escafoides</Link>, <Link to="osteology">Semilunar</Link> y <Link to="osteology">Piramidal</Link>.</p>
+                    <p><span className="font-bold">Carpometacarpiana Pulgar:</span> Sinovial en silla de montar. <Link to="osteology">Trapecio</Link> con 1er <Link to="osteology">metacarpiano</Link>.</p>
+                    <p><span className="font-bold">Metacarpofalángicas:</span> Sinoviales elipsoideas. <Link to="osteology">Metacarpo</Link> con <Link to="osteology">falanges</Link> proximales.</p>
+                    <p><span className="font-bold">Interfalángicas:</span> Sinoviales gínglimos. Entre las <Link to="osteology">falanges</Link>.</p>
+                  </div>
                 </div>
-                <div className="space-y-4">
-                  <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-                    <h4 className="font-bold text-emerald-800 text-sm mb-2">Articulación Radiocubital Distal</h4>
-                    <ul className="text-xs text-slate-700 space-y-1">
-                      <li><span className="font-bold">Tipo:</span> Sinovial Trocoide (Pivote).</li>
-                      <li><span className="font-bold">Superficies:</span> Cabeza del cúbito y escotadura cubital del radio.</li>
-                      <li><span className="font-bold">Medios de unión:</span> Cápsula articular y el <span className="italic">disco articular (ligamento triangular)</span>, que es el principal medio de unión.</li>
-                      <li><span className="font-bold">Movimientos:</span> Pronación y supinación del antebrazo.</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-slate-800 text-sm mb-2">Articulación Radiocarpiana (Muñeca)</h4>
-                    <p className="text-xs text-slate-700">
-                      <span className="font-bold">Tipo:</span> Sinovial Elipsoidea (Condílea). Une el radio y el disco articular con la fila proximal del carpo (escafoides, semilunar y piramidal). Permite flexión, extensión, abducción y aducción.
-                    </p>
-                  </div>
-
-                  <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-                    <h4 className="font-bold text-emerald-800 text-sm mb-2">Articulaciones Carpometacarpianas</h4>
-                    <div className="space-y-2">
-                      <p className="text-xs text-slate-700">
-                        <span className="font-bold">Del Pulgar:</span> Sinovial en silla de montar (encaje recíproco). Entre el trapecio y el 1er metacarpiano. Esencial para la <span className="font-bold">oposición</span>.
-                      </p>
-                      <p className="text-xs text-slate-700">
-                        <span className="font-bold">De los dedos (II-V):</span> Sinoviales planas (artrodias). Permiten movimientos limitados de deslizamiento.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-slate-800 text-sm mb-2">Articulaciones Interfalángicas</h4>
-                    <ul className="text-xs text-slate-700 space-y-1">
-                      <li><span className="font-bold">Tipo:</span> Sinovial Gínglimo (Troclear).</li>
-                      <li><span className="font-bold">Superficies:</span> Cabeza de la falange proximal y base de la falange distal/media.</li>
-                      <li><span className="font-bold">Medios de unión:</span> Cápsula, ligamentos colaterales (medial y lateral) y ligamentos palmares.</li>
-                      <li><span className="font-bold">Movimientos:</span> Uniaxiales, exclusivamente flexión y extensión.</li>
-                    </ul>
-                  </div>
+                <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                  <h4 className="font-bold text-slate-800 text-base mb-2">Articulación Radiocubital Distal</h4>
+                  <ul className="text-sm text-slate-700 space-y-1">
+                    <li><span className="font-bold">Tipo:</span> Sinovial Trocoide (Pivote).</li>
+                    <li><span className="font-bold">Superficies:</span> Cabeza del cúbito y escotadura cubital del radio.</li>
+                    <li><span className="font-bold">Medios de unión:</span> Cápsula articular y el <span className="italic">disco articular (ligamento triangular)</span>.</li>
+                    <li><span className="font-bold">Movimientos:</span> Pronación y supinación.</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -1487,8 +1428,8 @@ export default function App() {
         <Section title="Miología: Sistema Muscular" active={activeTab === 'myology'}>
           <div className="space-y-8">
             <div className="bg-white p-6 rounded-2xl border shadow-sm">
-              <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Músculos del Hombro y Tórax</h3>
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8">
+              <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3 mb-6">Músculos del Hombro y Tórax (Latarjet)</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <ImageCard 
                   src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray410.png"
                   alt="Músculos Superficiales"
@@ -1504,39 +1445,142 @@ export default function App() {
                   alt="Serrato Anterior"
                   caption="Músculo Serrato Anterior."
                 />
-                <ImageCard 
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray413.png"
-                  alt="Deltoides"
-                  caption="Músculo Deltoides (Vista Lateral)."
-                />
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full text-sm text-left">
-                  <thead className="bg-slate-50 text-slate-500 uppercase text-xs font-bold">
+                <table className="w-full text-sm text-left border-separate border-spacing-0">
+                  <thead className="bg-slate-100 text-slate-700 uppercase text-xs font-bold border-b-2 border-slate-200">
                     <tr>
-                      <th className="px-4 py-3 rounded-tl-lg">Región</th>
-                      <th className="px-4 py-3">Músculos</th>
-                      <th className="px-4 py-3 rounded-tr-lg">Acción Principal</th>
+                      <th className="px-6 py-4 rounded-tl-xl border-b-2 border-slate-200">Grupo / Músculo</th>
+                      <th className="px-6 py-4 border-b-2 border-slate-200">Origen</th>
+                      <th className="px-6 py-4 border-b-2 border-slate-200">Inserción</th>
+                      <th className="px-6 py-4 rounded-tr-xl border-b-2 border-slate-200">Función Principal</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y">
-                    <tr>
-                      <td className="px-4 py-4 font-bold text-slate-700">Axioapendicular Ant.</td>
-                      <td className="px-4 py-4">Pectoral Mayor, Menor, Subclavio, Serrato ant.</td>
-                      <td className="px-4 py-4">Aducción brazo, Protracción escápula</td>
+                  <tbody className="divide-y divide-slate-100">
+                    <tr className="bg-blue-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-blue-900 border-y border-blue-100">Grupo Anterior (Pectorales)</td></tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Pectoral Mayor</td>
+                      <td className="px-6 py-5 text-slate-600"><Link to="osteology">Clavícula</Link> (2/3 med), esternón, cartílagos costales 1-6.</td>
+                      <td className="px-6 py-5 text-slate-600">Cresta del tubérculo mayor del <Link to="osteology">húmero</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Aducción, rotación interna y flexión del brazo.</td>
                     </tr>
-                    <tr>
-                      <td className="px-4 py-4 font-bold text-slate-700">Axioapendicular Post.</td>
-                      <td className="px-4 py-4">Trapecio, Dorsal Ancho, Romboides, Elevador escápula</td>
-                      <td className="px-4 py-4">Elevación/Retracción escápula, Extensión brazo</td>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Pectoral Menor</td>
+                      <td className="px-6 py-5 text-slate-600">Costillas 3, 4 y 5.</td>
+                      <td className="px-6 py-5 text-slate-600">Apófisis coracoides de la <Link to="osteology">escápula</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Tracciona la escápula hacia adelante y abajo (protracción).</td>
                     </tr>
-                    <tr>
-                      <td className="px-4 py-4 font-bold text-slate-700">Escapulohumerales</td>
-                      <td className="px-4 py-4">Deltoides, Redondo mayor, Manguito rotador</td>
-                      <td className="px-4 py-4">Abducción y rotación del hombro</td>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Subclavio</td>
+                      <td className="px-6 py-5 text-slate-600">1er cartílago costal.</td>
+                      <td className="px-6 py-5 text-slate-600">Surco subclavio de la <Link to="osteology">clavícula</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Desciende la clavícula y estabiliza la art. esternoclavicular.</td>
+                    </tr>
+                    <tr className="bg-slate-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-blue-900 border-y border-slate-100">Grupo Medial</td></tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Serrato Anterior</td>
+                      <td className="px-6 py-5 text-slate-600">Caras laterales de costillas 1-9.</td>
+                      <td className="px-6 py-5 text-slate-600">Borde medial de la <Link to="osteology">escápula</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Protracción y rotación superior de la escápula; mantiene la escápula contra el tórax.</td>
+                    </tr>
+                    <tr className="bg-slate-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-blue-900 border-y border-slate-100">Grupo Posterior (Escapulares)</td></tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Subescapular</td>
+                      <td className="px-6 py-5 text-slate-600">Fosa subescapular.</td>
+                      <td className="px-6 py-5 text-slate-600">Tubérculo menor (troquín) del <Link to="osteology">húmero</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Rotación interna del brazo; estabilizador del hombro.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Supraespinoso</td>
+                      <td className="px-6 py-5 text-slate-600">Fosa supraespinosa.</td>
+                      <td className="px-6 py-5 text-slate-600">Tubérculo mayor (troquíter) del <Link to="osteology">húmero</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Inicia la abducción del brazo (primeros 15°).</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Infraespinoso</td>
+                      <td className="px-6 py-5 text-slate-600">Fosa infraespinosa.</td>
+                      <td className="px-6 py-5 text-slate-600">Tubérculo mayor del <Link to="osteology">húmero</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Rotación externa del brazo.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Redondo Menor</td>
+                      <td className="px-6 py-5 text-slate-600">Borde lateral de la escápula.</td>
+                      <td className="px-6 py-5 text-slate-600">Tubérculo mayor del <Link to="osteology">húmero</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Rotación externa y aducción débil.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Redondo Mayor</td>
+                      <td className="px-6 py-5 text-slate-600">Ángulo inferior de la escápula.</td>
+                      <td className="px-6 py-5 text-slate-600">Labio medial del surco intertubercular.</td>
+                      <td className="px-6 py-5 text-slate-600">Aducción y rotación interna del brazo.</td>
                     </tr>
                   </tbody>
                 </table>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border shadow-sm">
+              <h3 className="text-xl font-bold text-slate-800 border-l-4 border-slate-600 pl-3 mb-6">Músculos de la Espalda que actúan sobre el Miembro Superior</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left border-separate border-spacing-0">
+                  <thead className="bg-slate-100 text-slate-700 uppercase text-xs font-bold border-b-2 border-slate-200">
+                    <tr>
+                      <th className="px-6 py-4 rounded-tl-xl border-b-2 border-slate-200">Músculo</th>
+                      <th className="px-6 py-4 border-b-2 border-slate-200">Origen</th>
+                      <th className="px-6 py-4 border-b-2 border-slate-200">Inserción</th>
+                      <th className="px-6 py-4 rounded-tr-xl border-b-2 border-slate-200">Función</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Trapecio</td>
+                      <td className="px-6 py-5 text-slate-600">Línea nucal sup, protuberancia occipital, lig. nucal, apóf. espinosas C7-T12.</td>
+                      <td className="px-6 py-5 text-slate-600">1/3 lat. <Link to="osteology">clavícula</Link>, acromion y espina de la <Link to="osteology">escápula</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Eleva, retrae y rota la escápula; inclina la cabeza.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Dorsal Ancho</td>
+                      <td className="px-6 py-5 text-slate-600">Apóf. espinosas T7-L5, fascia toracolumbar, cresta ilíaca.</td>
+                      <td className="px-6 py-5 text-slate-600">Fondo del surco intertubercular del <Link to="osteology">húmero</Link>.</td>
+                      <td className="px-6 py-5 text-slate-600">Extensión, aducción y rotación interna del brazo ("músculo del trepador").</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Elevador de la Escápula</td>
+                      <td className="px-6 py-5 text-slate-600">Apóf. transversas C1-C4.</td>
+                      <td className="px-6 py-5 text-slate-600">Borde medial de la escápula (sup. a la espina).</td>
+                      <td className="px-6 py-5 text-slate-600">Eleva la escápula e inclina la cavidad glenoidea inferiormente.</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-5 font-bold text-slate-800">Romboides (Mayor y Menor)</td>
+                      <td className="px-6 py-5 text-slate-600">Lig. nucal, apóf. espinosas C7-T5.</td>
+                      <td className="px-6 py-5 text-slate-600">Borde medial de la escápula.</td>
+                      <td className="px-6 py-5 text-slate-600">Retrae (aduce) y rota la escápula; la fija a la pared torácica.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100">
+              <h3 className="text-xl font-bold text-emerald-800 border-l-4 border-emerald-600 pl-3 mb-6">Manguito de los Rotadores (Latarjet)</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <p className="text-base text-slate-700">
+                    Es un grupo funcional de músculos que conectan la escápula con el húmero, proporcionando estabilidad dinámica a la articulación glenohumeral. Sus tendones se fusionan con la cápsula articular.
+                  </p>
+                  <ul className="space-y-2 text-base text-slate-600">
+                    <li><span className="font-bold text-emerald-700">Supraespinoso:</span> Pasa por debajo del acromion. Es el más frecuentemente lesionado.</li>
+                    <li><span className="font-bold text-emerald-700">Infraespinoso:</span> Potente rotador externo.</li>
+                    <li><span className="font-bold text-emerald-700">Redondo Menor:</span> Rotador externo, situado inferior al infraespinoso.</li>
+                    <li><span className="font-bold text-emerald-700">Subescapular:</span> Único rotador interno del grupo, situado en la cara anterior.</li>
+                  </ul>
+                </div>
+                <div className="bg-white p-4 rounded-xl border">
+                  <h4 className="font-bold text-emerald-800 text-base mb-2">Importancia Clínica</h4>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Latarjet destaca que estos músculos no solo mueven el húmero, sino que "centran" la cabeza humeral en la cavidad glenoidea durante los movimientos del deltoides, evitando el pinzamiento subacromial. Sus tendones forman una estructura continua que refuerza la cápsula por arriba, atrás y adelante.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -1546,16 +1590,11 @@ export default function App() {
                   <div className="w-2 h-6 bg-red-500 rounded-full"></div>
                   Brazo
                 </h4>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-4">
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray414.png"
                     alt="Bíceps Braquial"
                     caption="Músculo Bíceps Braquial."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray415.png"
-                    alt="Coracobraquial"
-                    caption="Músculo Coracobraquial."
                   />
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray416.png"
@@ -1568,21 +1607,49 @@ export default function App() {
                     caption="Músculo Ancóneo."
                   />
                 </div>
-                <div className="space-y-4">
-                  <div className="bg-red-50 p-4 rounded-xl">
-                    <p className="font-bold text-red-800 text-sm mb-2">Compartimiento Anterior (Flexor)</p>
-                    <ul className="text-sm text-red-700 list-disc list-inside">
-                      <li>Bíceps Braquial</li>
-                      <li>Coracobraquial</li>
-                      <li>Braquial (Flexor puro)</li>
-                    </ul>
-                  </div>
-                  <div className="bg-slate-50 p-4 rounded-xl">
-                    <p className="font-bold text-slate-800 text-sm mb-2">Compartimiento Posterior (Extensor)</p>
-                    <ul className="text-sm text-slate-600 list-disc list-inside">
-                      <li>Tríceps Braquial (3 cabezas)</li>
-                    </ul>
-                  </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm text-left border-separate border-spacing-0">
+                    <thead className="bg-red-100 text-red-900 uppercase text-xs font-bold border-b-2 border-red-200">
+                      <tr>
+                        <th className="px-6 py-4 rounded-tl-xl border-b-2 border-red-200">Músculo</th>
+                        <th className="px-6 py-4 border-b-2 border-red-200">Origen</th>
+                        <th className="px-6 py-4 border-b-2 border-red-200">Inserción</th>
+                        <th className="px-6 py-4 rounded-tr-xl border-b-2 border-red-200">Función</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-red-50">
+                      <tr className="bg-red-50/30 hover:bg-red-50 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Bíceps Braquial</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Escápula</Link> (supraglenoideo/coracoides).</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Radio</Link> (tuberosidad).</td>
+                        <td className="px-6 py-5 text-slate-600">Flexión y supinación antebrazo.</td>
+                      </tr>
+                      <tr className="bg-red-50/30 hover:bg-red-50 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Coracobraquial</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Escápula</Link> (coracoides).</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Húmero</Link> (cara medial).</td>
+                        <td className="px-6 py-5 text-slate-600">Flexión y aducción brazo.</td>
+                      </tr>
+                      <tr className="bg-red-50/30 hover:bg-red-50 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Braquial</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Húmero</Link> (cara anterior distal).</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Cúbito</Link> (coronoides/tuberosidad).</td>
+                        <td className="px-6 py-5 text-slate-600">Flexor principal antebrazo.</td>
+                      </tr>
+                      <tr className="bg-blue-50/30 hover:bg-blue-50 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Tríceps Braquial</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Escápula</Link> (infraglenoideo) y <Link to="osteology">Húmero</Link> (post).</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Cúbito</Link> (olécranon).</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión antebrazo.</td>
+                      </tr>
+                      <tr className="bg-blue-50/30 hover:bg-blue-50 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Ancóneo</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Húmero</Link> (epicóndilo lat).</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Cúbito</Link> (olécranon/cara lat).</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión del codo.</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <div className="bg-white p-6 rounded-2xl border shadow-sm">
@@ -1590,7 +1657,7 @@ export default function App() {
                   <div className="w-2 h-6 bg-blue-500 rounded-full"></div>
                   Antebrazo
                 </h4>
-                <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-4">
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray418.png"
                     alt="Flexores Superficiales"
@@ -1604,22 +1671,329 @@ export default function App() {
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray421.png"
                     alt="Extensores Superficiales"
-                    caption="Músculos extensores del antebrazo."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray423.png"
-                    alt="Extensores Profundos"
-                    caption="Músculos extensores profundos."
+                    caption="Músculos extensos del antebrazo."
                   />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                  <div className="space-y-2">
-                    <p className="font-bold text-slate-700">Anterior (Flexores)</p>
-                    <p className="text-xs text-slate-500 italic">Pronador redondo, Flexores del carpo y dedos.</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm text-left border-separate border-spacing-0">
+                    <thead className="bg-emerald-100 text-emerald-900 uppercase text-xs font-bold border-b-2 border-emerald-200">
+                      <tr>
+                        <th className="px-6 py-4 rounded-tl-xl border-b-2 border-emerald-200">Músculo</th>
+                        <th className="px-6 py-4 border-b-2 border-emerald-200">Origen</th>
+                        <th className="px-6 py-4 border-b-2 border-emerald-200">Inserción</th>
+                        <th className="px-6 py-4 rounded-tr-xl border-b-2 border-emerald-200">Función Principal</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-emerald-50">
+                      {/* Anterior Group */}
+                      <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-800 border-y border-emerald-100">Región Anterior (Flexo-pronadores)</td></tr>
+                      <tr className="hover:bg-emerald-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Pronador Redondo</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo med.</td>
+                        <td className="px-6 py-5 text-slate-600">Cara lat. <Link to="osteology">radio</Link>.</td>
+                        <td className="px-6 py-5 text-slate-600">Pronación y flexión codo.</td>
+                      </tr>
+                      <tr className="hover:bg-emerald-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Flexor Radial Carpo</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo med.</td>
+                        <td className="px-6 py-5 text-slate-600">Base 2do metacarpiano.</td>
+                        <td className="px-6 py-5 text-slate-600">Flexión y abducción mano.</td>
+                      </tr>
+                      <tr className="hover:bg-emerald-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Palmar Largo</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo med.</td>
+                        <td className="px-6 py-5 text-slate-600">Aponeurosis palmar.</td>
+                        <td className="px-6 py-5 text-slate-600">Flexión mano y tensa aponeurosis palmar.</td>
+                      </tr>
+                      <tr className="hover:bg-emerald-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Flexor Cubital Carpo</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo med.</td>
+                        <td className="px-6 py-5 text-slate-600">Pisiforme/5to meta.</td>
+                        <td className="px-6 py-5 text-slate-600">Flexión y aducción mano.</td>
+                      </tr>
+                      <tr className="hover:bg-emerald-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Flexor Sup. Dedos</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo med/Radio.</td>
+                        <td className="px-6 py-5 text-slate-600">Falanges medias (2-5).</td>
+                        <td className="px-6 py-5 text-slate-600">Flexión falanges medias. Tendones perforados.</td>
+                      </tr>
+                      <tr className="hover:bg-emerald-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Flexor Prof. Dedos</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Cúbito</Link>.</td>
+                        <td className="px-6 py-5 text-slate-600">Falanges distales (2-5).</td>
+                        <td className="px-6 py-5 text-slate-600">Flexión falanges distales. Tendones perforantes.</td>
+                      </tr>
+                      <tr className="hover:bg-emerald-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Flexor Largo Pulgar</td>
+                        <td className="px-6 py-5 text-slate-600">Cara ant. <Link to="osteology">radio</Link>.</td>
+                        <td className="px-6 py-5 text-slate-600">Falange distal pulgar.</td>
+                        <td className="px-6 py-5 text-slate-600">Flexión falange distal del pulgar.</td>
+                      </tr>
+                      <tr className="hover:bg-emerald-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Pronador Cuadrado</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Cúbito</Link> distal.</td>
+                        <td className="px-6 py-5 text-slate-600"><Link to="osteology">Radio</Link> distal.</td>
+                        <td className="px-6 py-5 text-slate-600">Pronación principal.</td>
+                      </tr>
+                      {/* Posterior/Lateral Group */}
+                      <tr className="bg-blue-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-blue-800 border-y border-blue-100">Región Lateral y Posterior (Extensores)</td></tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Braquiorradial</td>
+                        <td className="px-6 py-5 text-slate-600">Cresta supracondílea lat.</td>
+                        <td className="px-6 py-5 text-slate-600">Estiloides <Link to="osteology">radio</Link>.</td>
+                        <td className="px-6 py-5 text-slate-600">Flexión antebrazo.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Extensor Radial Largo</td>
+                        <td className="px-6 py-5 text-slate-600">Cresta supracondílea lat.</td>
+                        <td className="px-6 py-5 text-slate-600">Base 2do meta.</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión y abducción mano.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Extensor Radial Corto</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo lat.</td>
+                        <td className="px-6 py-5 text-slate-600">Base 3er meta.</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión y abducción mano.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Supinador</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo lat/Cúbito.</td>
+                        <td className="px-6 py-5 text-slate-600">Cara lat. <Link to="osteology">radio</Link>.</td>
+                        <td className="px-6 py-5 text-slate-600">Supinación.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Extensor Dedos</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo lat.</td>
+                        <td className="px-6 py-5 text-slate-600">Expansiones extensoras (2-5).</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión dedos y mano.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Extensor Meñique</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo lat.</td>
+                        <td className="px-6 py-5 text-slate-600">Expansión extensora 5to dedo.</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión del meñique.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Extensor Cubital Carpo</td>
+                        <td className="px-6 py-5 text-slate-600">Epicóndilo lat/Cúbito.</td>
+                        <td className="px-6 py-5 text-slate-600">Base 5to meta.</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión y aducción mano.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Abd. Largo Pulgar</td>
+                        <td className="px-6 py-5 text-slate-600">Cúbito/Radio.</td>
+                        <td className="px-6 py-5 text-slate-600">Base 1er meta.</td>
+                        <td className="px-6 py-5 text-slate-600">Abducción pulgar.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Ext. Corto Pulgar</td>
+                        <td className="px-6 py-5 text-slate-600">Radio.</td>
+                        <td className="px-6 py-5 text-slate-600">Falange proximal pulgar.</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión falange proximal pulgar.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Ext. Largo Pulgar</td>
+                        <td className="px-6 py-5 text-slate-600">Cúbito.</td>
+                        <td className="px-6 py-5 text-slate-600">Falange distal pulgar.</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión falange distal pulgar.</td>
+                      </tr>
+                      <tr className="hover:bg-blue-50/30 transition-colors">
+                        <td className="px-6 py-5 font-bold text-slate-800">Ext. Índice</td>
+                        <td className="px-6 py-5 text-slate-600">Cúbito.</td>
+                        <td className="px-6 py-5 text-slate-600">Expansión extensora 2do dedo.</td>
+                        <td className="px-6 py-5 text-slate-600">Extensión del índice.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 mt-6">
+                  <h4 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <div className="w-2 h-6 bg-emerald-500 rounded-full"></div>
+                    Músculos de la Mano
+                  </h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left border-separate border-spacing-0">
+                      <thead className="bg-slate-200 text-slate-800 uppercase text-xs font-bold border-b-2 border-slate-300">
+                        <tr>
+                          <th className="px-6 py-4 rounded-tl-xl border-b-2 border-slate-300">Grupo / Músculo</th>
+                          <th className="px-6 py-4 border-b-2 border-slate-300">Origen</th>
+                          <th className="px-6 py-4 border-b-2 border-slate-300">Inserción</th>
+                          <th className="px-6 py-4 rounded-tr-xl border-b-2 border-slate-300">Función</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-800 border-y border-emerald-100">Eminencia Tenar (Pulgar)</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Abd. Corto Pulgar</td>
+                          <td className="px-6 py-5 text-slate-600">Escafoides, Trapecio, Retináculo.</td>
+                          <td className="px-6 py-5 text-slate-600">Falange prox. pulgar.</td>
+                          <td className="px-6 py-5 text-slate-600">Abducción del pulgar.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Oponente Pulgar</td>
+                          <td className="px-6 py-5 text-slate-600">Trapecio, Retináculo.</td>
+                          <td className="px-6 py-5 text-slate-600">1er metacarpiano.</td>
+                          <td className="px-6 py-5 text-slate-600">Oposición del pulgar.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Flexor Corto Pulgar</td>
+                          <td className="px-6 py-5 text-slate-600">Trapecio, Grande, Ganchoso.</td>
+                          <td className="px-6 py-5 text-slate-600">Falange prox. pulgar.</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión del pulgar.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Aductor Pulgar</td>
+                          <td className="px-6 py-5 text-slate-600">Grande, 2do/3er meta.</td>
+                          <td className="px-6 py-5 text-slate-600">Falange prox. pulgar.</td>
+                          <td className="px-6 py-5 text-slate-600">Aducción del pulgar.</td>
+                        </tr>
+                        <tr className="bg-blue-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-blue-800 border-y border-blue-100">Eminencia Hipotenar (Meñique)</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Abd. Meñique</td>
+                          <td className="px-6 py-5 text-slate-600">Pisiforme.</td>
+                          <td className="px-6 py-5 text-slate-600">Falange prox. meñique.</td>
+                          <td className="px-6 py-5 text-slate-600">Abducción del meñique.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Flexor Corto Meñique</td>
+                          <td className="px-6 py-5 text-slate-600">Ganchoso, Retináculo.</td>
+                          <td className="px-6 py-5 text-slate-600">Falange prox. meñique.</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión del meñique.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Oponente Meñique</td>
+                          <td className="px-6 py-5 text-slate-600">Ganchoso, Retináculo.</td>
+                          <td className="px-6 py-5 text-slate-600">5to metacarpiano.</td>
+                          <td className="px-6 py-5 text-slate-600">Oposición del meñique.</td>
+                        </tr>
+                        <tr className="bg-slate-100/50"><td colSpan={4} className="px-6 py-3 font-bold text-slate-800 border-y border-slate-200">Músculos Cortos (Medios)</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Lumbricales (1-4)</td>
+                          <td className="px-6 py-5 text-slate-600">Tendones flexor prof. dedos.</td>
+                          <td className="px-6 py-5 text-slate-600">Expansiones extensoras (2-5).</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión MCF, extensión IF.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Interóseos Palmares</td>
+                          <td className="px-6 py-5 text-slate-600">Metacarpianos 2, 4, 5.</td>
+                          <td className="px-6 py-5 text-slate-600">Falanges prox. respectivas.</td>
+                          <td className="px-6 py-5 text-slate-600">Aducción de los dedos (hacia el eje).</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Interóseos Dorsales</td>
+                          <td className="px-6 py-5 text-slate-600">Metacarpianos (bipeniformes).</td>
+                          <td className="px-6 py-5 text-slate-600">Falanges prox. 2-4.</td>
+                          <td className="px-6 py-5 text-slate-600">Abducción de los dedos (se alejan del eje).</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <div className="space-y-2">
-                    <p className="font-bold text-slate-700">Lateral/Posterior</p>
-                    <p className="text-xs text-slate-500 italic">Braquiorradial, Extensores radiales, Supinador.</p>
+                </div>
+                
+                <div className="mt-12 space-y-6">
+                  <h3 className="text-xl font-bold text-slate-800 border-l-4 border-emerald-500 pl-3">Fichas de Estudio Detalladas (Latarjet)</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[
+                      {
+                        n: "Bíceps Braquial",
+                        o: "C. Larga (Tub. supraglenoideo), C. Corta (Apóf. coracoides)",
+                        i: "Tuberosidad del radio y aponeurosis bicipital",
+                        f: "Flexión y supinación del antebrazo. El tendón de la cabeza larga pasa por el surco intertubercular."
+                      },
+                      {
+                        n: "Tríceps Braquial",
+                        o: "C. Larga (Tub. infraglenoideo), C. Lat/Med (Húmero post)",
+                        i: "Olécranon del cúbito",
+                        f: "Extensión del antebrazo. El tendón común es ancho y potente."
+                      },
+                      {
+                        n: "Deltoides",
+                        o: "Clavícula, acromion y espina de la escápula",
+                        i: "Tuberosidad deltoidea del húmero",
+                        f: "Abducción del brazo (principal). Músculo multipeniforme con tendones internos potentes."
+                      },
+                      {
+                        n: "Pectoral Mayor",
+                        o: "Clavícula, esternón y cartílagos costales",
+                        i: "Labio lateral del surco intertubercular (húmero)",
+                        f: "Aducción y rotación interna del brazo. Tendón de inserción en forma de 'U' o 'J'."
+                      },
+                      {
+                        n: "Braquiorradial",
+                        o: "Cresta supracondílea lateral del húmero",
+                        i: "Apófisis estiloides del radio",
+                        f: "Flexión del antebrazo. Su largo tendón forma el límite lateral de la tabaquera anatómica."
+                      },
+                      {
+                        n: "Supinador",
+                        o: "Epicóndilo lateral del húmero y cresta del m. supinador del cúbito",
+                        i: "Cara lateral, posterior y anterior del tercio proximal del radio",
+                        f: "Supinación del antebrazo. Rodea el cuello del radio."
+                      }
+                    ].map((m, idx) => (
+                      <div key={idx} className="bg-white p-5 rounded-2xl border shadow-sm hover:shadow-md transition-shadow">
+                        <h4 className="font-bold text-emerald-700 mb-3 border-b pb-2">{m.n}</h4>
+                        <div className="space-y-2 text-sm text-slate-600">
+                          <p><span className="font-bold text-slate-800">Origen:</span> {m.o}</p>
+                          <p><span className="font-bold text-slate-800">Inserción:</span> {m.i}</p>
+                          <p><span className="font-bold text-slate-800">Función:</span> {m.f}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-12 bg-slate-800 text-white p-8 rounded-3xl shadow-xl">
+                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <Layers className="w-8 h-8 text-emerald-400" />
+                    Topografía y Espacios Axilares (Latarjet)
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                    <div className="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
+                      <h4 className="font-bold text-emerald-400 mb-2">Espacio Axilar Medial (Triángulo de los Redondos)</h4>
+                      <p>Límites: Redondo menor (sup), Redondo mayor (inf), Cabeza larga del tríceps (lat). Contenido: <span className="font-bold">Arteria circunfleja de la escápula</span>.</p>
+                    </div>
+                    <div className="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
+                      <h4 className="font-bold text-emerald-400 mb-2">Espacio Axilar Lateral (Cuadrilátero de Velpeau)</h4>
+                      <p>Límites: Redondo menor (sup), Redondo mayor (inf), Cabeza larga del tríceps (med), Húmero (lat). Contenido: <span className="font-bold">Nervio axilar</span> y <span className="font-bold">Arteria circunfleja humeral posterior</span>.</p>
+                    </div>
+                    <div className="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
+                      <h4 className="font-bold text-emerald-400 mb-2">Triángulo Húmerotricipital (Avelino Gutiérrez)</h4>
+                      <p>Límites: Redondo mayor (sup), Cabeza larga del tríceps (med), Húmero (lat). Contenido: <span className="font-bold">Nervio radial</span> y <span className="font-bold">Arteria braquial profunda</span>.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-12 bg-blue-900 text-white p-8 rounded-3xl shadow-xl">
+                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <Info className="w-8 h-8 text-blue-300" />
+                    Tendones, Aponeurosis y Vainas (Latarjet)
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-base leading-relaxed">
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold text-blue-200 border-b border-blue-700 pb-2">Estructuras de Contención</h4>
+                      <p>
+                        <span className="font-bold text-blue-300">Retináculo Flexor (Ligamento Anular del Carpo):</span> Puente fibroso que transforma el surco del carpo en el <span className="italic">túnel carpiano</span>. Por él pasan los tendones de los flexores de los dedos y el nervio mediano.
+                      </p>
+                      <p>
+                        <span className="font-bold text-blue-300">Retináculo Extensor:</span> Banda fibrosa en la cara dorsal de la muñeca que mantiene los tendones extensores en su lugar durante la extensión de la mano.
+                      </p>
+                      <p>
+                        <span className="font-bold text-blue-300">Aponeurosis Palmar:</span> Tejido fibroso denso y triangular que protege los vasos y nervios de la palma, proporcionando una inserción firme a la piel.
+                      </p>
+                    </div>
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold text-blue-200 border-b border-blue-700 pb-2">Vainas y Deslizamiento</h4>
+                      <p>
+                        <span className="font-bold text-blue-300">Vainas Sinoviales:</span> Sacos de doble pared que rodean los tendones donde estos pasan por túneles osteofibrosos, facilitando el deslizamiento sin fricción.
+                      </p>
+                      <p>
+                        <span className="font-bold text-blue-300">Vainas Fibrosas de los Dedos:</span> Túneles que mantienen los tendones flexores pegados a las falanges, evitando el efecto de "cuerda de arco" durante la flexión.
+                      </p>
+                      <p>
+                        <span className="font-bold text-blue-300">Corredera Bicipital:</span> El tendón de la cabeza larga del bíceps está rodeado por una vaina sinovial que es una extensión de la cavidad articular del hombro.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1632,7 +2006,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-2xl border shadow-sm space-y-6">
               <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3">Sistema Arterial</h3>
-              <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
                 <ImageCard 
                   src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray525.png"
                   alt="Arteria Axilar"
@@ -1648,24 +2022,19 @@ export default function App() {
                   alt="Arterias Antebrazo"
                   caption="Arterias Radial y Cubital."
                 />
-                <ImageCard 
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray528.png"
-                  alt="Arcos Palmares"
-                  caption="Vascularización de la mano."
-                />
               </div>
               <div className="space-y-4">
                 {[
-                  { n: "Axilar", d: "Continuación de la subclavia. Ramas torácicas y circunflejas." },
-                  { n: "Braquial", d: "Desciende por el canal braquial. Da la Braquial Profunda." },
-                  { n: "Radial", d: "Lateral. Pasa por el canal del pulso." },
-                  { n: "Cubital", d: "Medial. Forma el arco palmar superficial." }
+                  { n: "Axilar", d: "Continuación de la subclavia. Pasa por la axila (ver Húmero)." },
+                  { n: "Braquial", d: "Desciende por el brazo. Irriga el Bíceps (ver Miología)." },
+                  { n: "Radial", d: "Lateral. Pasa por el Radio (ver Osteología)." },
+                  { n: "Cubital", d: "Medial. Pasa por el Cúbito (ver Osteología)." }
                 ].map((art, i) => (
                   <div key={i} className="flex gap-4 items-start">
-                    <div className="bg-red-100 text-red-600 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-xs">{i+1}</div>
+                    <div className="bg-red-100 text-red-600 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-base">{i+1}</div>
                     <div>
-                      <p className="font-bold text-slate-800 text-sm">Arteria {art.n}</p>
-                      <p className="text-xs text-slate-500">{art.d}</p>
+                      <p className="font-bold text-slate-800 text-base">Arteria <Link to="angiology">{art.n}</Link></p>
+                      <p className="text-base text-slate-500">{art.d}</p>
                     </div>
                   </div>
                 ))}
@@ -1674,7 +2043,7 @@ export default function App() {
 
             <div className="bg-white p-6 rounded-2xl border shadow-sm space-y-6">
               <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3">Retorno Venoso</h3>
-              <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
                 <ImageCard 
                   src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray574.png"
                   alt="Venas Superficiales"
@@ -1690,22 +2059,17 @@ export default function App() {
                   alt="Venas del Antebrazo"
                   caption="Venas superficiales del antebrazo."
                 />
-                <ImageCard 
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray577.png"
-                  alt="Vena Axilar"
-                  caption="Vena Axilar y Subclavia."
-                />
               </div>
               <div className="space-y-4">
                 <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
-                  <p className="font-bold text-blue-800 text-sm mb-2">Venas Superficiales Clave</p>
-                  <ul className="text-sm text-blue-700 space-y-2">
-                    <li className="flex justify-between"><span>Vena Cefálica</span> <span className="text-xs opacity-70">Lateral</span></li>
-                    <li className="flex justify-between"><span>Vena Basílica</span> <span className="text-xs opacity-70">Medial</span></li>
-                    <li className="flex justify-between"><span>M Venosa</span> <span className="text-xs opacity-70">Fosa del codo</span></li>
+                  <p className="font-bold text-blue-800 text-base mb-2">Venas Superficiales Clave</p>
+                  <ul className="text-base text-blue-700 space-y-2">
+                    <li className="flex justify-between"><span>Vena Cefálica</span> <span className="text-base opacity-70">Lateral</span></li>
+                    <li className="flex justify-between"><span>Vena Basílica</span> <span className="text-base opacity-70">Medial</span></li>
+                    <li className="flex justify-between"><span>M Venosa</span> <span className="text-base opacity-70">Fosa del codo</span></li>
                   </ul>
                 </div>
-                <p className="text-xs text-slate-500 italic">Nota: Las venas profundas suelen ser dobles y acompañan a las arterias homónimas.</p>
+                <p className="text-base text-slate-500 italic">Nota: Las venas profundas suelen ser dobles y acompañan a las arterias homónimas.</p>
               </div>
             </div>
           </div>
@@ -1714,50 +2078,46 @@ export default function App() {
         {/* Neurology */}
         <Section title="Neurología: Plexo Braquial" active={activeTab === 'neurology'}>
           <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-8">
-              <div className="grid grid-cols-2 gap-4 items-center">
-                <div className="grid grid-cols-2 gap-2">
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Brachial_plexus_2.svg"
-                    alt="Plexo Braquial"
-                    caption="Diagrama de troncos y fascículos."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray807.png"
-                    alt="Plexo Braquial (Gray)"
-                    caption="Anatomía del Plexo Braquial."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray808.png"
-                    alt="Nervios del Brazo"
-                    caption="Distribución nerviosa en el brazo."
-                  />
-                  <ImageCard 
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray810.png"
-                    alt="Nervios de la Mano"
-                    caption="Inervación de la mano."
-                  />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <ImageCard 
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray807.png"
+                alt="Plexo Braquial (Gray)"
+                caption="Anatomía del Plexo Braquial."
+              />
+              <ImageCard 
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray808.png"
+                alt="Nervios del Brazo"
+                caption="Distribución nerviosa en el brazo."
+              />
+              <ImageCard 
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray810.png"
+                alt="Nervios de la Mano"
+                caption="Inervación de la mano."
+              />
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <h4 className="text-lg font-bold text-slate-800">Organización del Plexo</h4>
+                <p className="text-base text-slate-600 leading-relaxed">Se origina de los ramos anteriores de C5 a T1. Se divide en raíces, troncos, divisiones, fascículos y finalmente ramos terminales.</p>
+                <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 text-base text-blue-800 italic">
+                  Nota: El plexo braquial proporciona la inervación motora y sensitiva para todo el miembro superior.
                 </div>
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <h4 className="text-lg font-bold text-slate-800">Organización del Plexo</h4>
-                  <p className="text-sm text-slate-600 leading-relaxed">Se origina de los ramos anteriores de C5 a T1. Se divide en raíces, troncos, divisiones, fascículos y finalmente ramos terminales.</p>
-                </div>
-                <div className="space-y-3">
-                  {[
-                    { f: "Lateral", n: "Musculocutáneo", i: "Flexores del brazo" },
-                    { f: "Medial", n: "Cubital", i: "Intrínsecos mano" },
-                    { f: "Posterior", n: "Radial / Axilar", i: "Extensores / Deltoides" },
-                    { f: "Lat + Med", n: "Mediano", i: "Flexores antebrazo / Tenar" }
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-4 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                      <div className="bg-blue-600 text-white p-2 rounded-lg"><Zap className="w-4 h-4" /></div>
-                      <div className="text-xs">
-                        <p className="font-bold text-slate-800">Fascículo {item.f} → N. {item.n}</p>
-                        <p className="text-slate-500">{item.i}</p>
-                      </div>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { f: "Lateral", n: "Musculocutáneo", i: "Flexores brazo (Bíceps, Braquial)", t: "myology" },
+                  { f: "Medial", n: "Cubital", i: "Intrínsecos mano (ver Mano)", t: "osteology" },
+                  { f: "Posterior", n: "Radial / Axilar", i: "Extensores / Deltoides", t: "myology" },
+                  { f: "Lat + Med", n: "Mediano", i: "Flexores antebrazo / Tenar", t: "myology" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div className="bg-blue-600 text-white p-2 rounded-lg"><Zap className="w-4 h-4" /></div>
+                    <div className="text-base">
+                      <p className="font-bold text-slate-800">Fascículo {item.f} → N. <Link to={item.t}>{item.n}</Link></p>
+                      <p className="text-slate-500">{item.i}</p>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -1768,7 +2128,7 @@ export default function App() {
           <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-xl mb-6">
             <div className="flex gap-3">
               <Info className="w-5 h-5 text-blue-600 shrink-0" />
-              <p className="text-sm text-blue-800">
+              <p className="text-base text-blue-800">
                 <strong>Instrucciones:</strong> Carga un archivo <strong>.glb</strong>. El sistema identificará automáticamente huesos, músculos y vasos según sus nombres internos. Puedes ocultar capas completas o piezas individuales haciendo clic sobre ellas.
               </p>
             </div>
@@ -1783,7 +2143,7 @@ export default function App() {
 
       </main>
 
-      <footer className="bg-slate-900 text-slate-500 py-8 px-4 text-center text-sm border-t border-slate-800">
+      <footer className="bg-slate-900 text-slate-500 py-8 px-4 text-center text-base border-t border-slate-800">
         <p>© 2024 BioMod - Proyecto Educativo de Anatomía Humana</p>
         <p className="mt-2 opacity-50">Desarrollado para estudiantes de ciencias de la salud</p>
       </footer>
