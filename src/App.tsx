@@ -145,7 +145,19 @@ const QUESTION_BANK: Question[] = [
   {q: "¿Cómo se denomina la inflamación del epicóndilo lateral del húmero?", a: "Codo de tenista", opts: ["Codo de golfista", "Codo de tenista", "Bursitis olecraniana", "Artrosis de codo"], category: "Artrología"},
   {q: "¿Qué ligamento es fundamental para la estabilidad de la articulación esternoclavicular?", a: "Ligamento costoclavicular", opts: ["Ligamento coracoclavicular", "Ligamento costoclavicular", "Ligamento acromioclavicular", "Ligamento glenohumeral"], category: "Artrología"},
   {q: "¿Qué tipo de articulación es la radiocubital distal?", a: "Trocoide (Pivote)", opts: ["Gínglimo", "Trocoide (Pivote)", "Plana", "Esferoidea"], category: "Artrología"},
-  {q: "¿Qué estructura se interpone en la articulación esternoclavicular para mejorar la congruencia?", a: "Disco articular", opts: ["Rodete", "Disco articular", "Menisco", "Ligamento interclavicular"], category: "Artrología"}
+  {q: "¿Qué estructura se interpone en la articulación esternoclavicular para mejorar la congruencia?", a: "Disco articular", opts: ["Rodete", "Disco articular", "Menisco", "Ligamento interclavicular"], category: "Artrología"},
+  
+  // --- VERDADERO / FALSO (10) ---
+  {q: "El músculo supraespinoso es el principal rotador interno del brazo.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Miología"},
+  {q: "La arteria radial pasa por la tabaquera anatómica.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Angiología"},
+  {q: "El nervio cubital inerva a todos los músculos de la eminencia tenar.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Neurología"},
+  {q: "La escápula es un hueso plano.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Osteología"},
+  {q: "La articulación glenohumeral es una enartrosis.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Artrología"},
+  {q: "El músculo tríceps braquial tiene tres cabezas de origen.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Miología"},
+  {q: "La vena cefálica es medial respecto a la vena basílica en el brazo.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Angiología"},
+  {q: "El radio es el hueso lateral del antebrazo en posición anatómica.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Osteología"},
+  {q: "El nervio mediano pasa por el túnel carpiano.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Neurología"},
+  {q: "La articulación del codo es una articulación de tipo esferoidea.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Artrología"}
 ];
 
 // --- Components ---
@@ -828,6 +840,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [selectedOpt, setSelectedOpt] = useState<string | null>(null);
+  const [showFeedback, setShowFeedback] = useState(false);
   const [quizMode, setQuizMode] = useState<string>('all');
 
   const startQuiz = (mode: string) => {
@@ -836,7 +849,7 @@ const Quiz = () => {
     let count = 10;
 
     if (mode === 'mock') {
-      count = 15;
+      count = 20; // Increased for mock
     } else if (mode !== 'all') {
       pool = pool.filter(q => q.category.toLowerCase() === mode.toLowerCase());
       count = Math.min(pool.length, 10);
@@ -848,32 +861,35 @@ const Quiz = () => {
     setScore(0);
     setUserAnswers([]);
     setSelectedOpt(null);
+    setShowFeedback(false);
     setGameState('playing');
   };
 
   const handleSelect = (opt: string) => {
+    if (showFeedback) return;
+    
     setSelectedOpt(opt);
-  };
-
-  const nextQuestion = () => {
-    if (!selectedOpt) return;
-
+    setShowFeedback(true);
+    
     const currentQ = currentQuestions[qIndex];
-    const isCorrect = selectedOpt === currentQ.a;
+    const isCorrect = opt === currentQ.a;
+    
+    if (isCorrect) setScore(prev => prev + 1);
     
     const newAnswer: UserAnswer = {
       question: currentQ.q,
-      selected: selectedOpt,
+      selected: opt,
       correct: currentQ.a,
       isCorrect
     };
+    setUserAnswers(prev => [...prev, newAnswer]);
+  };
 
-    setUserAnswers([...userAnswers, newAnswer]);
-    if (isCorrect) setScore(score + 1);
-
+  const nextQuestion = () => {
     if (qIndex < currentQuestions.length - 1) {
       setQIndex(qIndex + 1);
       setSelectedOpt(null);
+      setShowFeedback(false);
     } else {
       setGameState('result');
     }
@@ -881,25 +897,26 @@ const Quiz = () => {
 
   if (gameState === 'start') {
     const modes = [
-      { id: 'Osteología', label: 'Osteología', icon: <Bone className="w-6 h-6" />, desc: '10 preguntas sobre huesos y accidentes óseos.' },
-      { id: 'Artrología', label: 'Artrología', icon: <Activity className="w-6 h-6" />, desc: '10 preguntas sobre articulaciones y ligamentos.' },
-      { id: 'Miología', label: 'Miología', icon: <Zap className="w-6 h-6" />, desc: '10 preguntas sobre músculos y acciones.' },
-      { id: 'Angiología', label: 'Vascularización', icon: <Activity className="w-6 h-6" />, desc: '10 preguntas sobre arterias y venas.' },
-      { id: 'Neurología', label: 'Neurología', icon: <Zap className="w-6 h-6" />, desc: '10 preguntas sobre nervios y plexos.' },
-      { id: 'mock', label: 'Simulacro de Parcial', icon: <Layers className="w-6 h-6" />, desc: '15 preguntas aleatorias de todos los temas.', highlight: true },
+      { id: 'Osteología', label: 'Osteología', icon: <Bone className="w-6 h-6" />, desc: 'Huesos, accidentes óseos y marcas anatómicas.' },
+      { id: 'Artrología', label: 'Artrología', icon: <Activity className="w-6 h-6" />, desc: 'Articulaciones, ligamentos y tipos de movimiento.' },
+      { id: 'Miología', label: 'Miología', icon: <Zap className="w-6 h-6" />, desc: 'Músculos, orígenes, inserciones y funciones.' },
+      { id: 'Angiología', label: 'Vascularización', icon: <Activity className="w-6 h-6" />, desc: 'Arterias, venas y drenaje linfático.' },
+      { id: 'Neurología', label: 'Neurología', icon: <Zap className="w-6 h-6" />, desc: 'Nervios, plexo braquial e inervación.' },
+      { id: 'mock', label: 'Simulacro de Examen', icon: <Layers className="w-6 h-6" />, desc: '20 preguntas aleatorias de todos los temas.', highlight: true },
     ];
 
     return (
       <div className="max-w-4xl mx-auto py-12 px-4">
         <div className="text-center mb-12">
           <h3 className="text-4xl font-black text-slate-800 mb-4">Centro de Evaluación</h3>
-          <p className="text-slate-600 max-w-2xl mx-auto">Selecciona una modalidad para poner a prueba tus conocimientos. Los simulacros integran todo el contenido del banco de preguntas.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto">Pon a prueba tus conocimientos sobre la anatomía del miembro superior. Incluye preguntas de opción múltiple y verdadero/falso.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {modes.map((mode) => (
             <button 
               key={mode.id}
+              id={`quiz-mode-${mode.id}`}
               onClick={() => startQuiz(mode.id)}
               className={cn(
                 "p-6 rounded-3xl border-2 text-left transition-all group relative overflow-hidden",
@@ -936,7 +953,7 @@ const Quiz = () => {
       <div className="max-w-2xl mx-auto py-8 px-4">
         <div className="mb-6 space-y-2">
           <div className="flex justify-between text-sm font-bold text-slate-400 uppercase tracking-widest">
-            <span>{quizMode === 'mock' ? 'Simulacro de Parcial' : `Quiz de ${quizMode}`}</span>
+            <span>{quizMode === 'mock' ? 'Simulacro de Examen' : `Quiz de ${quizMode}`}</span>
             <span>Pregunta {qIndex + 1} de {currentQuestions.length}</span>
           </div>
           <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
@@ -948,38 +965,71 @@ const Quiz = () => {
         </div>
 
         <div className="bg-white p-6 md:p-8 rounded-3xl shadow-xl border space-y-6">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between">
             <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">{q.category}</span>
+            {showFeedback && (
+              <span className={cn(
+                "font-bold text-sm flex items-center gap-1",
+                selectedOpt === q.a ? "text-emerald-600" : "text-red-600"
+              )}>
+                {selectedOpt === q.a ? <><CheckCircle2 className="w-4 h-4" /> ¡Correcto!</> : <><XCircle className="w-4 h-4" /> Incorrecto</>}
+              </span>
+            )}
           </div>
           <h3 className="text-xl md:text-2xl font-bold text-slate-800 leading-tight">{q.q}</h3>
+          
           <div className="space-y-3">
-            {q.opts.map((opt) => (
-              <button
-                key={opt}
-                onClick={() => handleSelect(opt)}
-                className={cn(
-                  "w-full text-left p-4 rounded-xl border-2 transition-all flex justify-between items-center group",
-                  selectedOpt === opt 
-                    ? "border-blue-600 bg-blue-50 text-blue-700 shadow-sm" 
-                    : "border-slate-100 hover:border-blue-200 hover:bg-slate-50 text-slate-600"
-                )}
-              >
-                <span className="font-medium">{opt}</span>
-                <div className={cn(
-                  "w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all",
-                  selectedOpt === opt ? "border-blue-600 bg-blue-600 text-white" : "border-slate-200"
-                )}>
-                  {selectedOpt === opt && <CheckCircle2 className="w-4 h-4" />}
-                </div>
-              </button>
-            ))}
+            {q.opts.map((opt) => {
+              const isCorrect = opt === q.a;
+              const isSelected = opt === selectedOpt;
+              
+              return (
+                <button
+                  key={opt}
+                  disabled={showFeedback}
+                  onClick={() => handleSelect(opt)}
+                  className={cn(
+                    "w-full text-left p-4 rounded-xl border-2 transition-all flex justify-between items-center group",
+                    !showFeedback && "hover:border-blue-200 hover:bg-slate-50",
+                    showFeedback && isCorrect && "border-emerald-500 bg-emerald-50 text-emerald-700",
+                    showFeedback && isSelected && !isCorrect && "border-red-500 bg-red-50 text-red-700",
+                    showFeedback && !isSelected && !isCorrect && "opacity-50 border-slate-100",
+                    !showFeedback && isSelected && "border-blue-600 bg-blue-50 text-blue-700"
+                  )}
+                >
+                  <span className="font-medium">{opt}</span>
+                  <div className={cn(
+                    "w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all",
+                    showFeedback && isCorrect ? "border-emerald-500 bg-emerald-500 text-white" : 
+                    showFeedback && isSelected && !isCorrect ? "border-red-500 bg-red-500 text-white" :
+                    isSelected ? "border-blue-600 bg-blue-600 text-white" : "border-slate-200"
+                  )}>
+                    {showFeedback && isCorrect && <CheckCircle2 className="w-4 h-4" />}
+                    {showFeedback && isSelected && !isCorrect && <XCircle className="w-4 h-4" />}
+                    {!showFeedback && isSelected && <CheckCircle2 className="w-4 h-4" />}
+                  </div>
+                </button>
+              );
+            })}
           </div>
+
+          {showFeedback && (
+            <div className={cn(
+              "p-4 rounded-xl text-sm leading-relaxed animate-in fade-in slide-in-from-bottom-2",
+              selectedOpt === q.a ? "bg-emerald-50 text-emerald-800 border border-emerald-100" : "bg-red-50 text-red-800 border border-red-100"
+            )}>
+              <p className="font-bold mb-1">{selectedOpt === q.a ? "¡Excelente!" : "Respuesta Correcta:"}</p>
+              <p>{selectedOpt === q.a ? "Has respondido correctamente a esta pregunta." : `La respuesta correcta es: ${q.a}`}</p>
+            </div>
+          )}
+
           <button 
-            disabled={!selectedOpt}
+            disabled={!showFeedback}
             onClick={nextQuestion}
-            className="w-full bg-slate-900 text-white py-4 rounded-xl font-bold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-800 transition-all shadow-lg"
+            className="w-full bg-slate-900 text-white py-4 rounded-xl font-bold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-800 transition-all shadow-lg flex items-center justify-center gap-2"
           >
-            {qIndex === currentQuestions.length - 1 ? "Finalizar Intento" : "Siguiente Pregunta"}
+            {qIndex === currentQuestions.length - 1 ? "Ver Resultados Finales" : "Siguiente Pregunta"}
+            <ChevronRight className="w-5 h-5" />
           </button>
         </div>
       </div>
@@ -1584,13 +1634,13 @@ export default function App() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-2xl border shadow-sm">
-                <h4 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                  <div className="w-2 h-6 bg-red-500 rounded-full"></div>
-                  Brazo
+            <div className="space-y-8">
+              <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm">
+                <h4 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                  <div className="w-2 h-8 bg-red-500 rounded-full"></div>
+                  Músculos del Brazo
                 </h4>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray414.png"
                     alt="Bíceps Braquial"
@@ -1652,12 +1702,13 @@ export default function App() {
                   </table>
                 </div>
               </div>
-              <div className="bg-white p-6 rounded-2xl border shadow-sm">
-                <h4 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                  <div className="w-2 h-6 bg-blue-500 rounded-full"></div>
-                  Antebrazo
+
+              <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm">
+                <h4 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                  <div className="w-2 h-8 bg-blue-500 rounded-full"></div>
+                  Músculos del Antebrazo
                 </h4>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <ImageCard 
                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray418.png"
                     alt="Flexores Superficiales"
@@ -1681,7 +1732,7 @@ export default function App() {
                         <th className="px-6 py-4 rounded-tl-xl border-b-2 border-emerald-200">Músculo</th>
                         <th className="px-6 py-4 border-b-2 border-emerald-200">Origen</th>
                         <th className="px-6 py-4 border-b-2 border-emerald-200">Inserción</th>
-                        <th className="px-6 py-4 rounded-tr-xl border-b-2 border-emerald-200">Función Principal</th>
+                        <th className="px-6 py-4 rounded-tr-xl border-b-2 border-emerald-200">Función</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-emerald-50">
@@ -1806,9 +1857,10 @@ export default function App() {
                     </tbody>
                   </table>
                 </div>
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 mt-6">
-                  <h4 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                    <div className="w-2 h-6 bg-emerald-500 rounded-full"></div>
+                
+                <div className="bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-100 mt-8">
+                  <h4 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                    <div className="w-2 h-8 bg-emerald-500 rounded-full"></div>
                     Músculos de la Mano
                   </h4>
                   <div className="overflow-x-auto">
@@ -1889,10 +1941,12 @@ export default function App() {
                     </table>
                   </div>
                 </div>
-                
-                <div className="mt-12 space-y-6">
-                  <h3 className="text-xl font-bold text-slate-800 border-l-4 border-emerald-500 pl-3">Fichas de Estudio Detalladas (Latarjet)</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              </div>
+            </div>
+
+            <div className="mt-16 space-y-8">
+                  <h3 className="text-2xl font-bold text-slate-800 border-l-4 border-emerald-500 pl-4">Fichas de Estudio Detalladas (Latarjet)</h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {[
                       {
                         n: "Bíceps Braquial",
@@ -1931,75 +1985,113 @@ export default function App() {
                         f: "Supinación del antebrazo. Rodea el cuello del radio."
                       }
                     ].map((m, idx) => (
-                      <div key={idx} className="bg-white p-5 rounded-2xl border shadow-sm hover:shadow-md transition-shadow">
-                        <h4 className="font-bold text-emerald-700 mb-3 border-b pb-2">{m.n}</h4>
-                        <div className="space-y-2 text-sm text-slate-600">
-                          <p><span className="font-bold text-slate-800">Origen:</span> {m.o}</p>
-                          <p><span className="font-bold text-slate-800">Inserción:</span> {m.i}</p>
-                          <p><span className="font-bold text-slate-800">Función:</span> {m.f}</p>
+                      <div key={idx} className="bg-white p-8 rounded-3xl border shadow-sm hover:shadow-md transition-all border-slate-100">
+                        <h4 className="text-xl font-bold text-emerald-700 mb-4 border-b border-emerald-100 pb-3">{m.n}</h4>
+                        <div className="space-y-4 text-base text-slate-600 leading-relaxed">
+                          <p><span className="font-bold text-slate-800 uppercase text-xs tracking-wider block mb-1">Origen</span> {m.o}</p>
+                          <p><span className="font-bold text-slate-800 uppercase text-xs tracking-wider block mb-1">Inserción</span> {m.i}</p>
+                          <p><span className="font-bold text-slate-800 uppercase text-xs tracking-wider block mb-1">Función</span> {m.f}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-12 bg-slate-800 text-white p-8 rounded-3xl shadow-xl">
-                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <Layers className="w-8 h-8 text-emerald-400" />
-                    Topografía y Espacios Axilares (Latarjet)
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-                    <div className="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
-                      <h4 className="font-bold text-emerald-400 mb-2">Espacio Axilar Medial (Triángulo de los Redondos)</h4>
-                      <p>Límites: Redondo menor (sup), Redondo mayor (inf), Cabeza larga del tríceps (lat). Contenido: <span className="font-bold">Arteria circunfleja de la escápula</span>.</p>
-                    </div>
-                    <div className="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
-                      <h4 className="font-bold text-emerald-400 mb-2">Espacio Axilar Lateral (Cuadrilátero de Velpeau)</h4>
-                      <p>Límites: Redondo menor (sup), Redondo mayor (inf), Cabeza larga del tríceps (med), Húmero (lat). Contenido: <span className="font-bold">Nervio axilar</span> y <span className="font-bold">Arteria circunfleja humeral posterior</span>.</p>
-                    </div>
-                    <div className="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
-                      <h4 className="font-bold text-emerald-400 mb-2">Triángulo Húmerotricipital (Avelino Gutiérrez)</h4>
-                      <p>Límites: Redondo mayor (sup), Cabeza larga del tríceps (med), Húmero (lat). Contenido: <span className="font-bold">Nervio radial</span> y <span className="font-bold">Arteria braquial profunda</span>.</p>
+                <div className="mt-16 bg-slate-900 text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+                  <div className="relative z-10">
+                    <h3 className="text-3xl font-bold mb-8 flex items-center gap-4">
+                      <Layers className="w-10 h-10 text-emerald-400" />
+                      Topografía y Espacios Axilares (Latarjet)
+                    </h3>
+                    <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+                      <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700 hover:bg-slate-800/60 transition-colors">
+                        <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4">
+                          <span className="text-emerald-400 font-bold">01</span>
+                        </div>
+                        <h4 className="text-xl font-bold text-emerald-400 mb-3">Espacio Axilar Medial</h4>
+                        <p className="text-slate-300 leading-relaxed mb-4 italic text-sm">Triángulo de los Redondos</p>
+                        <div className="space-y-3 text-sm">
+                          <p><span className="text-slate-500 font-bold uppercase text-[10px] tracking-widest block">Límites</span> Redondo menor (sup), Redondo mayor (inf), Cabeza larga del tríceps (lat).</p>
+                          <p><span className="text-emerald-500 font-bold uppercase text-[10px] tracking-widest block">Contenido</span> Arteria circunfleja de la escápula.</p>
+                        </div>
+                      </div>
+                      <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700 hover:bg-slate-800/60 transition-colors">
+                        <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4">
+                          <span className="text-emerald-400 font-bold">02</span>
+                        </div>
+                        <h4 className="text-xl font-bold text-emerald-400 mb-3">Espacio Axilar Lateral</h4>
+                        <p className="text-slate-300 leading-relaxed mb-4 italic text-sm">Cuadrilátero de Velpeau</p>
+                        <div className="space-y-3 text-sm">
+                          <p><span className="text-slate-500 font-bold uppercase text-[10px] tracking-widest block">Límites</span> Redondo menor (sup), Redondo mayor (inf), Cabeza larga del tríceps (med), Húmero (lat).</p>
+                          <p><span className="text-emerald-500 font-bold uppercase text-[10px] tracking-widest block">Contenido</span> Nervio axilar y Arteria circunfleja humeral posterior.</p>
+                        </div>
+                      </div>
+                      <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700 hover:bg-slate-800/60 transition-colors">
+                        <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4">
+                          <span className="text-emerald-400 font-bold">03</span>
+                        </div>
+                        <h4 className="text-xl font-bold text-emerald-400 mb-3">Triángulo Húmerotricipital</h4>
+                        <p className="text-slate-300 leading-relaxed mb-4 italic text-sm">Avelino Gutiérrez</p>
+                        <div className="space-y-3 text-sm">
+                          <p><span className="text-slate-500 font-bold uppercase text-[10px] tracking-widest block">Límites</span> Redondo mayor (sup), Cabeza larga del tríceps (med), Húmero (lat).</p>
+                          <p><span className="text-emerald-500 font-bold uppercase text-[10px] tracking-widest block">Contenido</span> Nervio radial y Arteria braquial profunda.</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full -mr-48 -mt-48 blur-3xl"></div>
                 </div>
 
-                <div className="mt-12 bg-blue-900 text-white p-8 rounded-3xl shadow-xl">
-                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <Info className="w-8 h-8 text-blue-300" />
+                <div className="mt-16 bg-gradient-to-br from-blue-900 to-indigo-950 text-white p-10 rounded-[2.5rem] shadow-2xl">
+                  <h3 className="text-3xl font-bold mb-10 flex items-center gap-4">
+                    <Info className="w-10 h-10 text-blue-300" />
                     Tendones, Aponeurosis y Vainas (Latarjet)
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-base leading-relaxed">
-                    <div className="space-y-4">
-                      <h4 className="text-lg font-semibold text-blue-200 border-b border-blue-700 pb-2">Estructuras de Contención</h4>
-                      <p>
-                        <span className="font-bold text-blue-300">Retináculo Flexor (Ligamento Anular del Carpo):</span> Puente fibroso que transforma el surco del carpo en el <span className="italic">túnel carpiano</span>. Por él pasan los tendones de los flexores de los dedos y el nervio mediano.
-                      </p>
-                      <p>
-                        <span className="font-bold text-blue-300">Retináculo Extensor:</span> Banda fibrosa en la cara dorsal de la muñeca que mantiene los tendones extensores en su lugar durante la extensión de la mano.
-                      </p>
-                      <p>
-                        <span className="font-bold text-blue-300">Aponeurosis Palmar:</span> Tejido fibroso denso y triangular que protege los vasos y nervios de la palma, proporcionando una inserción firme a la piel.
-                      </p>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-lg leading-relaxed">
+                    <div className="space-y-8">
+                      <h4 className="text-xl font-bold text-blue-200 border-b border-blue-700/50 pb-3 flex items-center gap-2">
+                        <div className="w-1.5 h-6 bg-blue-400 rounded-full"></div>
+                        Estructuras de Contención
+                      </h4>
+                      <div className="space-y-6">
+                        <div className="group">
+                          <p className="font-bold text-blue-300 text-xl mb-2 group-hover:text-white transition-colors">Retináculo Flexor</p>
+                          <p className="text-blue-100/80">Puente fibroso que transforma el surco del carpo en el <span className="italic font-medium text-white">túnel carpiano</span>. Por él pasan los tendones de los flexores de los dedos y el nervio mediano.</p>
+                        </div>
+                        <div className="group">
+                          <p className="font-bold text-blue-300 text-xl mb-2 group-hover:text-white transition-colors">Retináculo Extensor</p>
+                          <p className="text-blue-100/80">Banda fibrosa en la cara dorsal de la muñeca que mantiene los tendones extensores en su lugar durante la extensión de la mano, evitando su desplazamiento.</p>
+                        </div>
+                        <div className="group">
+                          <p className="font-bold text-blue-300 text-xl mb-2 group-hover:text-white transition-colors">Aponeurosis Palmar</p>
+                          <p className="text-blue-100/80">Tejido fibroso denso y triangular que protege los vasos y nervios de la palma, proporcionando una inserción firme a la piel para mejorar el agarre.</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-4">
-                      <h4 className="text-lg font-semibold text-blue-200 border-b border-blue-700 pb-2">Vainas y Deslizamiento</h4>
-                      <p>
-                        <span className="font-bold text-blue-300">Vainas Sinoviales:</span> Sacos de doble pared que rodean los tendones donde estos pasan por túneles osteofibrosos, facilitando el deslizamiento sin fricción.
-                      </p>
-                      <p>
-                        <span className="font-bold text-blue-300">Vainas Fibrosas de los Dedos:</span> Túneles que mantienen los tendones flexores pegados a las falanges, evitando el efecto de "cuerda de arco" durante la flexión.
-                      </p>
-                      <p>
-                        <span className="font-bold text-blue-300">Corredera Bicipital:</span> El tendón de la cabeza larga del bíceps está rodeado por una vaina sinovial que es una extensión de la cavidad articular del hombro.
-                      </p>
+                    <div className="space-y-8">
+                      <h4 className="text-xl font-bold text-blue-200 border-b border-blue-700/50 pb-3 flex items-center gap-2">
+                        <div className="w-1.5 h-6 bg-blue-400 rounded-full"></div>
+                        Vainas y Deslizamiento
+                      </h4>
+                      <div className="space-y-6">
+                        <div className="group">
+                          <p className="font-bold text-blue-300 text-xl mb-2 group-hover:text-white transition-colors">Vainas Sinoviales</p>
+                          <p className="text-blue-100/80">Sacos de doble pared que rodean los tendones donde estos pasan por túneles osteofibrosos, facilitando el deslizamiento sin fricción mediante líquido sinovial.</p>
+                        </div>
+                        <div className="group">
+                          <p className="font-bold text-blue-300 text-xl mb-2 group-hover:text-white transition-colors">Vainas Fibrosas de los Dedos</p>
+                          <p className="text-blue-100/80">Túneles que mantienen los tendones flexores pegados a las falanges, evitando el efecto de "cuerda de arco" durante la flexión potente.</p>
+                        </div>
+                        <div className="group">
+                          <p className="font-bold text-blue-300 text-xl mb-2 group-hover:text-white transition-colors">Corredera Bicipital</p>
+                          <p className="text-blue-100/80">El tendón de la cabeza larga del bíceps está rodeado por una vaina sinovial que es una extensión directa de la cavidad articular del hombro.</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </Section>
+          </Section>
 
         {/* Angiology */}
         <Section title="Vascularización: Arterias y Venas" active={activeTab === 'angiology'}>
