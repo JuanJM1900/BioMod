@@ -157,7 +157,29 @@ const QUESTION_BANK: Question[] = [
   {q: "La vena cefálica es medial respecto a la vena basílica en el brazo.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Angiología"},
   {q: "El radio es el hueso lateral del antebrazo en posición anatómica.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Osteología"},
   {q: "El nervio mediano pasa por el túnel carpiano.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Neurología"},
-  {q: "La articulación del codo es una articulación de tipo esferoidea.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Artrología"}
+  {q: "La articulación del codo es una articulación de tipo esferoidea.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Artrología"},
+
+  // --- MIEMBRO INFERIOR (20) ---
+  {q: "¿Qué hueso forma la parte posteroinferior del coxal?", a: "Isquion", opts: ["Ilion", "Pubis", "Isquion", "Sacro"], category: "Osteología"},
+  {q: "¿Cuál es el hueso más largo del cuerpo humano?", a: "Fémur", opts: ["Tibia", "Fémur", "Húmero", "Peroné"], category: "Osteología"},
+  {q: "¿Dónde se inserta el tendón rotuliano?", a: "Tuberosidad de la tibia", opts: ["Maléolo medial", "Tuberosidad de la tibia", "Cabeza del peroné", "Epicóndilo medial"], category: "Osteología"},
+  {q: "¿Qué hueso del tarso se articula con la tibia y el peroné?", a: "Astrágalo", opts: ["Calcáneo", "Astrágalo", "Navicular", "Cuboides"], category: "Osteología"},
+  {q: "¿Qué tipo de articulación es la coxofemoral?", a: "Esferoidea (Enartrosis)", opts: ["Troclear", "Esferoidea (Enartrosis)", "Condílea", "Plana"], category: "Artrología"},
+  {q: "¿Qué ligamento de la rodilla evita el desplazamiento anterior de la tibia?", a: "Ligamento cruzado anterior", opts: ["Ligamento cruzado posterior", "Ligamento cruzado anterior", "Ligamento colateral medial", "Ligamento colateral lateral"], category: "Artrología"},
+  {q: "¿Qué músculo es el principal extensor de la rodilla?", a: "Cuádriceps femoral", opts: ["Bíceps femoral", "Sartorio", "Cuádriceps femoral", "Semimembranoso"], category: "Miología"},
+  {q: "¿Qué músculo se inserta en la 'pata de ganso' junto con el grácil y el semitendinoso?", a: "Sartorio", opts: ["Recto femoral", "Sartorio", "Vasto medial", "Bíceps femoral"], category: "Miología"},
+  {q: "¿Cuál es la arteria principal que irriga el compartimento anterior del muslo?", a: "Arteria femoral", opts: ["Arteria obturatriz", "Arteria femoral", "Arteria poplítea", "Arteria tibial anterior"], category: "Angiología"},
+  {q: "¿Qué vena superficial asciende por la cara medial de la pierna y el muslo?", a: "Vena safena magna", opts: ["Vena safena parva", "Vena safena magna", "Vena femoral", "Vena poplítea"], category: "Angiología"},
+  {q: "¿Qué nervio inerva los músculos del compartimento anterior del muslo?", a: "Nervio femoral", opts: ["Nervio obturador", "Nervio ciático", "Nervio femoral", "Nervio tibial"], category: "Neurología"},
+  {q: "¿Cuál es el nervio más grueso del cuerpo humano?", a: "Nervio ciático", opts: ["Nervio femoral", "Nervio ciático", "Nervio mediano", "Nervio radial"], category: "Neurología"},
+  {q: "¿Qué hueso sesamoideo se encuentra en el tendón del cuádriceps?", a: "Rótula", opts: ["Pisiforme", "Rótula", "Astrágalo", "Cuboides"], category: "Osteología"},
+  {q: "¿Qué estructura fibrocartilaginosa mejora la congruencia en la rodilla?", a: "Meniscos", opts: ["Rodete acetabular", "Meniscos", "Ligamento cruzado", "Cápsula articular"], category: "Artrología"},
+  {q: "¿Qué músculo realiza la abducción del muslo y estabiliza la pelvis al caminar?", a: "Glúteo medio", opts: ["Glúteo mayor", "Glúteo medio", "Aductor mayor", "Piriforme"], category: "Miología"},
+  {q: "¿Qué arteria es la continuación de la femoral en el hueco poplíteo?", a: "Arteria poplítea", opts: ["Arteria tibial posterior", "Arteria poplítea", "Arteria femoral profunda", "Arteria pedia"], category: "Angiología"},
+  {q: "¿Qué nervio inerva los músculos aductores del muslo?", a: "Nervio obturador", opts: ["Nervio femoral", "Nervio obturador", "Nervio ciático", "Nervio glúteo superior"], category: "Neurología"},
+  {q: "¿Qué hueso forma el talón del pie?", a: "Calcáneo", opts: ["Astrágalo", "Calcáneo", "Cuboides", "Navicular"], category: "Osteología"},
+  {q: "¿Qué tipo de articulación es la sínfisis del pubis?", a: "Anfiartrosis (Sínfisis)", opts: ["Diartrosis", "Anfiartrosis (Sínfisis)", "Sinartrosis", "Enartrosis"], category: "Artrología"},
+  {q: "¿Qué nervio se divide en nervio tibial y nervio peroneo común?", a: "Nervio ciático", opts: ["Nervio femoral", "Nervio obturador", "Nervio ciático", "Nervio pudendo"], category: "Neurología"}
 ];
 
 // --- Components ---
@@ -218,7 +240,7 @@ const ImageCard = ({ src, alt, caption }: { src: string, alt: string, caption: s
 
   return (
     <>
-      <div className="bg-white border rounded-xl p-2 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+      <div className="bg-white border rounded-xl p-2 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col max-w-sm mx-auto">
         <div className="aspect-square bg-slate-50 rounded-lg overflow-hidden flex items-center justify-center mb-2 group relative shrink-0">
           <img 
             src={src} 
@@ -1117,6 +1139,7 @@ const Quiz = () => {
 
 // --- Main App ---
 export default function App() {
+  const [activeRegion, setActiveRegion] = useState<'superior' | 'inferior'>('superior');
   const [activeTab, setActiveTab] = useState('osteology');
 
   const Link = ({ to, children }: { to: string, children: React.ReactNode }) => (
@@ -1138,6 +1161,34 @@ export default function App() {
         BioMod v1.0.2 - Render Check
       </div>
       <Header />
+      
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto flex justify-center gap-4 p-2">
+          <button 
+            onClick={() => { setActiveRegion('superior'); setActiveTab('osteology'); }}
+            className={cn(
+              "px-6 py-2 rounded-full text-sm font-bold transition-all",
+              activeRegion === 'superior' 
+                ? "bg-blue-600 text-white shadow-md" 
+                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+            )}
+          >
+            Miembro Superior
+          </button>
+          <button 
+            onClick={() => { setActiveRegion('inferior'); setActiveTab('osteology'); }}
+            className={cn(
+              "px-6 py-2 rounded-full text-sm font-bold transition-all",
+              activeRegion === 'inferior' 
+                ? "bg-emerald-600 text-white shadow-md" 
+                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+            )}
+          >
+            Miembro Inferior
+          </button>
+        </div>
+      </div>
+
       <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="flex-1 max-w-7xl mx-auto w-full p-4 md:p-8">
@@ -1150,8 +1201,10 @@ export default function App() {
           <span className="text-emerald-600 font-medium italic">Si ves los iconos de la izquierda, el internet está funcionando.</span>
         </div>
 
-        {/* Osteology */}
-        <Section title="Osteología: Esqueleto del Miembro Superior" active={activeTab === 'osteology'}>
+        {activeRegion === 'superior' && (
+          <>
+            {/* Osteology */}
+            <Section title="Osteología: Esqueleto del Miembro Superior" active={activeTab === 'osteology'}>
           <div className="grid grid-cols-1 gap-8">
             {/* Cintura Escapular */}
             <div className="bg-white p-6 rounded-2xl border shadow-sm">
@@ -2089,79 +2142,108 @@ export default function App() {
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
-          </Section>
+            </div>
+        </Section>
 
         {/* Angiology */}
         <Section title="Vascularización: Arterias y Venas" active={activeTab === 'angiology'}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-2xl border shadow-sm space-y-6">
-              <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3">Sistema Arterial</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-                <ImageCard 
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray525.png"
-                  alt="Arteria Axilar"
-                  caption="Arteria Axilar y sus ramas."
-                />
-                <ImageCard 
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray526.png"
-                  alt="Arteria Braquial"
-                  caption="Arteria Braquial en el brazo."
-                />
-                <ImageCard 
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray527.png"
-                  alt="Arterias Antebrazo"
-                  caption="Arterias Radial y Cubital."
-                />
-              </div>
-              <div className="space-y-4">
-                {[
-                  { n: "Axilar", d: "Continuación de la subclavia. Pasa por la axila (ver Húmero)." },
-                  { n: "Braquial", d: "Desciende por el brazo. Irriga el Bíceps (ver Miología)." },
-                  { n: "Radial", d: "Lateral. Pasa por el Radio (ver Osteología)." },
-                  { n: "Cubital", d: "Medial. Pasa por el Cúbito (ver Osteología)." }
-                ].map((art, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <div className="bg-red-100 text-red-600 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-base">{i+1}</div>
-                    <div>
-                      <p className="font-bold text-slate-800 text-base">Arteria <Link to="angiology">{art.n}</Link></p>
-                      <p className="text-base text-slate-500">{art.d}</p>
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                <h3 className="text-2xl font-bold text-red-700 border-l-4 border-red-600 pl-4">Sistema Arterial (Latarjet)</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray525.png"
+                    alt="Arteria Axilar"
+                    caption="Arteria Axilar y sus ramas."
+                  />
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray526.png"
+                    alt="Arteria Braquial"
+                    caption="Arteria Braquial en el brazo."
+                  />
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray527.png"
+                    alt="Arterias Antebrazo"
+                    caption="Arterias Radial y Cubital."
+                  />
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="bg-red-50 p-5 rounded-2xl border border-red-100">
+                    <h4 className="font-bold text-red-800 text-lg mb-3 flex items-center gap-2">
+                      <Activity className="w-5 h-5" /> Arteria Axilar
+                    </h4>
+                    <p className="text-sm text-slate-700 leading-relaxed mb-4">
+                      Continuación de la subclavia, se extiende desde el borde posterior de la clavícula hasta el borde inferior del pectoral mayor.
+                    </p>
+                    <div className="grid grid-cols-1 gap-2 text-xs">
+                      <div className="bg-white p-3 rounded-xl border"><span className="font-bold text-red-600 uppercase block mb-1">Relaciones</span> Dividida en 3 porciones por el <Link to="myology">pectoral menor</Link>. Se acompaña de la vena axilar (medial) y los fascículos del plexo braquial.</div>
+                      <div className="bg-white p-3 rounded-xl border"><span className="font-bold text-red-600 uppercase block mb-1">Ramas</span> Torácica superior, toracoacromial, torácica lateral, subescapular, circunflejas humerales ant. y post.</div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            <div className="bg-white p-6 rounded-2xl border shadow-sm space-y-6">
-              <h3 className="text-xl font-bold text-blue-700 border-l-4 border-blue-600 pl-3">Retorno Venoso</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-                <ImageCard 
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray574.png"
-                  alt="Venas Superficiales"
-                  caption="Venas cefálica y basílica."
-                />
-                <ImageCard 
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray575.png"
-                  alt="Venas de la Mano"
-                  caption="Red venosa dorsal de la mano."
-                />
-                <ImageCard 
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray576.png"
-                  alt="Venas del Antebrazo"
-                  caption="Venas superficiales del antebrazo."
-                />
-              </div>
-              <div className="space-y-4">
-                <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
-                  <p className="font-bold text-blue-800 text-base mb-2">Venas Superficiales Clave</p>
-                  <ul className="text-base text-blue-700 space-y-2">
-                    <li className="flex justify-between"><span>Vena Cefálica</span> <span className="text-base opacity-70">Lateral</span></li>
-                    <li className="flex justify-between"><span>Vena Basílica</span> <span className="text-base opacity-70">Medial</span></li>
-                    <li className="flex justify-between"><span>M Venosa</span> <span className="text-base opacity-70">Fosa del codo</span></li>
-                  </ul>
+                  <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                    <h4 className="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                      <Activity className="w-5 h-5" /> Arteria Braquial (Humeral)
+                    </h4>
+                    <p className="text-sm text-slate-700 leading-relaxed mb-4">
+                      Se sitúa en el conducto braquial (de Crueilhier), acompañada por las venas braquiales y el nervio mediano.
+                    </p>
+                    <div className="grid grid-cols-1 gap-2 text-xs">
+                      <div className="bg-white p-3 rounded-xl border"><span className="font-bold text-slate-800 uppercase block mb-1">Ramas Colaterales</span> Braquial profunda (acompaña al n. radial), colaterales cubitales superior e inferior.</div>
+                      <div className="bg-white p-3 rounded-xl border"><span className="font-bold text-slate-800 uppercase block mb-1">Terminación</span> En la fosa del codo, se divide en radial y cubital.</div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-base text-slate-500 italic">Nota: Las venas profundas suelen ser dobles y acompañan a las arterias homónimas.</p>
+              </div>
+
+              <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-4">Retorno Venoso y Linfático</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray574.png"
+                    alt="Venas Superficiales"
+                    caption="Venas cefálica y basílica."
+                  />
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray575.png"
+                    alt="Venas de la Mano"
+                    caption="Red venosa dorsal de la mano."
+                  />
+                  <ImageCard 
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray576.png"
+                    alt="Venas del Antebrazo"
+                    caption="Venas superficiales del antebrazo."
+                  />
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100">
+                    <h4 className="font-bold text-blue-800 text-lg mb-3">Venas Superficiales (Latarjet)</h4>
+                    <p className="text-sm text-slate-700 mb-4">Se originan en la red venosa dorsal de la mano y no acompañan a las arterias.</p>
+                    <ul className="space-y-3 text-sm">
+                      <li className="flex gap-3 items-start">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0"></div>
+                        <p><span className="font-bold text-blue-700">Vena Cefálica:</span> Asciende por la cara lateral. En el hombro, pasa por el surco deltopectoral y drena en la vena axilar.</p>
+                      </li>
+                      <li className="flex gap-3 items-start">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0"></div>
+                        <p><span className="font-bold text-blue-700">Vena Basílica:</span> Asciende por la cara medial. Perfora la fascia braquial para unirse a las venas braquiales.</p>
+                      </li>
+                      <li className="flex gap-3 items-start">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0"></div>
+                        <p><span className="font-bold text-blue-700">M Venosa del Codo:</span> Formada por la unión de la vena mediana del antebrazo con las venas cefálica y basílica.</p>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                    <h4 className="font-bold text-slate-800 text-lg mb-3">Nodos Linfáticos Axilares</h4>
+                    <p className="text-sm text-slate-600">Latarjet los divide en 5 grupos principales: Braquial (lateral), Pectoral (anterior), Subescapular (posterior), Central y Apical (subclavicular).</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2169,47 +2251,91 @@ export default function App() {
 
         {/* Neurology */}
         <Section title="Neurología: Plexo Braquial" active={activeTab === 'neurology'}>
-          <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <ImageCard 
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray807.png"
-                alt="Plexo Braquial (Gray)"
-                caption="Anatomía del Plexo Braquial."
-              />
-              <ImageCard 
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray808.png"
-                alt="Nervios del Brazo"
-                caption="Distribución nerviosa en el brazo."
-              />
-              <ImageCard 
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray810.png"
-                alt="Nervios de la Mano"
-                caption="Inervación de la mano."
-              />
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <h4 className="text-lg font-bold text-slate-800">Organización del Plexo</h4>
-                <p className="text-base text-slate-600 leading-relaxed">Se origina de los ramos anteriores de C5 a T1. Se divide en raíces, troncos, divisiones, fascículos y finalmente ramos terminales.</p>
-                <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 text-base text-blue-800 italic">
-                  Nota: El plexo braquial proporciona la inervación motora y sensitiva para todo el miembro superior.
-                </div>
+          <div className="space-y-8">
+            <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-8">
+              <h3 className="text-2xl font-bold text-indigo-700 border-l-4 border-indigo-600 pl-4">Anatomía del Plexo Braquial (Latarjet)</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray807.png"
+                  alt="Plexo Braquial (Gray)"
+                  caption="Constitución del Plexo Braquial."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray808.png"
+                  alt="Nervios del Brazo"
+                  caption="Distribución nerviosa en el brazo."
+                />
+                <ImageCard 
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray810.png"
+                  alt="Nervios de la Mano"
+                  caption="Inervación de la mano."
+                />
               </div>
-              <div className="space-y-3">
-                {[
-                  { f: "Lateral", n: "Musculocutáneo", i: "Flexores brazo (Bíceps, Braquial)", t: "myology" },
-                  { f: "Medial", n: "Cubital", i: "Intrínsecos mano (ver Mano)", t: "osteology" },
-                  { f: "Posterior", n: "Radial / Axilar", i: "Extensores / Deltoides", t: "myology" },
-                  { f: "Lat + Med", n: "Mediano", i: "Flexores antebrazo / Tenar", t: "myology" }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                    <div className="bg-blue-600 text-white p-2 rounded-lg"><Zap className="w-4 h-4" /></div>
-                    <div className="text-base">
-                      <p className="font-bold text-slate-800">Fascículo {item.f} → N. <Link to={item.t}>{item.n}</Link></p>
-                      <p className="text-slate-500">{item.i}</p>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-1 space-y-6">
+                  <div className="bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
+                    <h4 className="font-bold text-indigo-800 text-lg mb-4">Constitución Real</h4>
+                    <p className="text-sm text-slate-700 leading-relaxed space-y-4">
+                      Se forma por la unión de los ramos anteriores de los nervios espinales <span className="font-bold">C5, C6, C7, C8 y T1</span>.
+                    </p>
+                    <div className="mt-4 space-y-2 text-xs">
+                      <div className="flex justify-between p-2 bg-white rounded border"><span>Tronco Superior</span><span>C5 + C6</span></div>
+                      <div className="flex justify-between p-2 bg-white rounded border"><span>Tronco Medio</span><span>C7</span></div>
+                      <div className="flex justify-between p-2 bg-white rounded border"><span>Tronco Inferior</span><span>C8 + T1</span></div>
                     </div>
                   </div>
-                ))}
+                  <div className="p-5 bg-slate-900 text-white rounded-2xl shadow-lg">
+                    <h4 className="font-bold text-indigo-300 mb-2">Relación con la Arteria</h4>
+                    <p className="text-xs text-slate-300 leading-relaxed">
+                      Los fascículos (Lateral, Medial y Posterior) reciben su nombre según su posición respecto a la <span className="italic">segunda porción de la arteria axilar</span>, por detrás del pectoral menor.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {[
+                    { 
+                      n: "Nervio Musculocutáneo", 
+                      f: "Fascículo Lateral", 
+                      d: "Perfora al m. coracobraquial (Nervio de Casserius). Inerva los flexores del brazo.",
+                      c: "C5-C7"
+                    },
+                    { 
+                      n: "Nervio Mediano", 
+                      f: "Fascículos Lat. y Med.", 
+                      d: "Forma la 'M' del plexo. Pasa por el túnel carpiano. Inerva flexores del antebrazo y mano.",
+                      c: "C5-T1"
+                    },
+                    { 
+                      n: "Nervio Cubital (Ulnar)", 
+                      f: "Fascículo Medial", 
+                      d: "Pasa por el canal epitrócleo-olecraniano. Inerva la mayoría de los intrínsecos de la mano.",
+                      c: "C8-T1"
+                    },
+                    { 
+                      n: "Nervio Radial", 
+                      f: "Fascículo Posterior", 
+                      d: "Pasa por el surco del n. radial (húmero). Inerva todos los extensores del miembro superior.",
+                      c: "C5-T1"
+                    },
+                    { 
+                      n: "Nervio Axilar (Circunflejo)", 
+                      f: "Fascículo Posterior", 
+                      d: "Pasa por el espacio axilar lateral (Velpeau). Inerva el deltoides y redondo menor.",
+                      c: "C5-C6"
+                    }
+                  ].map((nerv, i) => (
+                    <div key={i} className="p-5 bg-white rounded-2xl border shadow-sm hover:border-indigo-300 transition-all group">
+                      <div className="flex justify-between items-start mb-3">
+                        <h5 className="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">{nerv.n}</h5>
+                        <span className="text-[10px] font-black bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded uppercase">{nerv.c}</span>
+                      </div>
+                      <p className="text-[10px] text-indigo-500 font-bold uppercase tracking-widest mb-2">{nerv.f}</p>
+                      <p className="text-xs text-slate-500 leading-relaxed">{nerv.d}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -2228,10 +2354,664 @@ export default function App() {
           <Viewer3D />
         </Section>
 
-        {/* Quiz */}
-        <Section title="Centro de Evaluación" active={activeTab === 'quiz'}>
-          <Quiz />
-        </Section>
+            {/* Quiz */}
+            <Section title="Centro de Evaluación" active={activeTab === 'quiz'}>
+              <Quiz />
+            </Section>
+          </>
+        )}
+
+        {activeRegion === 'inferior' && (
+          <>
+            {/* Osteology Lower Limb */}
+            <Section title="Osteología: Esqueleto del Miembro Inferior" active={activeTab === 'osteology'}>
+              <div className="grid grid-cols-1 gap-8">
+                {/* Cintura Pélvica */}
+                <div className="bg-white p-6 rounded-2xl border shadow-sm">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Cintura Pélvica: Hueso Coxal</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray235.png"
+                      alt="Hueso Coxal Lateral"
+                      caption="Hueso Coxal derecho: Vista Lateral."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray236.png"
+                      alt="Hueso Coxal Medial"
+                      caption="Hueso Coxal derecho: Vista Medial."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray241.png"
+                      alt="Pelvis Masculina"
+                      caption="Pelvis ósea: Vista Anterior."
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                      <h4 className="font-bold text-emerald-800 text-lg mb-3 flex items-center gap-2">
+                        <Bone className="w-5 h-5" /> Hueso Coxal (Ilíaco)
+                      </h4>
+                      <p className="text-base text-slate-700 leading-relaxed mb-3">
+                        Hueso plano, par, que forma la cintura pélvica. Resulta de la fusión de tres huesos: ilion, isquion y pubis, que convergen en el acetábulo.
+                      </p>
+                      <div className="grid grid-cols-1 gap-2 text-sm">
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-600">Ilion (Superior):</span> 
+                          <ul className="list-disc ml-4 mt-1 text-xs space-y-1">
+                            <li><span className="font-semibold">Cresta ilíaca:</span> Límite superior, termina en las espinas ilíacas anterosuperior (EIAS) y posterosuperior (EIPS).</li>
+                            <li><span className="font-semibold">Cara glútea:</span> Presenta las líneas glúteas anterior, posterior e inferior para la inserción de los músculos glúteos.</li>
+                            <li><span className="font-semibold">Fosa ilíaca:</span> Cara medial, cóncava, origen del músculo ilíaco.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-600">Isquion (Posteroinferior):</span> 
+                          <ul className="list-disc ml-4 mt-1 text-xs space-y-1">
+                            <li><span className="font-semibold">Cuerpo y Rama:</span> Forma la parte posterior del agujero obturado.</li>
+                            <li><span className="font-semibold">Tuberosidad isquiática:</span> Gran prominencia inferior donde se insertan los músculos isquiotibiales.</li>
+                            <li><span className="font-semibold">Espina ciática:</span> Separa la escotadura ciática mayor de la menor.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-600">Pubis (Anteroinferior):</span> 
+                          <ul className="list-disc ml-4 mt-1 text-xs space-y-1">
+                            <li><span className="font-semibold">Cuerpo y Ramas:</span> Se une al ilion y al isquion. La sínfisis del pubis es la unión medial.</li>
+                            <li><span className="font-semibold">Tubérculo del pubis:</span> Punto de inserción del ligamento inguinal.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-600">Acetábulo:</span> 
+                          <p className="text-xs mt-1">Cavidad para la cabeza del fémur. Presenta la <span className="font-semibold">cara semilunar</span> (articular) y la <span className="font-semibold">fosa acetabular</span> (no articular).</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                      <h4 className="font-bold text-emerald-800 text-lg mb-3 flex items-center gap-2">
+                        <Bone className="w-5 h-5" /> Pelvis en Conjunto
+                      </h4>
+                      <p className="text-base text-slate-700 leading-relaxed mb-3">
+                        Anillo óseo formado por los dos coxales, el sacro y el cóccix.
+                      </p>
+                      <div className="grid grid-cols-1 gap-2 text-sm">
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-600">Pelvis Mayor y Menor:</span> 
+                          <p className="text-xs mt-1">Separadas por la <span className="font-semibold">línea terminal</span> (promontorio, línea arqueada, cresta pectínea y sínfisis).</p>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-600">Agujero Obturado:</span> 
+                          <p className="text-xs mt-1">Gran abertura delimitada por el isquion y el pubis, cerrada por la membrana obturatriz excepto en el conducto obturador.</p>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-600">Diferencias Sexuales:</span> 
+                          <ul className="list-disc ml-4 mt-1 text-xs space-y-1">
+                            <li><span className="font-semibold">Mujer:</span> Pelvis más ancha, estrecho superior circular, ángulo subpubiano mayor a 90°.</li>
+                            <li><span className="font-semibold">Hombre:</span> Pelvis más pesada y estrecha, estrecho superior en forma de corazón, ángulo subpubiano menor a 70°.</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Fémur y Rótula */}
+                <div className="bg-white p-6 rounded-2xl border shadow-sm">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Fémur y Rótula</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray245.png"
+                      alt="Fémur Anterior"
+                      caption="Fémur derecho: Vista Anterior."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray246.png"
+                      alt="Fémur Posterior"
+                      caption="Fémur derecho: Vista Posterior."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray249.png"
+                      alt="Rótula"
+                      caption="Rótula derecha: Vistas anterior y posterior."
+                    />
+                  </div>
+                  <div className="space-y-6">
+                    <div className="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
+                      <h4 className="font-bold text-emerald-800 text-lg mb-3">Fémur: Accidentes Anatómicos</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-700">Epífisis Proximal:</span>
+                          <ul className="list-disc ml-4 mt-1 text-xs space-y-1">
+                            <li><span className="font-semibold">Cabeza:</span> 2/3 de esfera, presenta la <span className="font-semibold">fosita de la cabeza</span> para el ligamento redondo.</li>
+                            <li><span className="font-semibold">Cuello:</span> Une la cabeza al cuerpo. Ángulo de inclinación (125° aprox).</li>
+                            <li><span className="font-semibold">Trocánter Mayor:</span> Gran eminencia lateral para inserción de glúteos medio y menor.</li>
+                            <li><span className="font-semibold">Trocánter Menor:</span> Eminencia medial para el músculo iliopsoas.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-700">Diáfisis (Cuerpo):</span>
+                          <ul className="list-disc ml-4 mt-1 text-xs space-y-1">
+                            <li><span className="font-semibold">Línea Áspera:</span> Borde posterior prominente con dos labios (medial y lateral) para inserción de aductores y vastos.</li>
+                            <li><span className="font-semibold">Tuberosidad glútea:</span> Extensión superior del labio lateral para el glúteo mayor.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-700">Epífisis Distal:</span>
+                          <ul className="list-disc ml-4 mt-1 text-xs space-y-1">
+                            <li><span className="font-semibold">Cóndilos (Medial y Lateral):</span> Superficies articulares convexas.</li>
+                            <li><span className="font-semibold">Fosa intercondílea:</span> Espacio posterior entre los cóndilos.</li>
+                            <li><span className="font-semibold">Cara rotuliana:</span> Superficie anterior para la rótula.</li>
+                            <li><span className="font-semibold">Epicóndilos:</span> Prominencias laterales para ligamentos colaterales.</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                      <h4 className="font-bold text-slate-800 text-lg mb-3">Rótula (Patela)</h4>
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Hueso sesamoideo más grande del cuerpo, triangular, situado en el espesor del tendón del cuádriceps.
+                      </p>
+                      <ul className="list-disc ml-6 mt-2 text-xs text-slate-600 space-y-1">
+                        <li><span className="font-semibold">Base:</span> Superior, para el tendón del cuádriceps.</li>
+                        <li><span className="font-semibold">Vértice (Ápex):</span> Inferior, para el ligamento rotuliano.</li>
+                        <li><span className="font-semibold">Cara posterior:</span> Presenta carillas articulares para los cóndilos femorales.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pierna */}
+                <div className="bg-white p-6 rounded-2xl border shadow-sm">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Pierna: Tibia y Peroné</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray258.png"
+                      alt="Tibia y Peroné Ant."
+                      caption="Huesos de la pierna derecha (Anterior)."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray259.png"
+                      alt="Tibia y Peroné Post."
+                      caption="Huesos de la pierna derecha (Posterior)."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray260.png"
+                      alt="Epífisis Proximal Tibia"
+                      caption="Meseta tibial: Vista Superior."
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                      <h4 className="font-bold text-emerald-800 text-lg mb-3 flex items-center gap-2">
+                        <Bone className="w-5 h-5" /> Tibia
+                      </h4>
+                      <div className="text-xs text-slate-600 space-y-3">
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-700">Epífisis Proximal:</span>
+                          <ul className="list-disc ml-4 mt-1 space-y-1">
+                            <li><span className="font-semibold">Cóndilos (Meseta tibial):</span> Superficies superiores para los cóndilos femorales.</li>
+                            <li><span className="font-semibold">Eminencia intercondílea:</span> Con los tubérculos intercondíleos medial y lateral.</li>
+                            <li><span className="font-semibold">Tuberosidad de la tibia:</span> Anterior, para el ligamento rotuliano.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-700">Diáfisis:</span>
+                          <ul className="list-disc ml-4 mt-1 space-y-1">
+                            <li><span className="font-semibold">Borde anterior:</span> La "espinilla", muy superficial.</li>
+                            <li><span className="font-semibold">Línea del sóleo:</span> En la cara posterior, para el músculo sóleo.</li>
+                          </ul>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-700">Epífisis Distal:</span>
+                          <ul className="list-disc ml-4 mt-1 space-y-1">
+                            <li><span className="font-semibold">Maléolo medial:</span> Prominencia ósea del tobillo interno.</li>
+                            <li><span className="font-semibold">Escotadura peronea:</span> Lateral, para articularse con el peroné.</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                      <h4 className="font-bold text-emerald-800 text-lg mb-3 flex items-center gap-2">
+                        <Bone className="w-5 h-5" /> Peroné (Fíbula)
+                      </h4>
+                      <div className="text-xs text-slate-600 space-y-3">
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-700">Epífisis Proximal (Cabeza):</span>
+                          <p className="mt-1">Presenta el <span className="font-semibold">vértice (apófisis estiloides)</span> y la carilla articular para la tibia.</p>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-700">Diáfisis:</span>
+                          <p className="mt-1">Cuerpo delgado con bordes afilados para inserción de la membrana interósea.</p>
+                        </div>
+                        <div className="bg-white p-3 rounded border">
+                          <span className="font-bold text-emerald-700">Epífisis Distal (Maléolo lateral):</span>
+                          <p className="mt-1">Forma la prominencia lateral del tobillo. Es más largo y desciende más que el maléolo medial.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pie */}
+                <div className="bg-white p-6 rounded-2xl border shadow-sm">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Esqueleto del Pie</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray268.png"
+                      alt="Pie Dorsal"
+                      caption="Huesos del pie: Vista Dorsal."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray269.png"
+                      alt="Pie Plantar"
+                      caption="Huesos del pie: Vista Plantar."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray270.png"
+                      alt="Pie Lateral"
+                      caption="Huesos del pie: Vista Lateral."
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                      <h5 className="font-bold text-emerald-800 text-base mb-2">Tarso (7 huesos)</h5>
+                      <div className="text-xs text-slate-600 space-y-2">
+                        <p><span className="font-bold">Astrágalo (Talus):</span> Se articula con la pierna. Presenta la <span className="font-semibold">tróclea astragalina</span>.</p>
+                        <p><span className="font-bold">Calcáneo:</span> Hueso del talón. Presenta la <span className="font-semibold">tuberosidad del calcáneo</span> y el <span className="font-semibold">sustentaculum tali</span>.</p>
+                        <p><span className="font-bold">Navicular, Cuboides y Cuñas:</span> Forman la parte anterior del tarso.</p>
+                      </div>
+                    </div>
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                      <h5 className="font-bold text-slate-800 text-base mb-2">Metatarso (5 huesos)</h5>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        Huesos largos con base, cuerpo y cabeza. El <span className="font-semibold">V metatarsiano</span> presenta una tuberosidad lateral palpable.
+                      </p>
+                    </div>
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                      <h5 className="font-bold text-slate-800 text-base mb-2">Falanges (14 huesos)</h5>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        Proximal, media y distal. El dedo gordo (hallux) solo tiene proximal y distal.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Section>
+
+            {/* Arthrology Lower Limb */}
+            <Section title="Artrología: Articulaciones del Miembro Inferior" active={activeTab === 'arthrology'}>
+              <div className="space-y-8">
+                <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-4">Articulación Coxofemoral (Cadera)</h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <div className="lg:col-span-1">
+                      <ImageCard 
+                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray344.png"
+                        alt="Art. Cadera"
+                        caption="Articulación de la cadera derecha: Vista Anterior."
+                      />
+                    </div>
+                    <div className="lg:col-span-2 space-y-4">
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Es una <span className="font-bold">enartrosis</span> (esferoidea) que une el fémur al coxal. Muy estable pero con gran movilidad.
+                      </p>
+                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
+                        <p><span className="font-bold text-emerald-700">Superficies:</span> Cabeza del fémur y acetábulo del coxal (con el rodete acetabular o labrum).</p>
+                        <div className="space-y-1">
+                          <span className="font-bold text-emerald-700">Ligamentos Intracapsulares:</span>
+                          <p className="ml-4">Ligamento de la cabeza del fémur (redondo): Conduce la arteria para la cabeza femoral.</p>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="font-bold text-emerald-700">Ligamentos Extracapsulares:</span>
+                          <ul className="list-disc ml-8 space-y-1">
+                            <li><span className="font-semibold">Iliofemoral (de Bigelow):</span> El más resistente, evita la hiperextensión.</li>
+                            <li><span className="font-semibold">Pubofemoral:</span> Limita la abducción.</li>
+                            <li><span className="font-semibold">Isquiofemoral:</span> Refuerza la parte posterior.</li>
+                          </ul>
+                        </div>
+                        <p><span className="font-bold text-emerald-700">Movimientos:</span> Flexión/Extensión, Abducción/Aducción, Rotación Medial/Lateral y Circunducción.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-4">Articulación de la Rodilla</h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <div className="lg:col-span-1">
+                      <ImageCard 
+                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray348.png"
+                        alt="Art. Rodilla"
+                        caption="Rodilla derecha: Vista Anterior (ligamentos)."
+                      />
+                    </div>
+                    <div className="lg:col-span-2 space-y-4">
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Es una <span className="font-bold">trocleartrosis</span> (ginglimo) funcional, aunque anatómicamente es bicondílea. La más compleja del cuerpo.
+                      </p>
+                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
+                        <div className="space-y-1">
+                          <span className="font-bold text-emerald-700">Meniscos (Fibrocartílagos):</span>
+                          <p className="ml-4">Amortiguan y adaptan las superficies. El <span className="font-semibold">Medial</span> tiene forma de "C" y el <span className="font-semibold">Lateral</span> forma de "O".</p>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="font-bold text-emerald-700">Ligamentos Cruzados:</span>
+                          <ul className="list-disc ml-8 space-y-1">
+                            <li><span className="font-semibold">Anterior (LCA):</span> Evita el desplazamiento anterior de la tibia.</li>
+                            <li><span className="font-semibold">Posterior (LCP):</span> Evita el desplazamiento posterior de la tibia.</li>
+                          </ul>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="font-bold text-emerald-700">Ligamentos Colaterales:</span>
+                          <p className="ml-4"><span className="font-semibold">Tibial (Medial)</span> y <span className="font-semibold">Peroneo (Lateral)</span>. Estabilizan contra movimientos laterales (valgo/varo).</p>
+                        </div>
+                        <p><span className="font-bold text-emerald-700">Movimientos:</span> Principalmente Flexión y Extensión. Rotación limitada cuando está flexionada.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-4">Articulación del Tobillo (Talocrural)</h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <div className="lg:col-span-1">
+                      <ImageCard 
+                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray354.png"
+                        alt="Art. Tobillo"
+                        caption="Articulación del tobillo: Vista Medial."
+                      />
+                    </div>
+                    <div className="lg:col-span-2 space-y-4">
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Articulación de tipo <span className="font-bold">trocleartrosis</span> (ginglimo) que une la tibia y el peroné con el astrágalo.
+                      </p>
+                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
+                        <p><span className="font-bold text-emerald-700">Superficies:</span> Mortaja tibioperonea (cóncava) y tróclea astragalina (convexa).</p>
+                        <div className="space-y-1">
+                          <span className="font-bold text-emerald-700">Ligamentos Principales:</span>
+                          <ul className="list-disc ml-8 space-y-1">
+                            <li><span className="font-semibold">Ligamento Deltoideo (Medial):</span> Muy fuerte, forma triangular.</li>
+                            <li><span className="font-semibold">Ligamento Lateral:</span> Formado por tres fascículos (astragaloperoneo anterior, posterior y calcaneoperoneo).</li>
+                          </ul>
+                        </div>
+                        <p><span className="font-bold text-emerald-700">Movimientos:</span> Flexión dorsal (extensión) y flexión plantar (flexión).</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Section>
+
+            {/* Myology Lower Limb */}
+            <Section title="Miología: Sistema Muscular del Miembro Inferior" active={activeTab === 'myology'}>
+              <div className="space-y-8">
+                {/* Muslos y Glúteos */}
+                <div className="bg-white p-6 rounded-2xl border shadow-sm">
+                  <h3 className="text-xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Músculos de la Región Glútea y Muslo</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray430.png"
+                      alt="Músculos Muslo Anterior"
+                      caption="Región anterior del muslo."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray431.png"
+                      alt="Músculos Muslo Medial"
+                      caption="Músculos aductores."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray434.png"
+                      alt="Región Glútea"
+                      caption="Músculos de la región glútea profunda."
+                    />
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left border-separate border-spacing-0">
+                      <thead className="bg-emerald-100 text-emerald-900 uppercase text-xs font-bold border-b-2 border-emerald-200">
+                        <tr>
+                          <th className="px-6 py-4 rounded-tl-xl border-b-2 border-emerald-200">Grupo / Músculo</th>
+                          <th className="px-6 py-4 border-b-2 border-emerald-200">Origen</th>
+                          <th className="px-6 py-4 border-b-2 border-emerald-200">Inserción</th>
+                          <th className="px-6 py-4 rounded-tr-xl border-b-2 border-emerald-200">Función Principal</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-emerald-100">
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Región Glútea</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Glúteo Mayor</td>
+                          <td className="px-6 py-5 text-slate-600">Ilion (detrás línea glútea post.), sacro y cóccix.</td>
+                          <td className="px-6 py-5 text-slate-600">Tracto iliotibial y tuberosidad glútea del fémur.</td>
+                          <td className="px-6 py-5 text-slate-600">Potente extensor y rotador lateral del muslo.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Glúteo Medio</td>
+                          <td className="px-6 py-5 text-slate-600">Ilion (entre líneas glúteas ant. y post.).</td>
+                          <td className="px-6 py-5 text-slate-600">Cara lateral del trocánter mayor.</td>
+                          <td className="px-6 py-5 text-slate-600">Abducción y rotación medial; estabiliza pelvis.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Piriforme</td>
+                          <td className="px-6 py-5 text-slate-600">Cara anterior del sacro.</td>
+                          <td className="px-6 py-5 text-slate-600">Borde superior del trocánter mayor.</td>
+                          <td className="px-6 py-5 text-slate-600">Rotación lateral del muslo extendido.</td>
+                        </tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Muslo: Grupo Anterior</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Cuádriceps Femoral</td>
+                          <td className="px-6 py-5 text-slate-600">Recto femoral (EIAI), Vastos (Fémur).</td>
+                          <td className="px-6 py-5 text-slate-600">Base de la rótula y tuberosidad de la tibia.</td>
+                          <td className="px-6 py-5 text-slate-600">Extensión de la rodilla; flexión de cadera (recto).</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Sartorio</td>
+                          <td className="px-6 py-5 text-slate-600">Espina ilíaca anterosuperior (EIAS).</td>
+                          <td className="px-6 py-5 text-slate-600">Parte superior cara medial tibia (Pata de ganso).</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión, abducción y rotación externa del muslo.</td>
+                        </tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Muslo: Grupo Medial</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Aductor Mayor</td>
+                          <td className="px-6 py-5 text-slate-600">Rama isquiopubiana y tuberosidad isquiática.</td>
+                          <td className="px-6 py-5 text-slate-600">Línea áspera y tubérculo del aductor (fémur).</td>
+                          <td className="px-6 py-5 text-slate-600">Potente aductor del muslo.</td>
+                        </tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Muslo: Grupo Posterior (Isquiotibiales)</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Bíceps Femoral</td>
+                          <td className="px-6 py-5 text-slate-600">Tuberosidad isquiática (c. larga) y línea áspera.</td>
+                          <td className="px-6 py-5 text-slate-600">Cabeza del peroné.</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión de rodilla y extensión de cadera.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Semimembranoso</td>
+                          <td className="px-6 py-5 text-slate-600">Tuberosidad isquiática.</td>
+                          <td className="px-6 py-5 text-slate-600">Cóndilo medial de la tibia.</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión de rodilla y rotación medial.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Pierna y Pie */}
+                <div className="bg-white p-6 rounded-2xl border shadow-sm">
+                  <h3 className="text-xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Músculos de la Pierna</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray437.png"
+                      alt="Músculos Pierna Anterior"
+                      caption="Compartimento anterior de la pierna."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray438.png"
+                      alt="Músculos Pierna Posterior"
+                      caption="Músculos superficiales de la pantorrilla."
+                    />
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left border-separate border-spacing-0">
+                      <thead className="bg-emerald-100 text-emerald-900 uppercase text-xs font-bold border-b-2 border-emerald-200">
+                        <tr>
+                          <th className="px-6 py-4 rounded-tl-xl border-b-2 border-emerald-200">Grupo / Músculo</th>
+                          <th className="px-6 py-4 border-b-2 border-emerald-200">Origen</th>
+                          <th className="px-6 py-4 border-b-2 border-emerald-200">Inserción</th>
+                          <th className="px-6 py-4 rounded-tr-xl border-b-2 border-emerald-200">Función Principal</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-emerald-100">
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Pierna: Grupo Anterior</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Tibial Anterior</td>
+                          <td className="px-6 py-5 text-slate-600">Cóndilo lat. y cara lat. tibia.</td>
+                          <td className="px-6 py-5 text-slate-600">Cuneiforme medial y base I metatarsiano.</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión dorsal e inversión del pie.</td>
+                        </tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Pierna: Grupo Lateral</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Peroneo Largo</td>
+                          <td className="px-6 py-5 text-slate-600">Cabeza y cara lat. peroné.</td>
+                          <td className="px-6 py-5 text-slate-600">Base I metatarsiano y cuneiforme medial.</td>
+                          <td className="px-6 py-5 text-slate-600">Eversión y flexión plantar débil.</td>
+                        </tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Pierna: Grupo Posterior</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Tríceps Surae (Gastrocnemio y Sóleo)</td>
+                          <td className="px-6 py-5 text-slate-600">Cóndilos femorales (G), Tibia y Peroné (S).</td>
+                          <td className="px-6 py-5 text-slate-600">Tuberosidad del calcáneo (Tendón de Aquiles).</td>
+                          <td className="px-6 py-5 text-slate-600">Potente flexión plantar del pie.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </Section>
+
+            {/* Angiology Lower Limb */}
+            <Section title="Vascularización: Arterias y Venas" active={activeTab === 'angiology'}>
+              <div className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                    <h3 className="text-2xl font-bold text-red-700 border-l-4 border-red-600 pl-4">Sistema Arterial</h3>
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray546.png"
+                      alt="Arteria Femoral"
+                      caption="Arteria Femoral y sus ramas."
+                    />
+                    <div className="space-y-4">
+                      <div className="bg-red-50 p-5 rounded-2xl border border-red-100">
+                        <h4 className="font-bold text-red-800 text-lg mb-3 flex items-center gap-2">
+                          <Activity className="w-5 h-5" /> Arteria Femoral
+                        </h4>
+                        <p className="text-sm text-slate-700 leading-relaxed">
+                          Continuación de la ilíaca externa tras pasar el ligamento inguinal. Se sitúa en el triángulo femoral (de Scarpa).
+                        </p>
+                        <p className="text-xs text-red-600 font-bold mt-2 uppercase">Ramas: Femoral profunda (principal para el muslo), circunflejas.</p>
+                      </div>
+                      <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                        <h4 className="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                          <Activity className="w-5 h-5" /> Arteria Poplítea
+                        </h4>
+                        <p className="text-sm text-slate-700 leading-relaxed">
+                          Continuación de la femoral en el hueco poplíteo. Se divide en arterias tibiales anterior y posterior.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                    <h3 className="text-2xl font-bold text-blue-700 border-l-4 border-blue-600 pl-4">Sistema Venoso</h3>
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray582.png"
+                      alt="Vena Safena"
+                      caption="Venas superficiales del miembro inferior."
+                    />
+                    <div className="space-y-6">
+                      <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100">
+                        <h4 className="font-bold text-blue-800 text-lg mb-3">Venas Superficiales</h4>
+                        <ul className="space-y-3 text-sm">
+                          <li className="flex gap-3 items-start">
+                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0"></div>
+                            <p><span className="font-bold text-blue-700">Safena Magna (Mayor):</span> Se origina delante del maléolo medial, asciende por la cara medial y drena en la vena femoral.</p>
+                          </li>
+                          <li className="flex gap-3 items-start">
+                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0"></div>
+                            <p><span className="font-bold text-blue-700">Safena Parva (Menor):</span> Se origina detrás del maléolo lateral, asciende por la cara posterior y drena en la vena poplítea.</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Section>
+
+            {/* Neurology Lower Limb */}
+            <Section title="Neurología: Plexos Lumbar y Sacro" active={activeTab === 'neurology'}>
+              <div className="space-y-8">
+                <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-8">
+                  <h3 className="text-2xl font-bold text-indigo-700 border-l-4 border-indigo-600 pl-4">Inervación del Miembro Inferior (Latarjet)</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray822.png"
+                      alt="Plexo Lumbar"
+                      caption="Constitución del Plexo Lumbar."
+                    />
+                    <ImageCard 
+                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Gray826.png"
+                      alt="Nervio Ciático"
+                      caption="Nervio Ciático y sus ramas."
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="space-y-6">
+                      <div className="bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
+                        <h4 className="font-bold text-indigo-800 text-lg mb-4">Plexo Lumbar (L1-L4)</h4>
+                        <div className="space-y-4 text-sm">
+                          <div className="p-3 bg-white rounded border">
+                            <span className="font-bold text-indigo-600 block mb-1">Nervio Femoral:</span> Inerva los músculos del compartimento anterior del muslo (cuádriceps) y la piel de la cara anterior.
+                          </div>
+                          <div className="p-3 bg-white rounded border">
+                            <span className="font-bold text-indigo-600 block mb-1">Nervio Obturador:</span> Inerva los músculos aductores.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-6">
+                      <div className="bg-slate-900 text-white p-6 rounded-2xl border border-slate-700 shadow-lg">
+                        <h4 className="font-bold text-indigo-300 text-lg mb-4">Plexo Sacro (L4-S4)</h4>
+                        <div className="space-y-4 text-sm">
+                          <div className="p-3 bg-slate-800 rounded border border-slate-700">
+                            <span className="font-bold text-indigo-300 block mb-1">Nervio Ciático (Isquiático):</span> El más grueso del cuerpo. Se divide en tibial y peroneo común. Inerva isquiotibiales y todos los músculos de pierna y pie.
+                          </div>
+                          <div className="p-3 bg-slate-800 rounded border border-slate-700">
+                            <span className="font-bold text-indigo-300 block mb-1">Nervios Glúteos:</span> Inervan los músculos de la región glútea.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Section>
+
+            {/* 3D Viewer (Shared) */}
+            <Section title="Lector de Modelos Anatómicos (.glb)" active={activeTab === '3dviewer'}>
+              <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-xl mb-6">
+                <div className="flex gap-3">
+                  <Info className="w-5 h-5 text-blue-600 shrink-0" />
+                  <p className="text-base text-blue-800">
+                    <strong>Instrucciones:</strong> Carga un archivo <strong>.glb</strong> del miembro inferior. El sistema identificará automáticamente huesos y músculos.
+                  </p>
+                </div>
+              </div>
+              <Viewer3D />
+            </Section>
+
+            {/* Quiz (Shared) */}
+            <Section title="Centro de Evaluación" active={activeTab === 'quiz'}>
+              <Quiz />
+            </Section>
+          </>
+        )}
 
       </main>
 
