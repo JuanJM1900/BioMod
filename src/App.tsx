@@ -2619,23 +2619,29 @@ export default function App() {
                         <div className="bg-white p-3 rounded border">
                           <span className="font-bold text-emerald-700">Epífisis Proximal:</span>
                           <ul className="list-disc ml-4 mt-1 space-y-1">
-                            <li><span className="font-semibold">Cóndilos (Meseta tibial):</span> Superficies superiores para los cóndilos femorales.</li>
-                            <li><span className="font-semibold">Eminencia intercondílea:</span> Con los tubérculos intercondíleos medial y lateral.</li>
-                            <li><span className="font-semibold">Tuberosidad de la tibia:</span> Anterior, para el ligamento rotuliano.</li>
+                            <li><span className="font-semibold">Cóndilos (Medial y Lateral):</span> Soportan los meniscos y articulan con los cóndilos femorales.</li>
+                            <li><span className="font-semibold">Eminencia intercondílea:</span> Formada por los tubérculos intercondíleos medial y lateral; punto de inserción de los ligamentos cruzados.</li>
+                            <li><span className="font-semibold">Tuberosidad de la tibia:</span> Prominencia anterior para el ligamento rotuliano.</li>
+                            <li><span className="font-semibold">Tubérculo de Gerdy:</span> En el cóndilo lateral, para la inserción del tracto iliotibial.</li>
+                            <li><span className="font-semibold">Carilla articular peronea:</span> Posterolateral, para la cabeza del peroné.</li>
                           </ul>
                         </div>
                         <div className="bg-white p-3 rounded border">
-                          <span className="font-bold text-emerald-700">Diáfisis:</span>
+                          <span className="font-bold text-emerald-700">Diáfisis (Cuerpo):</span>
                           <ul className="list-disc ml-4 mt-1 space-y-1">
-                            <li><span className="font-semibold">Borde anterior:</span> La "espinilla", muy superficial.</li>
-                            <li><span className="font-semibold">Línea del sóleo:</span> En la cara posterior, para el músculo sóleo.</li>
+                            <li><span className="font-semibold">Borde anterior:</span> Cresta afilada y subcutánea ("espinilla").</li>
+                            <li><span className="font-semibold">Cara medial:</span> Lisa y subcutánea, fácilmente palpable.</li>
+                            <li><span className="font-semibold">Línea del sóleo:</span> Cresta oblicua posterior para el origen del músculo sóleo.</li>
+                            <li><span className="font-semibold">Agujero nutricio:</span> Generalmente grande, en la cara posterior.</li>
                           </ul>
                         </div>
                         <div className="bg-white p-3 rounded border">
                           <span className="font-bold text-emerald-700">Epífisis Distal:</span>
                           <ul className="list-disc ml-4 mt-1 space-y-1">
-                            <li><span className="font-semibold">Maléolo medial:</span> Prominencia ósea del tobillo interno.</li>
-                            <li><span className="font-semibold">Escotadura peronea:</span> Lateral, para articularse con el peroné.</li>
+                            <li><span className="font-semibold">Maléolo medial:</span> Proyección ósea que forma el lado interno del tobillo.</li>
+                            <li><span className="font-semibold">Cara articular inferior:</span> Cóncava, articula con la tróclea del astrágalo.</li>
+                            <li><span className="font-semibold">Escotadura peronea:</span> Superficie lateral para la sindesmosis tibiofibular.</li>
+                            <li><span className="font-semibold">Surco maleolar:</span> Posterior al maléolo, para los tendones del tibial posterior y flexor largo de los dedos.</li>
                           </ul>
                         </div>
                       </div>
@@ -2647,15 +2653,26 @@ export default function App() {
                       <div className="text-xs text-slate-600 space-y-3">
                         <div className="bg-white p-3 rounded border">
                           <span className="font-bold text-emerald-700">Epífisis Proximal (Cabeza):</span>
-                          <p className="mt-1">Presenta el <span className="font-semibold">vértice (apófisis estiloides)</span> y la carilla articular para la tibia.</p>
+                          <ul className="list-disc ml-4 mt-1 space-y-1">
+                            <li><span className="font-semibold">Vértice (Apófisis estiloides):</span> Punto de inserción del ligamento colateral lateral y el bíceps femoral.</li>
+                            <li><span className="font-semibold">Cara articular:</span> Para el cóndilo lateral de la tibia.</li>
+                            <li><span className="font-semibold">Cuello:</span> Zona estrecha inferior a la cabeza; relación clínica con el nervio peroneo común.</li>
+                          </ul>
                         </div>
                         <div className="bg-white p-3 rounded border">
                           <span className="font-bold text-emerald-700">Diáfisis:</span>
-                          <p className="mt-1">Cuerpo delgado con bordes afilados para inserción de la membrana interósea.</p>
+                          <ul className="list-disc ml-4 mt-1 space-y-1">
+                            <li><span className="font-semibold">Bordes:</span> Anterior, posterior e interóseo (para la membrana interósea).</li>
+                            <li><span className="font-semibold">Caras:</span> Medial, lateral y posterior, para inserciones musculares profundas.</li>
+                          </ul>
                         </div>
                         <div className="bg-white p-3 rounded border">
                           <span className="font-bold text-emerald-700">Epífisis Distal (Maléolo lateral):</span>
-                          <p className="mt-1">Forma la prominencia lateral del tobillo. Es más largo y desciende más que el maléolo medial.</p>
+                          <ul className="list-disc ml-4 mt-1 space-y-1">
+                            <li><span className="font-semibold">Cara articular maleolar:</span> Medial, para articular con el astrágalo.</li>
+                            <li><span className="font-semibold">Fosa maleolar:</span> Posterior a la cara articular, para el ligamento astragaloperoneo posterior.</li>
+                            <li><span className="font-semibold">Surco maleolar:</span> Posterior, para los tendones de los músculos peroneos.</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -2711,6 +2728,41 @@ export default function App() {
             {/* Arthrology Lower Limb */}
             <Section title="Artrología: Articulaciones del Miembro Inferior" active={activeTab === 'arthrology'}>
               <div className="space-y-8">
+                {/* Cintura Pélvica */}
+                <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-4">Articulaciones de la Cintura Pélvica</h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <h4 className="font-bold text-emerald-800 text-lg">Articulación Sacroilíaca</h4>
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Une el sacro con el ilion. Es una articulación sinovial plana (en su parte anterior) y una sindesmosis (en su parte posterior).
+                      </p>
+                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
+                        <span className="font-bold text-emerald-700">Ligamentos de Refuerzo:</span>
+                        <ul className="list-disc ml-8 space-y-1">
+                          <li><span className="font-semibold">Sacroilíacos (Anterior, Posterior e Interóseo):</span> Estabilizan la unión ósea.</li>
+                          <li><span className="font-semibold">Sacrotuberoso y Sacroespinoso:</span> Convierten las escotaduras ciáticas en agujeros, limitando la rotación del sacro.</li>
+                          <li><span className="font-semibold">Iliolumbar:</span> Conecta la apófisis transversa de L5 con la cresta ilíaca.</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <h4 className="font-bold text-emerald-800 text-lg">Sínfisis del Pubis</h4>
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Articulación cartilaginosa secundaria (sínfisis) que une los cuerpos de ambos pubis en la línea media.
+                      </p>
+                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
+                        <span className="font-bold text-emerald-700">Estructuras de Soporte:</span>
+                        <ul className="list-disc ml-8 space-y-1">
+                          <li><span className="font-semibold">Disco Interpúbico:</span> Fibrocartílago que une las superficies óseas.</li>
+                          <li><span className="font-semibold">Ligamento Púbico Superior:</span> Conecta las caras superiores.</li>
+                          <li><span className="font-semibold">Ligamento Púbico Inferior (Arqueado):</span> Refuerza el arco del pubis.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
                   <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-4">Articulación Coxofemoral (Cadera)</h3>
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -2734,9 +2786,10 @@ export default function App() {
                         <div className="space-y-1">
                           <span className="font-bold text-emerald-700">Ligamentos Extracapsulares:</span>
                           <ul className="list-disc ml-8 space-y-1">
-                            <li><span className="font-semibold">Iliofemoral (de Bigelow):</span> El más resistente, evita la hiperextensión.</li>
-                            <li><span className="font-semibold">Pubofemoral:</span> Limita la abducción.</li>
-                            <li><span className="font-semibold">Isquiofemoral:</span> Refuerza la parte posterior.</li>
+                            <li><span className="font-semibold">Iliofemoral (de Bigelow):</span> El más resistente del cuerpo. Tiene forma de "Y" invertida. Limita la hiperextensión y la rotación externa.</li>
+                            <li><span className="font-semibold">Pubofemoral:</span> Refuerza la parte inferior y anterior. Limita la abducción y la rotación externa.</li>
+                            <li><span className="font-semibold">Isquiofemoral:</span> Refuerza la parte posterior. Limita la rotación interna y la hiperextensión.</li>
+                            <li><span className="font-semibold">Zona Orbicular:</span> Fibras circulares que rodean el cuello del fémur.</li>
                           </ul>
                         </div>
                         <p><span className="font-bold text-emerald-700">Movimientos:</span> Flexión/Extensión, Abducción/Aducción, Rotación Medial/Lateral y Circunducción.</p>
@@ -2773,7 +2826,17 @@ export default function App() {
                         </div>
                         <div className="space-y-1">
                           <span className="font-bold text-emerald-700">Ligamentos Colaterales:</span>
-                          <p className="ml-4"><span className="font-semibold">Tibial (Medial)</span> y <span className="font-semibold">Peroneo (Lateral)</span>. Estabilizan contra movimientos laterales (valgo/varo).</p>
+                          <ul className="list-disc ml-8 space-y-1">
+                            <li><span className="font-semibold">Tibial (Medial):</span> Banda aplanada y ancha, unida al menisco medial.</li>
+                            <li><span className="font-semibold">Peroneo (Lateral):</span> Cordón redondeado y resistente, separado del menisco lateral.</li>
+                          </ul>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="font-bold text-emerald-700">Otros Refuerzos:</span>
+                          <ul className="list-disc ml-8 space-y-1">
+                            <li><span className="font-semibold">Ligamento Rotuliano:</span> Anterior, continuación del cuádriceps.</li>
+                            <li><span className="font-semibold">Ligamentos Poplíteos (Oblicuo y Arqueado):</span> Refuerzan la cara posterior de la cápsula.</li>
+                          </ul>
                         </div>
                         <p><span className="font-bold text-emerald-700">Movimientos:</span> Principalmente Flexión y Extensión. Rotación limitada cuando está flexionada.</p>
                       </div>
@@ -2797,15 +2860,83 @@ export default function App() {
                       </p>
                       <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
                         <p><span className="font-bold text-emerald-700">Superficies:</span> Mortaja tibioperonea (cóncava) y tróclea astragalina (convexa).</p>
-                        <div className="space-y-1">
+                        <div className="space-y-2">
                           <span className="font-bold text-emerald-700">Ligamentos Principales:</span>
-                          <ul className="list-disc ml-8 space-y-1">
-                            <li><span className="font-semibold">Ligamento Deltoideo (Medial):</span> Muy fuerte, forma triangular.</li>
-                            <li><span className="font-semibold">Ligamento Lateral:</span> Formado por tres fascículos (astragaloperoneo anterior, posterior y calcaneoperoneo).</li>
-                          </ul>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ml-4">
+                            <div className="space-y-1">
+                              <p className="font-semibold text-emerald-800 underline">Ligamento Deltoideo (Medial):</p>
+                              <p className="text-[10px] leading-tight">Muy resistente, de forma triangular. Se divide en:</p>
+                              <ul className="list-disc ml-4 text-[10px] space-y-0.5">
+                                <li><span className="font-medium">Porción Superficial:</span> Fibras tibionaviculares, tibiocalcáneas y tibiotalares posteriores.</li>
+                                <li><span className="font-medium">Porción Profunda:</span> Fibras tibiotalares anteriores y posteriores (las más potentes).</li>
+                              </ul>
+                            </div>
+                            <div className="space-y-1">
+                              <p className="font-semibold text-emerald-800 underline">Ligamento Lateral:</p>
+                              <p className="text-[10px] leading-tight">Compuesto por tres fascículos independientes:</p>
+                              <ul className="list-disc ml-4 text-[10px] space-y-0.5">
+                                <li><span className="font-medium">Astragaloperoneo Anterior:</span> El más débil y el que se lesiona con más frecuencia en esguinces por inversión.</li>
+                                <li><span className="font-medium">Calcaneoperoneo:</span> Cordón redondeado que cruza la articulación subastragalina.</li>
+                                <li><span className="font-medium">Astragaloperoneo Posterior:</span> El más fuerte de los tres, situado profundamente.</li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
                         <p><span className="font-bold text-emerald-700">Movimientos:</span> Flexión dorsal (extensión) y flexión plantar (flexión).</p>
                       </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-4">Articulaciones Tibiofibulares</h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <h4 className="font-bold text-emerald-800 text-lg">Tibiofibular Proximal</h4>
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Articulación sinovial plana entre la cabeza del peroné y el cóndilo lateral de la tibia.
+                      </p>
+                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
+                        <span className="font-bold text-emerald-700">Refuerzos:</span>
+                        <p className="ml-4">Ligamentos anterior y posterior de la cabeza del peroné.</p>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <h4 className="font-bold text-emerald-800 text-lg">Tibiofibular Distal (Sindesmosis)</h4>
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Unión fibrosa esencial para la estabilidad de la mortaja del tobillo.
+                      </p>
+                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
+                        <span className="font-bold text-emerald-700">Componentes:</span>
+                        <ul className="list-disc ml-8 space-y-1">
+                          <li><span className="font-semibold">Membrana Interósea:</span> Une los cuerpos de ambos huesos.</li>
+                          <li><span className="font-semibold">Ligamentos Tibiofibulares (Anterior, Posterior e Interóseo):</span> Mantienen unidos los maléolos.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                  <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-4">Articulaciones del Pie</h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                      <h4 className="font-bold text-emerald-800 text-base mb-2">Subastragalina</h4>
+                      <p className="text-xs text-slate-600 mb-2">Entre astrágalo y calcáneo. Permite la <span className="font-bold">inversión y eversión</span>.</p>
+                      <span className="font-bold text-emerald-700 text-[10px] uppercase">Ligamentos:</span>
+                      <p className="text-[10px] text-slate-500">Astragalocalcáneos (lateral, medial, posterior e interóseo).</p>
+                    </div>
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                      <h4 className="font-bold text-emerald-800 text-base mb-2">Mediotarsiana (Chopart)</h4>
+                      <p className="text-xs text-slate-600 mb-2">Une el tarso posterior con el anterior. Compuesta por las art. astragalocalcaneonavicular y calcaneocuboidea.</p>
+                      <span className="font-bold text-emerald-700 text-[10px] uppercase">Ligamento Clave:</span>
+                      <p className="text-[10px] text-slate-500">Ligamento bifurcado (en "Y").</p>
+                    </div>
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                      <h4 className="font-bold text-emerald-800 text-base mb-2">Tarsometatarsiana (Lisfranc)</h4>
+                      <p className="text-xs text-slate-600 mb-2">Une las cuñas y el cuboides con las bases de los metatarsianos.</p>
+                      <span className="font-bold text-emerald-700 text-[10px] uppercase">Ligamentos:</span>
+                      <p className="text-[10px] text-slate-500">Dorsales, plantares e interóseos (ligamento de Lisfranc).</p>
                     </div>
                   </div>
                 </div>
@@ -2846,6 +2977,25 @@ export default function App() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-emerald-100">
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Músculos de la Cadera (Ilio-psoas)</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Psoas Mayor</td>
+                          <td className="px-6 py-5 text-slate-600">Vértebras T12-L5 (cuerpos y apófisis transversas).</td>
+                          <td className="px-6 py-5 text-slate-600">Trocánter menor del fémur.</td>
+                          <td className="px-6 py-5 text-slate-600">Potente flexor del muslo y del tronco.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Ilíaco</td>
+                          <td className="px-6 py-5 text-slate-600">Fosa ilíaca y ala del sacro.</td>
+                          <td className="px-6 py-5 text-slate-600">Trocánter menor (tendón común con psoas).</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión del muslo; estabiliza la cadera.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Psoas Menor</td>
+                          <td className="px-6 py-5 text-slate-600">Vértebras T12-L1.</td>
+                          <td className="px-6 py-5 text-slate-600">Línea pectínea y eminencia iliopúbica.</td>
+                          <td className="px-6 py-5 text-slate-600">Flexor débil del tronco (inconstante).</td>
+                        </tr>
                         <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Región Glútea</td></tr>
                         <tr className="hover:bg-slate-50 transition-colors">
                           <td className="px-6 py-5 font-bold text-slate-800">Glúteo Mayor</td>
@@ -2865,12 +3015,52 @@ export default function App() {
                           <td className="px-6 py-5 text-slate-600">Borde superior del trocánter mayor.</td>
                           <td className="px-6 py-5 text-slate-600">Rotación lateral del muslo extendido.</td>
                         </tr>
-                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Muslo: Grupo Anterior</td></tr>
                         <tr className="hover:bg-slate-50 transition-colors">
-                          <td className="px-6 py-5 font-bold text-slate-800">Cuádriceps Femoral</td>
-                          <td className="px-6 py-5 text-slate-600">Recto femoral (EIAI), Vastos (Fémur).</td>
-                          <td className="px-6 py-5 text-slate-600">Base de la rótula y tuberosidad de la tibia.</td>
-                          <td className="px-6 py-5 text-slate-600">Extensión de la rodilla; flexión de cadera (recto).</td>
+                          <td className="px-6 py-5 font-bold text-slate-800">Glúteo Menor</td>
+                          <td className="px-6 py-5 text-slate-600">Ilion (entre líneas glúteas ant. e inf.).</td>
+                          <td className="px-6 py-5 text-slate-600">Borde anterior del trocánter mayor.</td>
+                          <td className="px-6 py-5 text-slate-600">Abducción y rotación medial del muslo.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Tensor de la Fascia Lata</td>
+                          <td className="px-6 py-5 text-slate-600">EIAS y parte anterior de la cresta ilíaca.</td>
+                          <td className="px-6 py-5 text-slate-600">Tracto iliotibial (cóndilo lateral tibia).</td>
+                          <td className="px-6 py-5 text-slate-600">Tensa la fascia lata; abduce y flexiona el muslo.</td>
+                        </tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Músculos Pelvitrocantéreos (Rotadores Cortos)</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Obturador Interno</td>
+                          <td className="px-6 py-5 text-slate-600">Cara interna membrana obturatriz y pubis/isquion.</td>
+                          <td className="px-6 py-5 text-slate-600">Cara medial del trocánter mayor.</td>
+                          <td className="px-6 py-5 text-slate-600">Rotación lateral del muslo extendido.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Cuadrado Femoral</td>
+                          <td className="px-6 py-5 text-slate-600">Borde lateral de la tuberosidad isquiática.</td>
+                          <td className="px-6 py-5 text-slate-600">Cresta intertrocantérea del fémur.</td>
+                          <td className="px-6 py-5 text-slate-600">Potente rotador lateral del muslo.</td>
+                        </tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Muslo: Grupo Anterior (Cuádriceps)</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Recto Femoral</td>
+                          <td className="px-6 py-5 text-slate-600">EIAI y surco supraacetabular.</td>
+                          <td className="px-6 py-5 text-slate-600" rowSpan={4}>Base de la rótula y tuberosidad de la tibia (vía ligamento rotuliano).</td>
+                          <td className="px-6 py-5 text-slate-600">Extensión de rodilla y flexión de cadera.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Vasto Lateral</td>
+                          <td className="px-6 py-5 text-slate-600">Trocánter mayor y labio lateral línea áspera.</td>
+                          <td className="px-6 py-5 text-slate-600">Extensión de la rodilla.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Vasto Medial</td>
+                          <td className="px-6 py-5 text-slate-600">Línea intertrocantérea y labio medial línea áspera.</td>
+                          <td className="px-6 py-5 text-slate-600">Extensión de rodilla; estabiliza la rótula.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Vasto Intermedio</td>
+                          <td className="px-6 py-5 text-slate-600">Caras anterior y lateral del cuerpo del fémur.</td>
+                          <td className="px-6 py-5 text-slate-600">Extensión de la rodilla.</td>
                         </tr>
                         <tr className="hover:bg-slate-50 transition-colors">
                           <td className="px-6 py-5 font-bold text-slate-800">Sartorio</td>
@@ -2878,7 +3068,25 @@ export default function App() {
                           <td className="px-6 py-5 text-slate-600">Parte superior cara medial tibia (Pata de ganso).</td>
                           <td className="px-6 py-5 text-slate-600">Flexión, abducción y rotación externa del muslo.</td>
                         </tr>
-                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Muslo: Grupo Medial</td></tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Muslo: Grupo Medial (Aductores)</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Pectíneo</td>
+                          <td className="px-6 py-5 text-slate-600">Rama superior del pubis (línea pectínea).</td>
+                          <td className="px-6 py-5 text-slate-600">Línea pectínea del fémur.</td>
+                          <td className="px-6 py-5 text-slate-600">Aducción y flexión del muslo.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Aductor Largo</td>
+                          <td className="px-6 py-5 text-slate-600">Cuerpo del pubis, inferior a la cresta.</td>
+                          <td className="px-6 py-5 text-slate-600">Tercio medio de la línea áspera del fémur.</td>
+                          <td className="px-6 py-5 text-slate-600">Aducción del muslo.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Grácil (Recto Interno)</td>
+                          <td className="px-6 py-5 text-slate-600">Cuerpo y rama inferior del pubis.</td>
+                          <td className="px-6 py-5 text-slate-600">Parte superior cara medial tibia (Pata de ganso).</td>
+                          <td className="px-6 py-5 text-slate-600">Aducción muslo; flexión y rotación medial pierna.</td>
+                        </tr>
                         <tr className="hover:bg-slate-50 transition-colors">
                           <td className="px-6 py-5 font-bold text-slate-800">Aductor Mayor</td>
                           <td className="px-6 py-5 text-slate-600">Rama isquiopubiana y tuberosidad isquiática.</td>
@@ -2893,6 +3101,12 @@ export default function App() {
                           <td className="px-6 py-5 text-slate-600">Flexión de rodilla y extensión de cadera.</td>
                         </tr>
                         <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Semitendinoso</td>
+                          <td className="px-6 py-5 text-slate-600">Tuberosidad isquiática.</td>
+                          <td className="px-6 py-5 text-slate-600">Parte superior cara medial tibia (Pata de ganso).</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión de rodilla y extensión de cadera.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
                           <td className="px-6 py-5 font-bold text-slate-800">Semimembranoso</td>
                           <td className="px-6 py-5 text-slate-600">Tuberosidad isquiática.</td>
                           <td className="px-6 py-5 text-slate-600">Cóndilo medial de la tibia.</td>
@@ -2900,6 +3114,60 @@ export default function App() {
                         </tr>
                       </tbody>
                     </table>
+                  </div>
+                </div>
+
+                {/* Fascia Lata y Triángulo de Scarpa */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                    <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-4">Fascia Lata y Tracto Iliotibial</h3>
+                    <div className="space-y-4">
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        La <span className="font-bold">fascia lata</span> es la fascia profunda del muslo, una membrana fibrosa densa que envuelve los músculos como una media elástica.
+                      </p>
+                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
+                        <p><span className="font-bold text-emerald-700">Inserciones Superiores:</span> Ligamento inguinal, cresta ilíaca, sacro, cóccix y tuberosidad isquiática.</p>
+                        <div className="space-y-1">
+                          <span className="font-bold text-emerald-700">Tracto Iliotibial (Refuerzo):</span>
+                          <p className="ml-4">Es un engrosamiento lateral de la fascia lata. Recibe las inserciones del <span className="font-semibold">Tensor de la Fascia Lata</span> y el <span className="font-semibold">Glúteo Mayor</span>. Se inserta distalmente en el <span className="italic">tubérculo de Gerdy</span> (tibia).</p>
+                        </div>
+                        <p><span className="font-bold text-emerald-700">Función:</span> Limita la expansión de los músculos, aumentando la eficacia de sus contracciones y ayudando al retorno venoso.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-6 md:p-8 rounded-3xl border shadow-sm space-y-6">
+                    <h3 className="text-2xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-4">Triángulo de Scarpa (Femoral)</h3>
+                    <div className="space-y-4">
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Región topográfica vital en la cara anteromedial del tercio superior del muslo.
+                      </p>
+                      <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 text-xs space-y-3">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <span className="font-bold text-slate-800">Límites:</span>
+                            <ul className="list-disc ml-4 mt-1">
+                              <li><span className="font-semibold">Sup:</span> Lig. Inguinal</li>
+                              <li><span className="font-semibold">Lat:</span> M. Sartorio</li>
+                              <li><span className="font-semibold">Med:</span> M. Aductor Largo</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <span className="font-bold text-slate-800">Contenido (L a M):</span>
+                            <ol className="list-decimal ml-4 mt-1">
+                              <li>Nervio Femoral</li>
+                              <li>Arteria Femoral</li>
+                              <li>Vena Femoral</li>
+                              <li>Linfáticos</li>
+                            </ol>
+                          </div>
+                        </div>
+                        <div className="pt-2 border-t border-slate-200">
+                          <span className="font-bold text-red-700">Importancia Clínica:</span>
+                          <p className="mt-1">Sitio para toma de pulsos, cateterismos arteriales, abordajes quirúrgicos y localización de hernias femorales. La compresión aquí puede causar isquemia o neuropatías.</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -2936,6 +3204,18 @@ export default function App() {
                           <td className="px-6 py-5 text-slate-600">Cuneiforme medial y base I metatarsiano.</td>
                           <td className="px-6 py-5 text-slate-600">Flexión dorsal e inversión del pie.</td>
                         </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Extensor Largo de los Dedos</td>
+                          <td className="px-6 py-5 text-slate-600">Cóndilo lateral tibia y cara medial peroné.</td>
+                          <td className="px-6 py-5 text-slate-600">Falanges media y distal de los 4 dedos laterales.</td>
+                          <td className="px-6 py-5 text-slate-600">Extensión de los dedos y flexión dorsal.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Extensor Largo del Dedo Gordo</td>
+                          <td className="px-6 py-5 text-slate-600">Cara medial del peroné y membrana interósea.</td>
+                          <td className="px-6 py-5 text-slate-600">Base falange distal del dedo gordo.</td>
+                          <td className="px-6 py-5 text-slate-600">Extensión del dedo gordo y flexión dorsal.</td>
+                        </tr>
                         <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Pierna: Grupo Lateral</td></tr>
                         <tr className="hover:bg-slate-50 transition-colors">
                           <td className="px-6 py-5 font-bold text-slate-800">Peroneo Largo</td>
@@ -2943,15 +3223,69 @@ export default function App() {
                           <td className="px-6 py-5 text-slate-600">Base I metatarsiano y cuneiforme medial.</td>
                           <td className="px-6 py-5 text-slate-600">Eversión y flexión plantar débil.</td>
                         </tr>
-                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Pierna: Grupo Posterior</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Peroneo Corto</td>
+                          <td className="px-6 py-5 text-slate-600">Dos tercios distales cara lateral peroné.</td>
+                          <td className="px-6 py-5 text-slate-600">Tuberosidad de la base del V metatarsiano.</td>
+                          <td className="px-6 py-5 text-slate-600">Eversión del pie.</td>
+                        </tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Pierna: Grupo Posterior (Superficial)</td></tr>
                         <tr className="hover:bg-slate-50 transition-colors">
                           <td className="px-6 py-5 font-bold text-slate-800">Tríceps Surae (Gastrocnemio y Sóleo)</td>
                           <td className="px-6 py-5 text-slate-600">Cóndilos femorales (G), Tibia y Peroné (S).</td>
                           <td className="px-6 py-5 text-slate-600">Tuberosidad del calcáneo (Tendón de Aquiles).</td>
                           <td className="px-6 py-5 text-slate-600">Potente flexión plantar del pie.</td>
                         </tr>
+                        <tr className="bg-emerald-50/50"><td colSpan={4} className="px-6 py-3 font-bold text-emerald-900 border-y border-emerald-100">Pierna: Grupo Posterior (Profundo)</td></tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Poplíteo</td>
+                          <td className="px-6 py-5 text-slate-600">Cóndilo lateral del fémur.</td>
+                          <td className="px-6 py-5 text-slate-600">Cara posterior de la tibia (encima línea sóleo).</td>
+                          <td className="px-6 py-5 text-slate-600">Flexiona y rota medialmente la pierna (desbloquea rodilla).</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Tibial Posterior</td>
+                          <td className="px-6 py-5 text-slate-600">Tibia, peroné y membrana interósea.</td>
+                          <td className="px-6 py-5 text-slate-600">Navicular, cuneiformes, cuboides y metatarsianos.</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión plantar e inversión del pie.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Flexor Largo de los Dedos</td>
+                          <td className="px-6 py-5 text-slate-600">Cara posterior de la tibia.</td>
+                          <td className="px-6 py-5 text-slate-600">Bases falanges distales de los 4 dedos laterales.</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión de los dedos y flexión plantar.</td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-5 font-bold text-slate-800">Flexor Largo del Dedo Gordo</td>
+                          <td className="px-6 py-5 text-slate-600">Dos tercios distales cara posterior peroné.</td>
+                          <td className="px-6 py-5 text-slate-600">Base falange distal del dedo gordo.</td>
+                          <td className="px-6 py-5 text-slate-600">Flexión del dedo gordo y flexión plantar.</td>
+                        </tr>
                       </tbody>
                     </table>
+                  </div>
+                </div>
+
+                {/* Músculos del Pie */}
+                <div className="bg-white p-6 rounded-2xl border shadow-sm">
+                  <h3 className="text-xl font-bold text-emerald-700 border-l-4 border-emerald-600 pl-3 mb-6">Músculos del Pie</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <h4 className="font-bold text-emerald-800 text-lg">Región Dorsal</h4>
+                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-xs space-y-3">
+                        <p><span className="font-bold text-emerald-700">Pedio (Extensor Corto de los Dedos):</span> Se origina en el calcáneo y se inserta en los tendones del extensor largo. Ayuda a la extensión de los dedos.</p>
+                        <p><span className="font-bold text-emerald-700">Extensor Corto del Dedo Gordo:</span> Fascículo medial del pedio que va al dedo gordo.</p>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <h4 className="font-bold text-emerald-800 text-lg">Región Plantar</h4>
+                      <p className="text-sm text-slate-700 leading-relaxed">Organizados en cuatro capas funcionales que mantienen los arcos del pie.</p>
+                      <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 text-[10px] space-y-2">
+                        <p><span className="font-bold text-slate-800">Grupo Medial (Dedo Gordo):</span> Abductor, flexor corto y aductor del dedo gordo.</p>
+                        <p><span className="font-bold text-slate-800">Grupo Lateral (Dedo Pequeño):</span> Abductor, flexor corto y oponente del dedo pequeño.</p>
+                        <p><span className="font-bold text-slate-800">Grupo Medio:</span> Flexor corto de los dedos, cuadrado plantar, lumbricales e interóseos (dorsales y plantares).</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
