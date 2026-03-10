@@ -41,6 +41,7 @@ interface Question {
   a: string;
   opts: string[];
   category: string;
+  region?: 'superior' | 'inferior';
 }
 
 interface UserAnswer {
@@ -159,27 +160,99 @@ const QUESTION_BANK: Question[] = [
   {q: "El nervio mediano pasa por el túnel carpiano.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Neurología"},
   {q: "La articulación del codo es una articulación de tipo esferoidea.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Artrología"},
 
-  // --- MIEMBRO INFERIOR (20) ---
-  {q: "¿Qué hueso forma la parte posteroinferior del coxal?", a: "Isquion", opts: ["Ilion", "Pubis", "Isquion", "Sacro"], category: "Osteología"},
-  {q: "¿Cuál es el hueso más largo del cuerpo humano?", a: "Fémur", opts: ["Tibia", "Fémur", "Húmero", "Peroné"], category: "Osteología"},
-  {q: "¿Dónde se inserta el tendón rotuliano?", a: "Tuberosidad de la tibia", opts: ["Maléolo medial", "Tuberosidad de la tibia", "Cabeza del peroné", "Epicóndilo medial"], category: "Osteología"},
-  {q: "¿Qué hueso del tarso se articula con la tibia y el peroné?", a: "Astrágalo", opts: ["Calcáneo", "Astrágalo", "Navicular", "Cuboides"], category: "Osteología"},
-  {q: "¿Qué tipo de articulación es la coxofemoral?", a: "Esferoidea (Enartrosis)", opts: ["Troclear", "Esferoidea (Enartrosis)", "Condílea", "Plana"], category: "Artrología"},
-  {q: "¿Qué ligamento de la rodilla evita el desplazamiento anterior de la tibia?", a: "Ligamento cruzado anterior", opts: ["Ligamento cruzado posterior", "Ligamento cruzado anterior", "Ligamento colateral medial", "Ligamento colateral lateral"], category: "Artrología"},
-  {q: "¿Qué músculo es el principal extensor de la rodilla?", a: "Cuádriceps femoral", opts: ["Bíceps femoral", "Sartorio", "Cuádriceps femoral", "Semimembranoso"], category: "Miología"},
-  {q: "¿Qué músculo se inserta en la 'pata de ganso' junto con el grácil y el semitendinoso?", a: "Sartorio", opts: ["Recto femoral", "Sartorio", "Vasto medial", "Bíceps femoral"], category: "Miología"},
-  {q: "¿Cuál es la arteria principal que irriga el compartimento anterior del muslo?", a: "Arteria femoral", opts: ["Arteria obturatriz", "Arteria femoral", "Arteria poplítea", "Arteria tibial anterior"], category: "Angiología"},
-  {q: "¿Qué vena superficial asciende por la cara medial de la pierna y el muslo?", a: "Vena safena magna", opts: ["Vena safena parva", "Vena safena magna", "Vena femoral", "Vena poplítea"], category: "Angiología"},
-  {q: "¿Qué nervio inerva los músculos del compartimento anterior del muslo?", a: "Nervio femoral", opts: ["Nervio obturador", "Nervio ciático", "Nervio femoral", "Nervio tibial"], category: "Neurología"},
-  {q: "¿Cuál es el nervio más grueso del cuerpo humano?", a: "Nervio ciático", opts: ["Nervio femoral", "Nervio ciático", "Nervio mediano", "Nervio radial"], category: "Neurología"},
-  {q: "¿Qué hueso sesamoideo se encuentra en el tendón del cuádriceps?", a: "Rótula", opts: ["Pisiforme", "Rótula", "Astrágalo", "Cuboides"], category: "Osteología"},
-  {q: "¿Qué estructura fibrocartilaginosa mejora la congruencia en la rodilla?", a: "Meniscos", opts: ["Rodete acetabular", "Meniscos", "Ligamento cruzado", "Cápsula articular"], category: "Artrología"},
-  {q: "¿Qué músculo realiza la abducción del muslo y estabiliza la pelvis al caminar?", a: "Glúteo medio", opts: ["Glúteo mayor", "Glúteo medio", "Aductor mayor", "Piriforme"], category: "Miología"},
-  {q: "¿Qué arteria es la continuación de la femoral en el hueco poplíteo?", a: "Arteria poplítea", opts: ["Arteria tibial posterior", "Arteria poplítea", "Arteria femoral profunda", "Arteria pedia"], category: "Angiología"},
-  {q: "¿Qué nervio inerva los músculos aductores del muslo?", a: "Nervio obturador", opts: ["Nervio femoral", "Nervio obturador", "Nervio ciático", "Nervio glúteo superior"], category: "Neurología"},
-  {q: "¿Qué hueso forma el talón del pie?", a: "Calcáneo", opts: ["Astrágalo", "Calcáneo", "Cuboides", "Navicular"], category: "Osteología"},
-  {q: "¿Qué tipo de articulación es la sínfisis del pubis?", a: "Anfiartrosis (Sínfisis)", opts: ["Diartrosis", "Anfiartrosis (Sínfisis)", "Sinartrosis", "Enartrosis"], category: "Artrología"},
-  {q: "¿Qué nervio se divide en nervio tibial y nervio peroneo común?", a: "Nervio ciático", opts: ["Nervio femoral", "Nervio obturador", "Nervio ciático", "Nervio pudendo"], category: "Neurología"}
+  // --- MIEMBRO INFERIOR (Existentes + Nuevas) ---
+  {q: "¿Qué hueso forma la parte posteroinferior del coxal?", a: "Isquion", opts: ["Ilion", "Pubis", "Isquion", "Sacro"], category: "Osteología", region: "inferior"},
+  {q: "¿Cuál es el hueso más largo del cuerpo humano?", a: "Fémur", opts: ["Tibia", "Fémur", "Húmero", "Peroné"], category: "Osteología", region: "inferior"},
+  {q: "¿Dónde se inserta el tendón rotuliano?", a: "Tuberosidad de la tibia", opts: ["Maléolo medial", "Tuberosidad de la tibia", "Cabeza del peroné", "Epicóndilo medial"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué hueso del tarso se articula con la tibia y el peroné?", a: "Astrágalo", opts: ["Calcáneo", "Astrágalo", "Navicular", "Cuboides"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué tipo de articulación es la coxofemoral?", a: "Esferoidea (Enartrosis)", opts: ["Troclear", "Esferoidea (Enartrosis)", "Condílea", "Plana"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué ligamento de la rodilla evita el desplazamiento anterior de la tibia?", a: "Ligamento cruzado anterior", opts: ["Ligamento cruzado posterior", "Ligamento cruzado anterior", "Ligamento colateral medial", "Ligamento colateral lateral"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué músculo es el principal extensor de la rodilla?", a: "Cuádriceps femoral", opts: ["Bíceps femoral", "Sartorio", "Cuádriceps femoral", "Semimembranoso"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo se inserta en la 'pata de ganso' junto con el grácil y el semitendinoso?", a: "Sartorio", opts: ["Recto femoral", "Sartorio", "Vasto medial", "Bíceps femoral"], category: "Miología", region: "inferior"},
+  {q: "¿Cuál es la arteria principal que irriga el compartimento anterior del muslo?", a: "Arteria femoral", opts: ["Arteria obturatriz", "Arteria femoral", "Arteria poplítea", "Arteria tibial anterior"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué vena superficial asciende por la cara medial de la pierna y el muslo?", a: "Vena safena magna", opts: ["Vena safena parva", "Vena safena magna", "Vena femoral", "Vena poplítea"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué nervio inerva los músculos del compartimento anterior del muslo?", a: "Nervio femoral", opts: ["Nervio obturador", "Nervio ciático", "Nervio femoral", "Nervio tibial"], category: "Neurología", region: "inferior"},
+  {q: "¿Cuál es el nervio más grueso del cuerpo humano?", a: "Nervio ciático", opts: ["Nervio femoral", "Nervio ciático", "Nervio mediano", "Nervio radial"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué hueso sesamoideo se encuentra en el tendón del cuádriceps?", a: "Rótula", opts: ["Pisiforme", "Rótula", "Astrágalo", "Cuboides"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué estructura fibrocartilaginosa mejora la congruencia en la rodilla?", a: "Meniscos", opts: ["Rodete acetabular", "Meniscos", "Ligamento cruzado", "Cápsula articular"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué músculo realiza la abducción del muslo y estabiliza la pelvis al caminar?", a: "Glúteo medio", opts: ["Glúteo mayor", "Glúteo medio", "Aductor mayor", "Piriforme"], category: "Miología", region: "inferior"},
+  {q: "¿Qué arteria es la continuación de la femoral en el hueco poplíteo?", a: "Arteria poplítea", opts: ["Arteria tibial posterior", "Arteria poplítea", "Arteria femoral profunda", "Arteria pedia"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué nervio inerva los músculos aductores del muslo?", a: "Nervio obturador", opts: ["Nervio femoral", "Nervio obturador", "Nervio ciático", "Nervio glúteo superior"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué hueso forma el talón del pie?", a: "Calcáneo", opts: ["Astrágalo", "Calcáneo", "Cuboides", "Navicular"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué tipo de articulación es la sínfisis del pubis?", a: "Anfiartrosis (Sínfisis)", opts: ["Diartrosis", "Anfiartrosis (Sínfisis)", "Sinartrosis", "Enartrosis"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué nervio se divide en nervio tibial y nervio peroneo común?", a: "Nervio ciático", opts: ["Nervio femoral", "Nervio obturador", "Nervio ciático", "Nervio pudendo"], category: "Neurología", region: "inferior"},
+
+  // --- OSTEOLOGÍA INFERIOR ADICIONAL ---
+  {q: "¿Qué estructura ósea es el punto más alto de la pelvis?", a: "Cresta ilíaca", opts: ["Espina ilíaca", "Cresta ilíaca", "Promontorio", "Sínfisis"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué estructura separa las escotaduras ciáticas mayor y menor?", a: "Espina ciática", opts: ["Tuberosidad isquiática", "Espina ciática", "Línea terminal", "Rama del pubis"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué hueso posee el maléolo lateral?", a: "Peroné", opts: ["Tibia", "Fémur", "Peroné", "Astrágalo"], category: "Osteología", region: "inferior"},
+  {q: "¿Cuál es el nombre de la cavidad donde se aloja la cabeza del fémur?", a: "Acetábulo", opts: ["Cavidad glenoidea", "Acetábulo", "Fosa ilíaca", "Agujero obturado"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué accidente anatómico se encuentra en la cara anterior de la epífisis proximal de la tibia?", a: "Tuberosidad de la tibia", opts: ["Maléolo medial", "Tuberosidad de la tibia", "Línea del sóleo", "Eminencia intercondílea"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué estructura del fémur se articula con la tibia?", a: "Cóndilos femorales", opts: ["Trocánter mayor", "Cóndilos femorales", "Cabeza del fémur", "Epicóndilos"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué hueso es medial en la pierna?", a: "Tibia", opts: ["Tibia", "Peroné", "Fémur", "Astrágalo"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué parte del coxal es la que usamos para sentarnos?", a: "Tuberosidad isquiática", opts: ["Espina ilíaca", "Tuberosidad isquiática", "Sínfisis del pubis", "Cresta ilíaca"], category: "Osteología", region: "inferior"},
+  {q: "¿Qué hueso del tarso presenta el sustentaculum tali?", a: "Calcáneo", opts: ["Astrágalo", "Calcáneo", "Navicular", "Cuboides"], category: "Osteología", region: "inferior"},
+
+  // --- ARTROLOGÍA INFERIOR ADICIONAL ---
+  {q: "¿Qué forma tiene el menisco medial de la rodilla?", a: "Forma de C", opts: ["Forma de O", "Forma de C", "Forma triangular", "Forma cuadrada"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué ligamento de la cadera es el más resistente y evita la hiperextensión?", a: "Ligamento iliofemoral", opts: ["Ligamento pubofemoral", "Ligamento isquiofemoral", "Ligamento iliofemoral", "Ligamento redondo"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué articulación une el tarso con el metatarso?", a: "Articulación de Lisfranc", opts: ["Articulación de Chopart", "Articulación de Lisfranc", "Articulación subastragalina", "Articulación talocrural"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué ligamento de la cadera limita la abducción?", a: "Ligamento pubofemoral", opts: ["Ligamento iliofemoral", "Ligamento pubofemoral", "Ligamento isquiofemoral", "Ligamento de la cabeza del fémur"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué estructura fibrocartilaginosa profundiza el acetábulo?", a: "Rodete acetabular (Labrum)", opts: ["Menisco", "Rodete acetabular (Labrum)", "Cápsula articular", "Ligamento transverso"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué movimiento realiza la articulación del tobillo al elevar el dorso del pie?", a: "Flexión dorsal", opts: ["Flexión plantar", "Flexión dorsal", "Inversión", "Eversión"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué ligamento de la rodilla se inserta en la cabeza del peroné?", a: "Ligamento colateral lateral", opts: ["Ligamento colateral medial", "Ligamento colateral lateral", "Ligamento cruzado anterior", "Ligamento cruzado posterior"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué articulación permite principalmente la inversión y eversión del pie?", a: "Articulación subastragalina", opts: ["Articulación talocrural", "Articulación subastragalina", "Articulación de Lisfranc", "Articulación metatarsofalángica"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué ligamento de la rodilla evita el desplazamiento posterior de la tibia?", a: "Ligamento cruzado posterior", opts: ["Ligamento cruzado anterior", "Ligamento cruzado posterior", "Ligamento colateral", "Ligamento rotuliano"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué tipo de articulación es la talocrural (tobillo)?", a: "Gínglimo (Trocleartrosis)", opts: ["Enartrosis", "Gínglimo (Trocleartrosis)", "Trocoide", "Artrodia"], category: "Artrología", region: "inferior"},
+  {q: "¿Qué ligamento medial del tobillo tiene forma triangular?", a: "Ligamento deltoideo", opts: ["Ligamento lateral", "Ligamento deltoideo", "Ligamento astragaloperoneo", "Ligamento calcaneoperoneo"], category: "Artrología", region: "inferior"},
+
+  // --- MIOLOGÍA INFERIOR ADICIONAL ---
+  {q: "¿Qué músculo se inserta en el trocánter menor del fémur?", a: "Iliopsoas", opts: ["Glúteo mayor", "Iliopsoas", "Piriforme", "Obturador interno"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo realiza la flexión dorsal e inversión del pie?", a: "Tibial anterior", opts: ["Peroneo largo", "Tibial anterior", "Extensor largo de los dedos", "Sóleo"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculos forman el tríceps sural?", a: "Gastrocnemios y sóleo", opts: ["Gastrocnemios y plantar", "Sóleo y tibial posterior", "Gastrocnemios y sóleo", "Peroneos y sóleo"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo es el más largo del cuerpo humano?", a: "Sartorio", opts: ["Grácil", "Sartorio", "Recto femoral", "Bíceps femoral"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo del muslo es el más medial y pertenece al grupo aductor?", a: "Grácil", opts: ["Sartorio", "Grácil", "Pectíneo", "Vasto medial"], category: "Miología", region: "inferior"},
+  {q: "¿Dónde se inserta el tendón de Aquiles?", a: "Tuberosidad del calcáneo", opts: ["Astrágalo", "Tuberosidad del calcáneo", "Base del V metatarsiano", "Navicular"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo atraviesa el agujero ciático mayor y es clave en la región glútea?", a: "Piriforme", opts: ["Glúteo menor", "Piriforme", "Obturador externo", "Cuadrado femoral"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo del cuádriceps es biarticular (flexiona la cadera)?", a: "Recto femoral", opts: ["Vasto lateral", "Vasto medial", "Recto femoral", "Vasto intermedio"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo se encuentra en el compartimento lateral de la pierna?", a: "Peroneo largo", opts: ["Tibial anterior", "Peroneo largo", "Extensor largo del hallux", "Tercer peroneo"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo es el principal flexor de la cadera?", a: "Iliopsoas", opts: ["Recto femoral", "Iliopsoas", "Sartorio", "Pectíneo"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo forma el límite lateral superior del hueco poplíteo?", a: "Bíceps femoral", opts: ["Semimembranoso", "Bíceps femoral", "Semitendinoso", "Gastrocnemio lateral"], category: "Miología", region: "inferior"},
+  {q: "¿Qué músculo se inserta en el trocánter mayor y es rotador lateral del muslo?", a: "Piriforme", opts: ["Glúteo medio", "Piriforme", "Iliopsoas", "Aductor largo"], category: "Miología", region: "inferior"},
+
+  // --- ANGIOLOGÍA INFERIOR ADICIONAL ---
+  {q: "¿Dónde se localiza el pulso pedio?", a: "Dorso del pie", opts: ["Detrás del maléolo medial", "Dorso del pie", "Planta del pie", "Hueco poplíteo"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué arteria pasa por el conducto de los aductores (de Hunter)?", a: "Arteria femoral", opts: ["Arteria femoral profunda", "Arteria femoral", "Arteria poplítea", "Arteria obturatriz"], category: "Angiología", region: "inferior"},
+  {q: "¿En qué se divide la arteria poplítea al final del hueco poplíteo?", a: "Tibial anterior y posterior", opts: ["Femoral y profunda", "Tibial anterior y posterior", "Peronea y tibial", "Pedia y plantar"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué vena superficial drena en la vena poplítea?", a: "Vena safena parva", opts: ["Vena safena magna", "Vena safena parva", "Vena femoral", "Vena tibial"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué arteria irriga el compartimento posterior de la pierna?", a: "Arteria tibial posterior", opts: ["Arteria tibial anterior", "Arteria tibial posterior", "Arteria peronea", "Arteria pedia"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué estructura anatómica delimita el inicio de la arteria femoral?", a: "Ligamento inguinal", opts: ["Hiato del aductor", "Ligamento inguinal", "Triángulo de Scarpa", "Cresta ilíaca"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué arteria da origen a la arteria peronea?", a: "Arteria tibial posterior", opts: ["Arteria tibial anterior", "Arteria tibial posterior", "Arteria poplítea", "Arteria femoral profunda"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué vena asciende por delante del maléolo medial del tobillo?", a: "Vena safena magna", opts: ["Vena safena magna", "Vena safena parva", "Vena tibial anterior", "Vena femoral"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué arteria irriga la cabeza del fémur a través del ligamento redondo?", a: "Rama de la arteria obturatriz", opts: ["Arteria femoral profunda", "Rama de la arteria obturatriz", "Arteria circunfleja medial", "Arteria glútea superior"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué arteria forma principalmente el arco plantar del pie?", a: "Arteria plantar lateral", opts: ["Arteria plantar medial", "Arteria plantar lateral", "Arteria pedia", "Arteria tibial anterior"], category: "Angiología", region: "inferior"},
+  {q: "¿Qué arteria es la principal rama nutricia para los músculos del muslo?", a: "Arteria femoral profunda", opts: ["Arteria femoral superficial", "Arteria femoral profunda", "Arteria obturatriz", "Arteria poplítea"], category: "Angiología", region: "inferior"},
+  {q: "¿Dónde termina la arteria femoral y comienza la poplítea?", a: "Hiato del aductor", opts: ["Triángulo femoral", "Hiato del aductor", "Conducto inguinal", "Fosa poplítea"], category: "Angiología", region: "inferior"},
+
+  // --- NEUROLOGÍA INFERIOR ADICIONAL ---
+  {q: "¿Qué nervio rodea el cuello del peroné y es vulnerable a lesiones?", a: "Nervio peroneo común", opts: ["Nervio tibial", "Nervio peroneo común", "Nervio safeno", "Nervio femoral"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué nervio inerva al músculo tibial anterior?", a: "Nervio peroneo profundo", opts: ["Nervio peroneo superficial", "Nervio peroneo profundo", "Nervio tibial", "Nervio femoral"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué nervios inervan a los músculos de la región glútea?", a: "Nervios glúteos superior e inferior", opts: ["Nervio ciático", "Nervios glúteos superior e inferior", "Nervio obturador", "Nervio femoral"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué raíces espinales forman el plexo lumbar?", a: "L1-L4", opts: ["C5-T1", "L1-L4", "L4-S4", "T12-L2"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué nervio inerva al tríceps sural (gemelos y sóleo)?", a: "Nervio tibial", opts: ["Nervio peroneo común", "Nervio tibial", "Nervio safeno", "Nervio femoral"], category: "Neurología", region: "inferior"},
+  {q: "¿La lesión de qué nervio provoca la incapacidad de realizar flexión dorsal (pie caído)?", a: "Nervio peroneo común", opts: ["Nervio tibial", "Nervio peroneo común", "Nervio femoral", "Nervio obturador"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué nervio pasa por el agujero ciático mayor, generalmente por debajo del piriforme?", a: "Nervio ciático", opts: ["Nervio femoral", "Nervio ciático", "Nervio obturador", "Nervio pudendo"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué nervio inerva la piel de la cara medial de la pierna y el pie?", a: "Nervio safeno", opts: ["Nervio sural", "Nervio safeno", "Nervio peroneo", "Nervio tibial"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué raíces espinales forman el plexo sacro?", a: "L4-S4", opts: ["L1-L4", "L4-S4", "S1-S5", "T12-L4"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué nervio inerva específicamente al músculo glúteo mayor?", a: "Nervio glúteo inferior", opts: ["Nervio glúteo superior", "Nervio glúteo inferior", "Nervio ciático", "Nervio pudendo"], category: "Neurología", region: "inferior"},
+  {q: "¿Qué nervio se divide en los nervios plantares medial y lateral en el pie?", a: "Nervio tibial", opts: ["Nervio peroneo profundo", "Nervio tibial", "Nervio safeno", "Nervio sural"], category: "Neurología", region: "inferior"},
+
+  // --- VERDADERO / FALSO INFERIOR ---
+  {q: "El fémur se articula directamente con el peroné en la articulación de la rodilla.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Artrología", region: "inferior"},
+  {q: "La vena safena magna drena en la vena femoral.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Angiología", region: "inferior"},
+  {q: "El músculo psoas ilíaco es el principal flexor de la cadera.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Miología", region: "inferior"},
+  {q: "El nervio ciático inerva los músculos del compartimento anterior del muslo.", a: "Falso", opts: ["Verdadero", "Falso"], category: "Neurología", region: "inferior"},
+  {q: "El calcáneo es el hueso más grande del tarso.", a: "Verdadero", opts: ["Verdadero", "Falso"], category: "Osteología", region: "inferior"}
 ];
 
 // --- Components ---
@@ -855,7 +928,7 @@ const Viewer3D = () => {
 };
 
 // --- Quiz Component ---
-const Quiz = () => {
+const Quiz = ({ region }: { region: 'superior' | 'inferior' }) => {
   const [gameState, setGameState] = useState<'start' | 'playing' | 'result'>('start');
   const [currentQuestions, setCurrentQuestions] = useState<Question[]>([]);
   const [qIndex, setQIndex] = useState(0);
@@ -867,7 +940,7 @@ const Quiz = () => {
 
   const startQuiz = (mode: string) => {
     setQuizMode(mode);
-    let pool = [...QUESTION_BANK];
+    let pool = QUESTION_BANK.filter(q => (q.region || 'superior') === region);
     let count = 10;
 
     if (mode === 'mock') {
@@ -931,7 +1004,7 @@ const Quiz = () => {
       <div className="max-w-4xl mx-auto py-12 px-4">
         <div className="text-center mb-12">
           <h3 className="text-4xl font-black text-slate-800 mb-4">Centro de Evaluación</h3>
-          <p className="text-slate-600 max-w-2xl mx-auto">Pon a prueba tus conocimientos sobre la anatomía del miembro superior. Incluye preguntas de opción múltiple y verdadero/falso.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto">Pon a prueba tus conocimientos sobre la anatomía del miembro {region === 'superior' ? 'superior' : 'inferior'}. Incluye preguntas de opción múltiple y verdadero/falso.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2356,7 +2429,7 @@ export default function App() {
 
             {/* Quiz */}
             <Section title="Centro de Evaluación" active={activeTab === 'quiz'}>
-              <Quiz />
+              <Quiz region={activeRegion} />
             </Section>
           </>
         )}
@@ -3008,7 +3081,7 @@ export default function App() {
 
             {/* Quiz (Shared) */}
             <Section title="Centro de Evaluación" active={activeTab === 'quiz'}>
-              <Quiz />
+              <Quiz region={activeRegion} />
             </Section>
           </>
         )}
